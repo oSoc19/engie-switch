@@ -1,4 +1,4 @@
-#Usage
+## Usage
 
 write `node app.js` in your terminal
 
