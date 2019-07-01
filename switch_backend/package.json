@@ -1,0 +1,14 @@
+{
+  "name": "switch_backend",
+  "version": "1.0.0",
+  "description": "switch backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "engie_switch"
+  },
+  "keywords": [
+    "engie_switch"
+  ],
+  "author": "engie_switch",
+  "license": "MIT"
+}

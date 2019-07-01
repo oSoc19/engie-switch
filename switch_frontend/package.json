@@ -1,0 +1,14 @@
+{
+  "name": "switch_frontend",
+  "version": "1.0.0",
+  "description": "frontend of switch",
+  "main": "index.js",
+  "scripts": {
+    "test": "engie_switch"
+  },
+  "keywords": [
+    "switch"
+  ],
+  "author": "SWITCH",
+  "license": "MIT"
+}
