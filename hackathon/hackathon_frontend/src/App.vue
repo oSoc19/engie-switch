@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/engie.png" width="40%">
+    
     <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
     <home msg="Challenge of the day"/>
   </div>
