@@ -26,12 +26,8 @@
         <img src="../assets/person.png" class="person"/> <span class="people">and 152 more have completed this challenge</span>
       </div>
     </div>
-    <nav>
-        <a href="#">Challenges</a>
-        <a href="#">Home</a>
-        <a href="#">Review</a>
-    </nav>
   </div>
+  
 </template>
 
 <script>
@@ -41,6 +37,7 @@ export default {
     msg: String
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -51,23 +48,6 @@ export default {
 }
 h3 {
   margin: 20px 0 0;
-}
-nav a{
-    margin: 5%;
-    color: black;
-    text-decoration: none;
-    
-}
-nav{
-    
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    position: sticky; 
-    bottom:0; 
-    left: 0;
-    width: 100%;
-    background-image: linear-gradient(to right, #2193B0, #73CFE7);
 }
 
 .cotd{
