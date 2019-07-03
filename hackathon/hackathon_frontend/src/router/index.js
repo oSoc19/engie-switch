@@ -1,19 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import HelloWorld from '@/components/HelloWorld'
+
 import HelloNobody from '@/components/HelloNobody'
 import PageNotFound from '@/components/PageNotFound'
-
+import HomeView from '@/views/Home'
 Vue.use(VueRouter)
 
 export default new VueRouter({
   mode: 'history',
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'Home',
-      component: HelloWorld
+      component: HomeView
     },
     {
       path: '/nobody',
