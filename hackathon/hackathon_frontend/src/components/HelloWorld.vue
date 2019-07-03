@@ -1,8 +1,11 @@
 <template>
   <div class="hello">
+    <img alt="Vue logo" src="@/assets/logo.png">
     <h1>{{ msg }}</h1>
     <p>
       Go to <a href="/nobody">HelloNobody</a>.
+      <router-link to="/nobody">HelloNobody</router-link>
+      <a @click="doit();">Click</a>.
     </p>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -36,6 +39,11 @@
 <script>
 export default {
   name: 'HelloWorld',
+  methods: {
+    doit() {
+      alert('ok')
+    }
+  },
   props: {
     msg: String
   }
@@ -57,5 +65,14 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.hello {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
