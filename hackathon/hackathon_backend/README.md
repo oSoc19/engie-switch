@@ -7,7 +7,7 @@ npm install
 
 ### Start the fake server
 ```
-json-server --watch challenges.js
+json-server --watch challenges.json
 ```
 
 Then access `http://localhost:3000/challenges` on your browser
