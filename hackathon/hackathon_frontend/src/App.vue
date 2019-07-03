@@ -1,30 +1,22 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     
     <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
     <home msg="Challenge of the day"/>
+=======
+    <router-view></router-view>
+>>>>>>> 4fe29454f10d12d93c7c251635a2b3a16f76b9cb
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import Home from './views/Home.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld,
-    Home
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+
 </style>

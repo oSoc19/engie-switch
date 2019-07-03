@@ -1,0 +1,11 @@
+{
+  "challenges": [
+    {
+      "id": 0,
+      "title": "Dry your clothes outside",
+      "description": "You can consume less energy by using the sun to dry your clothes instead of the dryer, give it a try!",
+      "picture": "https://www.smallfootprintfamily.com/wp-content/uploads/benefits-of-clotheslines.jpg",
+      "reward": 300
+    }
+  ]
+}
