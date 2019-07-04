@@ -4,7 +4,7 @@
     <switch-header></switch-header>
     <daily-challenge-card challenge_title="Challenge of the day"></daily-challenge-card>
 
-    <Navigation />
+    <switch-navigation />
   </div>
 </template>
 
@@ -13,9 +13,11 @@ export default {
   name: "Home",
   props: {
     msg: String
-  },
-  components: { Navigation }
-};
+
+  }
+}
+
+
 
 import Navigation from "../components/Navigation";
 </script>
