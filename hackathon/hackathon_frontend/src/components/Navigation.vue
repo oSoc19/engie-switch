@@ -1,7 +1,7 @@
 <template>
     <nav>
-        <a href="#"><img src="../assets/trophy-solid.svg" width="25px"/></a>
-        <a href="#"><img src="../assets/home-solid.svg" width="25px"/></a>
+        <a href="/upload"><img src="../assets/trophy-solid.svg" width="25px"/></a>
+        <a href="/"><img src="../assets/home-solid.svg" width="25px"/></a>
         <a href="#"><img src="../assets/cog-solid.svg" width="25px"/></a>
     </nav>
 </template>
@@ -19,10 +19,10 @@ export default {
     text-decoration: none;
     
 }
+
 nav{
     display: flex;
     justify-content: space-between;
-    justify-self: center;
     align-items:flex-start;
     position: fixed; 
     bottom:-10px; 
