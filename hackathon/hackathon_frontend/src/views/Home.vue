@@ -16,10 +16,6 @@ export default {
 
   }
 }
-
-
-
-import Navigation from "../components/Navigation";
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

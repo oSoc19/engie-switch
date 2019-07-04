@@ -6,9 +6,8 @@
 </template>
 <script>
     export default {
-    name: 'UploadImage',
-    components: {Navigation}
+    name: 'UploadImage'
     }
 
-    import Navigation from '../components/Navigation.vue'
+   
 </script>
