@@ -5,7 +5,7 @@
     <p>
       Go to <a href="/nobody">HelloNobody</a>.
       <router-link to="/nobody">HelloNobody</router-link>
-      <a @click="doit();">Click</a>.
+      <a @click="doit();">Click</a>
     </p>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>

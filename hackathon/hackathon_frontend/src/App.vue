@@ -5,12 +5,13 @@
 </template>
 
 <script>
-
 export default {
-  name: 'Appgit'
-}
+  name: "Appgit"
+};
 </script>
 
 <style>
-
+#app {
+  background-color: pink;
+}
 </style>
