@@ -1,8 +1,8 @@
 <template>
     <nav>
-        <a href="#">Challenges</a>
-        <a href="#">Home</a>
-        <a href="#">Review</a>
+        <a href="#"><img src="../assets/trophy-solid.svg" width="25px"/></a>
+        <a href="#"><img src="../assets/home-solid.svg" width="25px"/></a>
+        <a href="#"><img src="../assets/cog-solid.svg" width="25px"/></a>
     </nav>
 </template>
 
@@ -15,19 +15,21 @@ export default {
 <style>
     nav a{
     margin: 5%;
-    color: black;
+    color: #2193B0;
     text-decoration: none;
     
 }
 nav{
-    
     display: flex;
-    justify-content: center;
-    align-items:center;
-    position: sticky; 
-    bottom:0; 
+    justify-content: space-between;
+    justify-self: center;
+    align-items:flex-start;
+    position: fixed; 
+    bottom:-10px; 
     left: 0;
-    width: 100%;
-    background-image: linear-gradient(to right, #2193B0, #73CFE7);
+    width: 90%;
+    background-color: white;
+    box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.2);
+    border-radius: 7px;
 }
 </style>

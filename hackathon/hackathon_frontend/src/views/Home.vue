@@ -26,7 +26,9 @@
         <img src="../assets/person.png" class="person"/> <span class="people">and 152 more have completed this challenge</span>
       </div>
     </div>
+    <Navigation />
   </div>
+  
   
 </template>
 
@@ -35,8 +37,11 @@ export default {
   name: 'Home',
   props: {
     msg: String
-  }
+  },
+  components: {Navigation}
 }
+
+import Navigation from "../components/Navigation"
 
 </script>
 
@@ -96,6 +101,7 @@ h3 {
   font-weight: bold;
   margin: 5px;
 }
+
 
 
 
