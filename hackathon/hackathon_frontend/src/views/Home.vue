@@ -27,12 +27,11 @@
         <span class="people">and 152 more have completed this challenge</span>
       </div>
     </div>
-    <nav>
-      <a href="#">Challenges</a>
-      <a href="#">Home</a>
-      <a href="#">Review</a>
-    </nav>
+
+    <Navigation />
   </div>
+  
+  
 </template>
 
 <script>
@@ -40,8 +39,14 @@ export default {
   name: "Home",
   props: {
     msg: String
-  }
-};
+
+  },
+  components: {Navigation}
+}
+
+import Navigation from "../components/Navigation"
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -61,21 +66,7 @@ export default {
 h3 {
   margin: 20px 0 0;
 }
-nav a {
-  margin: 5%;
-  color: black;
-  text-decoration: none;
-}
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-image: linear-gradient(to right, #2193b0, #73cfe7);
-}
+
 
 .cotd {
   width: 75%;
@@ -114,4 +105,5 @@ nav {
   font-weight: bold;
   margin: 5px;
 }
+
 </style>
