@@ -1,37 +1,11 @@
 
 <template>
-  <div class="hello">
+  <div class="app__wrapper">
     <switch-header></switch-header>
     <daily-challenge-card challenge_title="Challenge of the day"></daily-challenge-card>
-    <h1>{{ msg }}</h1>
-    <div>
-      <img src="../assets/laundry.jpg" class="cotd" alt="laundry" />
-      <div class="description">
-        <h3>Hang your laundry</h3>
-        <p>Hang your clothes outside on a sunny day! You will save money and the planet!</p>
-        <div class="sm">
-          <img src="../assets/person.jpg" class="person" />
-          <img src="../assets/person2.jpg" class="person" />
-          <span class="people">and 152 more have completed this challenge</span>
-        </div>
-      </div>
-    </div>
-    <h2>Challenges</h2>
-    <div class="challengecontainer">
-      <img src="../assets/bbq.jpg" alt="bbq" class="challenge" />
-      <h3>Cook outside</h3>
-      <p>Cook outside on a sunny day so you don't heat up your house! Save cooling costs!</p>
-      <div class="sm">
-        <img src="../assets/trumpy.jpg" class="person" />
-        <img src="../assets/person.png" class="person" />
-        <span class="people">and 152 more have completed this challenge</span>
-      </div>
-    </div>
 
     <Navigation />
   </div>
-  
-  
 </template>
 
 <script>
@@ -39,14 +13,11 @@ export default {
   name: "Home",
   props: {
     msg: String
-
   },
-  components: {Navigation}
-}
+  components: { Navigation }
+};
 
-import Navigation from "../components/Navigation"
-
-
+import Navigation from "../components/Navigation";
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -55,7 +26,7 @@ import Navigation from "../components/Navigation"
   text-align: left;
   margin: 0 10% 0 10%;
 }
-.hello {
+.app__wrapper {
   background-color: white;
   display: flex;
   justify-content: center;
@@ -66,7 +37,6 @@ import Navigation from "../components/Navigation"
 h3 {
   margin: 20px 0 0;
 }
-
 
 .cotd {
   width: 75%;
@@ -105,5 +75,4 @@ h3 {
   font-weight: bold;
   margin: 5px;
 }
-
 </style>
