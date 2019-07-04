@@ -1,18 +1,20 @@
 <template>
   <div class="card">
     <div class="card__wrapper">
-      <div class="card__title">
-        <h2>Challenge of the day</h2>
-      </div>
-      <div class="card__challenge">
-        <div class="challenge__box">
-          <img src="../assets/laundry.jpg" alt="Image of challenge of day" srcset />
-          <div class="card__challenge__title">Something Title</div>
-          <div
-            class="card__challenge__discription"
-          >Do something that save energy discription. Thank you Mr. Nawang</div>
+      <a href="/tip/6">
+        <div class="card__title">
+          <h2>{{challenge_title}}</h2>
         </div>
-      </div>
+        <div class="card__challenge">
+          <div class="challenge__box">
+            <img src="../assets/laundry.jpg" alt="Image of challenge of day" srcset />
+            <div class="card__challenge__title">Something Title</div>
+            <div
+              class="card__challenge__discription"
+            >Do something that save energy discription. Thank you Mr. Nawang</div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -60,6 +62,8 @@ export default {
   justify-content: center;
   border-radius: 8px;
   flex-wrap: wrap;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .challenge__box {
@@ -97,6 +101,7 @@ h2 {
   color: white;
   margin-bottom: 5px;
   font-size: 1.5em;
+  margin-top: 0;
 }
 ul {
   list-style-type: none;
@@ -107,6 +112,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  text-decoration: none;
+  color: black;
 }
 </style>

@@ -1,11 +1,8 @@
 
 <template>
   <div class="hello">
-    <div class="logo">
-      <img alt="Vue logo" src="../assets/switch.svg" width="15%" />
-      <div class="logo__name">SWITCH</div>
-    </div>
-    <daily-challenge-card></daily-challenge-card>
+    <switch-header></switch-header>
+    <daily-challenge-card challenge_title="Challenge of the day"></daily-challenge-card>
     <h1>{{ msg }}</h1>
     <div>
       <img src="../assets/laundry.jpg" class="cotd" alt="laundry" />
@@ -54,7 +51,7 @@ export default {
   margin: 0 10% 0 10%;
 }
 .hello {
-  background-color: green;
+  background-color: white;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -110,12 +107,6 @@ nav {
 }
 .challengecontainer {
   display: flex;
-}
-
-.logo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .logo__name {
