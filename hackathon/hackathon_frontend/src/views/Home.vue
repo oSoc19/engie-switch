@@ -2,7 +2,12 @@
 <template>
   <div class="app__wrapper">
     <switch-header></switch-header>
-    <daily-challenge-card challenge_title="Challenge of the day"></daily-challenge-card>
+
+    <daily-challenge-card
+      v-for="challenge in challenges"
+      v-bind:key="challenge.id"
+      v-bind:challenge_title="challenge.title"
+    />
 
     <switch-navigation />
   </div>
@@ -13,9 +18,13 @@ export default {
   name: "Home",
   props: {
     msg: String
-
+  },
+  data() {
+    return {
+      challenges: [{ id: 1, title: "Nawang" }, { id: 2, title: "Tendar" }]
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
