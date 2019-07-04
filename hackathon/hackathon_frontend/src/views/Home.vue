@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <Navigation />
+    <switch-navigation />
   </div>
   
   
@@ -40,11 +40,9 @@ export default {
   props: {
     msg: String
 
-  },
-  components: {Navigation}
+  }
 }
 
-import Navigation from "../components/Navigation"
 
 
 </script>
