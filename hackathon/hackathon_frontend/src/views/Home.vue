@@ -1,14 +1,8 @@
 
 <template>
-  <div class="app__wrapper">
+  <div class="hello">
     <switch-header></switch-header>
-
-    <daily-challenge-card
-      v-for="challenge in challenges"
-      v-bind:key="challenge.id"
-      v-bind:challenge_title="challenge.title"
-    />
-
+    <daily-challenge-card challenge_title="Challenge of the day"></daily-challenge-card>
     <switch-navigation />
   </div>
 </template>
@@ -18,11 +12,6 @@ export default {
   name: "Home",
   props: {
     msg: String
-  },
-  data() {
-    return {
-      challenges: [{ id: 1, title: "Nawang" }, { id: 2, title: "Tendar" }]
-    };
   }
 };
 </script>
@@ -33,7 +22,7 @@ export default {
   text-align: left;
   margin: 0 10% 0 10%;
 }
-.app__wrapper {
+.hello {
   background-color: white;
   display: flex;
   justify-content: center;
