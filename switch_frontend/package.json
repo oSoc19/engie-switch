@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "switch",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,14 +8,16 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@ionic/core": "^4.6.0",
+    "@ionic/vue": "0.0.4",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-plugin-eslint": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
