@@ -3,7 +3,8 @@
   <div class="app__wrapper">
     <switch-header></switch-header>
     <daily-challenge-card challenge_title="Challenge of the day"></daily-challenge-card>
-
+    <h2>Other challenges</h2>
+    <challenge-card challenge_title="Barbeque/cook outside!"/>
     <switch-navigation />
   </div>
 </template>
