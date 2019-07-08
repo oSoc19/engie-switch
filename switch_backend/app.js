@@ -1,7 +1,19 @@
 const express = require('express')
-const app = express()
+const jsonServer = require('json-server')
 const port = 3000
 
-app.get('/', (req, res) => res.send('Hello World!'))
+var challengeRouter = jsonServer.router("./challenges.json") // Express router
+var server = jsonServer.create()       // Express server
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+//todo: add image router and handle it myself with Express
+server.use("/image", (req, res, next) => {
+  console.log('image')
+  console.log(req)
+  console.log(res)
+  next()
+})
+
+
+server.use(challengeRouter)
+
+server.listen(port)

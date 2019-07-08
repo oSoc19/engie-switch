@@ -12,6 +12,7 @@
   "author": "engie_switch",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "json-server": "^0.15.0"
   }
 }
