@@ -69,7 +69,7 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
       </li>
     </ul>
-    <navigation/>
+    <navigation class="navigation"/>
   </div>
 </template>
 
@@ -97,5 +97,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.navigation{
+ position: fixed;
 }
 </style>

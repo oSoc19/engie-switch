@@ -17,7 +17,7 @@ export default new VueRouter({
             path: '/next',
             name: 'Next',
             component: Next
-        },
+        }
 
     ]
 })
