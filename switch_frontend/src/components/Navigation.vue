@@ -65,6 +65,7 @@ export default {
   border-radius: 5px;
   box-shadow: 0px -6px 9px -6px rgba(153, 153, 153, 0.6);
   height: 40px;
+
 }
 
 .navigation__bar__icon {
