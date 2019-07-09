@@ -2,9 +2,9 @@
   <ion-tabs @IonTabsWillChange="beforeTabChange" @IonTabsDidChange="afterTabChange">
     <ion-tab tab="home" :routes="'Home'"></ion-tab>
 
-    <ion-tab tab="ranking" :routes="'Ranking'"></ion-tab>
+    <ion-tab tab="leaderboard" :routes="'Leaderboard'"></ion-tab>
 
-    <ion-tab tab="list" :routes="'ListChallenges'"></ion-tab>
+    <ion-tab tab="challenges" :routes="'ListChallenges'"></ion-tab>
 
     <ion-tab tab="profile" :routes="'Profile'"></ion-tab>
 
@@ -13,15 +13,15 @@
       <ion-tab-bar class="navigation__bar">
         <ion-tab-button tab="home" :to="{name: 'Home'}">
           <ion-label>
-            <img src="@/assets/img/home-solid.svg" alt="home" class="navigation__bar__icon" />
+            <img src="@/assets/icons/home-solid.svg" alt="home" class="navigation__bar__icon" />
           </ion-label>
         </ion-tab-button>
 
         <!-- Provide a custom route to navigate to -->
-        <ion-tab-button tab="list" :to="{ name: 'ListChallenges' }">
+        <ion-tab-button tab="challenges" :to="{ name: 'ListChallenges' }">
           <ion-label>
             <img
-              src="@/assets/img/list-ol-solid.svg"
+              src="@/assets/icons/list-ol-solid.svg"
               alt="list of challenges"
               class="navigation__bar__icon"
             />
@@ -29,16 +29,16 @@
         </ion-tab-button>
 
         <!-- Provide extra data to route -->
-        <ion-tab-button tab="ranking" :to="{ name: 'Ranking', params: { id: '2' } }">
+        <ion-tab-button tab="leaderboard" :to="{ name: 'Leaderboard', params: { id: '2' } }">
           <ion-label>
-            <img src="@/assets/img/trophy-solid.svg" alt="ranking" class="navigation__bar__icon" />
+            <img src="@/assets/icons/trophy-solid.svg" alt="ranking" class="navigation__bar__icon" />
           </ion-label>
         </ion-tab-button>
 
         <!-- Provide custom click handler -->
-        <ion-tab-button tab="setting" :to="{name:'Profile', params: {id: '2'}}">
+        <ion-tab-button tab="profile" :to="{name:'Profile', params: {id: '2'}}">
           <ion-label>
-            <img src="@/assets/img/user-solid.svg" alt="profile" class="navigation__bar__icon" />
+            <img src="@/assets/icons/user-solid.svg" alt="profile" class="navigation__bar__icon" />
           </ion-label>
         </ion-tab-button>
       </ion-tab-bar>
@@ -50,12 +50,8 @@
 export default {
   name: "Navigation",
   methods: {
-    beforeTabChange() {
-      alert("ok");
-    },
-    afterTabChange() {
-      alert("ok");
-    }
+    beforeTabChange() {},
+    afterTabChange() {}
   }
 };
 </script>
