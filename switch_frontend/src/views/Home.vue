@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <header/>
     <h1>{{ msg }}</h1>
     <card />
     <navigation />
