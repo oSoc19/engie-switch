@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <header/>
     <h1>Sweeet Home</h1>
     <card />
     <card />

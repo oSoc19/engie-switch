@@ -4,13 +4,13 @@ import router from './router'
 import Ionic from '@ionic/vue'
 import Card from '@/components/card'
 import Navigation from '@/components/Navigation'
-import Header from '@/components/Header'
+import TopBar from '@/components/Header'
 
 
 
 Vue.component('card', Card)
 Vue.component('navigation', Navigation)
-Vue.component('header', Header)
+Vue.component('topbar', TopBar)
 
 
 
