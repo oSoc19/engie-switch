@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <header/>
     <a href="/">Click Home</a>
     <a href="/next">Im next</a>
     <img alt="Vue logo" src="./assets/logo.png" />
