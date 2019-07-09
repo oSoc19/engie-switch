@@ -12,6 +12,7 @@
   "author": "engie_switch",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "mongojs": "^2.6.0"

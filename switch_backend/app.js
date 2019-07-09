@@ -1,34 +1,35 @@
-const express = require('express')
-const mongo = require('mongojs')
-const dotenv = require('dotenv');
-dotenv.config();
+const express = require('express');
+const mongojs = require('mongojs');
+// to read the .env file (yes I need this comment)
+const dotenv = require('dotenv').config();
+const routes = require('./routes/index')
+const app = express();
+const port = 3000;
+const dbUrl = process.env.DB_URL;
 
-const port = 3000
 
-let db_url = process.env.DB_URL
-if(!db_url) {
-  console.log('Please insert DB_URL in .env file')
+if(!dbUrl) {
+  console.log('Please insert DB_URL in .env file');
   process.exit();
 }
 
-const db = mongo(db_url, ['challenges'])
-console.log('Connected to database '+db_url)
-let ObjectId = mongo.ObjectId;
+const db = mongojs(dbUrl, ['myCollection']);
+/*const db = mongojs(dbUrl, () => {
+  console.log('Connected to the database');
+});*/
 
-var server = express()
 
-//todo: add routes
-server.use("/image", (req, res, next) => {
-  console.log('image')
-  next()
-})
+//console.log('Connected to database '+dbUrl);
 
-let chall = db.collection('challenges')
-//chall.createIndex({id: 1})
+app.use('/', routes);
 
-chall.find({ "_id": ObjectId('5d234426d0ee5b332ce18997') }, function(err, challenge) {
-  console.log(challenge)
-})
-chall.save({'test': 'ok'})
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`)
+});
 
-server.listen(port)
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+module.exports = app;
