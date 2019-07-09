@@ -2,7 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from "@/views/Home.vue";
-import Next from "@/views/Next.vue";
+import Leaderboard from "@/views/Leaderboard.vue";
+
+import Challenges from "@/views/Challenges.vue";
+import Profile from "@/views/Profile.vue";
 
 Vue.use(VueRouter)
 
@@ -14,9 +17,19 @@ export default new VueRouter({
             component: Home
         },
         {
-            path: '/next',
-            name: 'Next',
-            component: Next
+            path: '/leaderboard',
+            name: 'Leaderboard',
+            component: Leaderboard
+        },
+        {
+            path: '/challenges',
+            name: 'ListChallenges',
+            component: Challenges
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile
         }
 
     ]
