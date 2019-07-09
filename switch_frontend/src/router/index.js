@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from "@/views/HelloWorld.vue";
+import Home from "@/views/Home.vue";
 import Next from "@/views/Next.vue";
 
 Vue.use(VueRouter)
@@ -17,7 +17,7 @@ export default new VueRouter({
             path: '/next',
             name: 'Next',
             component: Next
-        },
+        }
 
     ]
 })

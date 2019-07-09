@@ -29,6 +29,7 @@
     </ul>
     <h3>Essential Links</h3>
     <ion-badge color="primary">144</ion-badge>
+    <navigation/>
   </div>
 </template>
 
