@@ -13,11 +13,7 @@ if(!dbUrl) {
   process.exit();
 }
 
-const db = mongojs(dbUrl, ['myCollection']);
-/*const db = mongojs(dbUrl, () => {
-  console.log('Connected to the database');
-});*/
-
+const db = mongojs(dbUrl);
 
 //console.log('Connected to database '+dbUrl);
 
