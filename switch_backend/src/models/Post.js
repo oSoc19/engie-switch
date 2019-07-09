@@ -9,7 +9,7 @@ const Post = new mongoose.Schema
   userId: String,
   image: String, //BASE64_CONTENT
   text: String,
-  reviews: Integer
+  reviews: 0
 });
 
 mongoose.model('Post', Post);

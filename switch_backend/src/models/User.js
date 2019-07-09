@@ -7,7 +7,7 @@ const User = new mongoose.Schema
   id: objectId,
   username: String,
   profilePic: String,//BASE64_CONTENT
-  points: Integer
+  points: 0
 });
 
 mongoose.model('User', User);

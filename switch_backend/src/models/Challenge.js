@@ -8,7 +8,7 @@ const Challenge = new mongoose.Schema
   title: String,
   description: String,
   picture: String, //BASE64_CONTENT
-  reward: Integer
+  reward: 0
 });
 
 mongoose.model('Challenge', Challenge);
