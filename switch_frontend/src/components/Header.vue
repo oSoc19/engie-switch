@@ -1,8 +1,10 @@
 <template>
     <div class="header">
         <div class="header__content">
-            <img src="@/assets/img/switch.svg" alt="Logo switch" class="header__content__image"/>
-            <div class="header__content__text">SWITCH</div>
+            <div class="header__content__left">
+                <img src="@/assets/img/switch.svg" alt="Logo switch" class="header__content__left__image"/>
+                <div class="header__content__left__text">SWITCH</div>
+            </div>
             <div class="header__content__points">
                 <div>1058</div>
                 <img src="@/assets/icons/star-solid.svg" alt="star" width="17px"/>
@@ -31,6 +33,11 @@ export default {
 
 .header__content{
     display: flex;
+    justify-content: space-between;
+}
+
+.header__content__left{
+    display: flex;
     align-items: center;
 }
 
@@ -39,23 +46,24 @@ export default {
     align-self: center;
 }
 
-.header__content__image{
+.header__content__left__image{
     height: 30px;
     padding: 0px 10px;
     padding: 0px 0px 10px 18px;
 }
 
-.header__content__text{
+.header__content__left__text{
     font-weight: bold;
     padding: 0px 0px 5px 9px;
 }
 
 .header__content__points{
-    justify-self: right;
     color: black;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     display: flex;
     align-items: center;
+    padding-right: 18px;
+    
 }
 </style>

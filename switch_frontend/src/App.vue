@@ -6,7 +6,7 @@
     <img alt="Vue logo" src="./assets/logo.png" />
 
     <router-view></router-view>
-    <navigation />
+    <navigation class="navigation"/>
   </div>
 </template>
 
@@ -25,6 +25,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--primary-color);
-  margin-top: 60px;
+  /* margin-top: 60px; */
+}
+
+.navigation {
+   position:fixed;
 }
 </style>
