@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 :root {
-    --font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    --font-family: 'Montserrat', sans-serif;
     --primary-color: #0af;
 }
