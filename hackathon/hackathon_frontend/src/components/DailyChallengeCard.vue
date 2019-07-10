@@ -7,7 +7,7 @@
         </div>
         <div class="card__challenge">
           <div class="challenge__box">
-            <img src="../assets/laundry.jpg" alt="Image of challenge of day" srcset />
+            <img src="../assets/images/test.jpeg" alt="Image of challenge of day" srcset />
             <div class="card__challenge__title">Something Title</div>
             <div
               class="card__challenge__discription"
@@ -58,7 +58,7 @@ export default {
 
 .card__challenge {
   width: 100%;
-  height: 80%;
+  height: 100%;
   background: white;
   display: flex;
   justify-content: center;
@@ -79,6 +79,7 @@ export default {
 }
 .card__challenge img {
   width: 90%;
+  height: 180px;
   max-width: 95%;
   max-height: 70%;
   border-radius: 8px;

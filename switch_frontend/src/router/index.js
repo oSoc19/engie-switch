@@ -1,34 +1,36 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import HelloWorld from '@/components/HelloWorld'
-import HelloNobody from '@/components/HelloNobody'
-import PageNotFound from '@/components/PageNotFound'
+import Home from "@/views/Home.vue";
+import Leaderboard from "@/views/Leaderboard.vue";
+
+import Challenges from "@/views/Challenges.vue";
+import Profile from "@/views/Profile.vue";
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: HelloWorld
-    },
-    {
-      path: '/nobody',
-      name: 'HelloNobody',
-      component: HelloNobody
-    },
-    {
-      path: '/tip/:id',
-      name: 'Tip',
-      component: HelloNobody
-    },
-    {
-      path: '*',
-      name: 'PageNotFound',
-      component: PageNotFound
-    }
-  ]
+    mode: 'history',
+    routes: [{
+            path: '/',
+            name: 'Home',
+            component: Home
+        },
+        {
+            path: '/leaderboard',
+            name: 'Leaderboard',
+            component: Leaderboard
+        },
+        {
+            path: '/challenges',
+            name: 'ListChallenges',
+            component: Challenges
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile
+        }
+
+    ]
 })

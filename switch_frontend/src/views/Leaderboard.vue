@@ -1,15 +1,13 @@
 <template>
   <div class="hello">
-    <header/>
-    <h1>Sweeet Home</h1>
-    <card />
+    <h1>Leaderboard</h1>
     <card />
   </div>
 </template>
 
 <script>
 export default {
-  name: "Home",
+  name: "Leaderboard",
   props: {
     msg: String
   }
@@ -19,4 +17,5 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../css/variables.css";
+
 </style>

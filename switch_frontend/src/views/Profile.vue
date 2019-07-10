@@ -1,16 +1,17 @@
 <template>
   <div class="hello">
-    <h1>Erreur 404</h1>
-    <p>
-      Page not found.
-    </p>
+    <h1>Profile heeee</h1>
+    <card />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PageNotFound'
-}
+  name: "Profile",
+  props: {
+    msg: String
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

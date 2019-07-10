@@ -1,19 +1,27 @@
 import Vue from 'vue'
-import router from './router'
 import App from './App.vue'
+import router from './router'
+import Ionic from '@ionic/vue'
+import Card from '@/components/card'
+import Navigation from '@/components/Navigation'
+import TopBar from '@/components/Header'
 
-import HelloWorld from '@/components/HelloWorld'
-import HelloNobody from '@/components/HelloNobody'
 
-// rename component
-Vue.component('hello-world', HelloWorld)
-Vue.component('hello-nobody', HelloNobody)
+
+Vue.component('card', Card)
+Vue.component('navigation', Navigation)
+Vue.component('topbar', TopBar)
+
+
+
+
+Vue.use(Ionic)
 
 Vue.config.productionTip = false
 
+
 new Vue({
   router,
-  // first component:
-  components: { App },
-  template: '<App/>'
+  render: h => h(App)
+
 }).$mount('#app')
