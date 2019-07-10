@@ -14,24 +14,27 @@
 export default {
     name: "ChallengeCard"
 }
+
 </script>
 
 <style>
+
 .challenge{
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .challenge__content{
     display: flex;
     width: 88%;
-    box-shadow: 0px 7px 12px -3px rgba(158,158,158,1);
+    box-shadow: 0px 4px 16px -10px rgb(102, 102, 102);
     border-radius: 8px;
     height: 110px;
 }
 
 .challenge__content__image{
-    margin: 10px;
+    margin: 12px;
     width: 36%;
     background-image: url("../assets/img/fridge.jpg");
     background-size: cover;
@@ -51,11 +54,12 @@ export default {
     font-weight: bolder;
     text-align: left;
     margin-bottom: 3px;
+    font-size: 14px;
     margin-top: 10px;
 }
 
 .challenge__content__text__description{
-    font-size: 14px;
+    font-size: 12px;
     color: #444444;
     text-align: left;
     margin-top: 0px;

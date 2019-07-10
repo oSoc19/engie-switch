@@ -2,6 +2,9 @@
   <div class="hello">
     <h1>Challenges</h1>
     <challengecard />
+    <challengecard />
+    <challengecard />
+    <challengecard />
   </div>
 </template>
 

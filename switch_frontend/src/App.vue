@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <topbar></topbar>
-    <a href="/">Click Home</a>
-    <a href="/next">Im next</a>
-    <img alt="Vue logo" src="./assets/logo.png" />
 
     <router-view></router-view>
     <navigation class="navigation"/>
@@ -20,7 +17,7 @@ export default {
 @import "./css/variables.css";
 
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
