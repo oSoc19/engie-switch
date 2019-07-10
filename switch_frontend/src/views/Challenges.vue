@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
     <h1>Challenges</h1>
-    <card />
-    <navigation />
+    <challengecard />
   </div>
 </template>
 
