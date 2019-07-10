@@ -1,18 +1,22 @@
 <template>
-    <div class="feedcard">
-        <div class="feedcard__content">
-            <div class="feedcard__content__header">
-                <div class="feedcard__content__header__profilepic"/>
+    <ion-card>
+        <ion-card-header>
+            <div class="feedcard__header">
+                <div class="feedcard__header__profilepic"></div>
+                <div class="feedcard__header__details">
+                    <div class="feedcard__header__details__name">Jos Vermeiren</div>
+                    <div class="feedcard__header__details__time">20min ago</div>
+                </div>    
             </div>
-            <div class="feedcard__content__image">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, quisquam illo? Eveniet voluptas quis, libero odio necessitatibus 
-                accusantium sapiente vel id possimus earum! Illum ea inventore vel dicta molestiae perferendis.
-            </div>
-            <div class="feedcard__content__likes">
-                heart 4871
-            </div>
-        </div>
-    </div>
+            <ion-card-title class="feedcard__header__challenge">Hang your laundry</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content class="feedcard__content">
+            <div class="feedcard__content__image"></div>
+            <div class="feedcard__content__likes"></div>
+            
+        </ion-card-content>
+    </ion-card>
 </template>
 
 <script>
@@ -22,34 +26,60 @@ export default {
 </script>
 
 <style>
-.feedcard{    
-    display: flex;
-    justify-content: center;  
-}
 
 .feedcard__content{
-    display: flex;
-    flex-direction: column;
+    display:flex;
     justify-content: center;
-    width: 90%;
-    border-radius: 8px;
-    height: 336px;
-    box-shadow: 0px 5px 10px -5px rgba(170,170,170,1);
 }
 
 .feedcard__content__image{
-    width: 90%;
+    width: 100%;
     background-color: #258471;
-    height: 208px;
+    height: 190px;
+    background-image: url("../assets/img/laundry.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+
 }
 
-.feedcard__content__header__profilepic{
+.feedcard__header{
+    display:flex;
+    flex-direction: row;
+    margin: 0px;
+}
+
+.feedcard__header__details{
+    display: flex;
+    flex-direction: column;
+    color: #444444 !important;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.feedcard__header__details__name{
+    font-size: 13px;
+    font-weight: bold;
+    
+}
+
+.feedcard__header__details__time{
+    font-size: 10px;
+}
+
+.feedcard__header__challenge{
+    font-size: 12px !important;
+    color: #444444;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.feedcard__header__profilepic{
     background-image: url("../assets/img/person.png");
     width: 32px;
     height: 32px;
     border-radius: 50px;
     background-size: cover;
     background-position: center;
-    margin: 10px;
 }
 </style>
