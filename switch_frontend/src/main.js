@@ -5,12 +5,14 @@ import Ionic from '@ionic/vue'
 import Card from '@/components/card'
 import Navigation from '@/components/Navigation'
 import TopBar from '@/components/Header'
+import ChallengeCard from '@/components/ChallengeCard'
 
 
 
 Vue.component('card', Card)
 Vue.component('navigation', Navigation)
 Vue.component('topbar', TopBar)
+Vue.component('challengecard', ChallengeCard)
 
 
 
