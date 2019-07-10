@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <topbar></topbar>
-
     <router-view></router-view>
-    <navigation class="navigation"/>
+    <navigation class="navigation" />
   </div>
 </template>
 
@@ -23,9 +22,12 @@ export default {
   text-align: center;
   color: var(--primary-color);
   /* margin-top: 60px; */
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .navigation {
-   position:fixed;
+  position: fixed;
 }
 </style>
