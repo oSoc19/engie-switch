@@ -37,6 +37,14 @@ router.get('/users/', (req, res, next) => {
   });
 });
 
+// Delete all users (TESTING PURPOSES ONLY)
+router.delete('/users/', (req, res, next) => {
+  user.deleteMany({}, (err, users) => {
+    if(err) return next(err);
+    res.send('Done!');
+  });
+});
+
 // Create a new user
 // users can't have the same username
 router.post('/users/', (req, res, next) => {
