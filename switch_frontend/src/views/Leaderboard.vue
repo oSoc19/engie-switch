@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>Leaderboard</h1>
-    <card />
+     <daily-challenge-card />
+    <daily-challenge-card />
   </div>
 </template>
 

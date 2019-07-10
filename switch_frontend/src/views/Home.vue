@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
-    <header/>
+    <header />
     <h1>Sweeet Home</h1>
-    <card />
-    <card />
+    <daily-challenge-card />
+    <daily-challenge-card />
   </div>
 </template>
 
