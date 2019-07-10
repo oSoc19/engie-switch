@@ -33,16 +33,19 @@ router.get('/users/:id', (req, res, next) => {
 // TODO: Check if the username already exists
 // If it does, send an error and retry to do it
 router.put('/users/:id', (req, res, next) => {
-  let valueToUpdate = {"username": req.body.username};
-  user.findByIdAndUpdate(req.params.id, valueToUpdate).exec()
+
+  let userToFind = {username: req.body.username}
+  let valueToUpdate = {$set: userToFind};
+
+  user.findOne(userToFind).exec()
   .then((userFound) => {
-    console.log(userFound);
-    if (!userFound) throw new createError(404,"Couldn't find user " + req.params.id);
-    else
-    {
-      console.log(userFound);
-      res.json(userFound);
-    }
+    if (userFound) throw new createError(400, 'User already exists!');
+    user.findByIdAndUpdate(req.params.id, valueToUpdate).exec()
+    .then((userFound) => {
+      user.findOne()
+      if (!userFound) throw new createError(404,"Couldn't find user " + req.params.id);
+    });
+    res.json(userFound);
   })
   .catch((err) => {
     console.log(err);
