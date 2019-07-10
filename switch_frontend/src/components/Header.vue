@@ -26,13 +26,18 @@ export default {
 .header {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-basis: 100%;
+  height: 54px;
+  flex-wrap: wrap;
 }
 
 .header__content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .header__content__left {
@@ -42,18 +47,16 @@ export default {
 
 .header__coloredbar {
   width: 100%;
-  align-self: center;
+  align-self: flex-end;
 }
 
 .header__content__left__image {
   height: 30px;
-  padding: 0px 10px;
-  padding: 0px 0px 10px 18px;
+  padding-left: 18px;
 }
 
 .header__content__left__text {
   font-weight: bold;
-  padding: 0px 0px 5px 9px;
 }
 
 .header__content__points {

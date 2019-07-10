@@ -1,21 +1,24 @@
 <template>
   <div class="fullcard">
+    <h2>{{card_title}}</h2>
     <ion-card class="card">
-      <ion-card-header>
-        <ion-card-title class="challenge_title">Madison, WI</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.</ion-card-content>
+      <div class="card__content">
+        <img class="card__content--img" src="../assets/img/logo.png" alt />
+
+        <ion-card-title class="challenge__title">Madison, WI</ion-card-title>
+
+        <ion-card-content>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota.</ion-card-content>
+      </div>
     </ion-card>
   </div>
 </template>
-
-
 
 <script>
 export default {
   name: "DailyChallengeCard",
   props: {
-    msg: String
+    msg: String,
+    card_title: String
   }
 };
 </script>
@@ -24,8 +27,8 @@ export default {
 <style scoped>
 @import "../css/variables.css";
 
-.he {
-  color: red;
+h2 {
+  color: white;
 }
 .fullcard {
   background-color: var(--primary-color);
@@ -37,9 +40,45 @@ export default {
 
 .card {
   background-color: white;
-  width: 90% !important;
   height: 50% !important;
   margin: 20px !important;
   border-radius: 7px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.challenge__title {
+  font-size: 20px;
+  color: var(--black);
+}
+
+.card__content {
+  width: 95%;
+}
+
+.sc-ion-card-ios-s img {
+  max-width: 100% !important;
+  width: 60% !important;
+  max-height: 20% !important;
+  margin-top: 3% !important;
+  border-radius: 7px !important;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+ion-card-title {
+  text-align: start !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin-top: 10px !important;
+}
+ion-card-content {
+  text-align: start !important;
+  width: 100% !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  margin-bottom: 10px !important;
 }
 </style>
