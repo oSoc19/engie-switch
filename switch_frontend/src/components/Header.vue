@@ -10,7 +10,7 @@
         <img src="@/assets/icons/star-solid.svg" alt="star" width="17px" />
       </div>
     </div>
-    <img src="@/assets/img/colored_bar.png" alt="Colored bar" class="header__coloredbar" />
+    <img src="@/assets/img/colored_bar.svg" alt="Colored bar" class="header__coloredbar" />
   </div>
 </template>
 
