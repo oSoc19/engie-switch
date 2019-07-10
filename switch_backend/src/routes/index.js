@@ -21,27 +21,20 @@ router.get('/users/:id', (req, res, next) => {
   });
 });
 
+// Here we are using promises to have only one error handler
 router.post('/users/', (req, res, next) => {
   let tempUser = new user(req.body);
-  if(user.findById(tempUser.id))
-  {
-    next(new Error('User already exists!'));
-  }
-  tempUser.save((err, req) => {
-    if (err) return next(err);
-    res.json(req);
-  });
-});
-
-// Post an issue
-router.post('/ISSUE/', (req, res, next) => {
-  let issue = new Issue(req.body);
-  if(Issue.findById(issue._id))
-    next(new Error('Issue already exists, please try modifying its status'));
-  issue.save((err, req) => {
-    if (err) return next(err);
-    //execute id change before saving
-    res.json(req);
+  user.findOne({username: tempUser.username}).exec()
+  .then((found) => {
+    if(found) throw new Error('User already exists!');
+    else return tempUser.save();
+  })
+  .then((savedUser) => {
+    res.json(savedUser);
+  })
+  .catch((err) => {
+    console.log(err);
+    next(err);
   });
 });
 
