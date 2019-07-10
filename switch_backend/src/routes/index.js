@@ -11,6 +11,8 @@ let post = mongoose.model('Post');
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
 
+// TODO: ADD TOKEN AUTH FOR PUT AND POST REQUESTS
+
 // Check if the server is running
 router.get('/', (req, res, next) => {
   res.send('Server works!');
@@ -71,6 +73,8 @@ router.delete('/users/', (req, res, next) => {
 
 // Create a new user
 // users can't have the same username
+// TODO: generate token
+// TODO: generate random username
 router.post('/users/', (req, res, next) => {
   let tempUser = new user(req.body);
   user.findOne({username: tempUser.username}).exec()
@@ -81,6 +85,7 @@ router.post('/users/', (req, res, next) => {
   })
   .then((savedUser) => {
     res.json(savedUser);
+    // TODO: send response with the user's token
   })
   .catch((err) => {
     console.log(err);
