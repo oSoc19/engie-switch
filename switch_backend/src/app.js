@@ -1,5 +1,6 @@
 require('./models');
 const express = require('express');
+const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 // to read the .env file (yes I need this comment)
@@ -7,9 +8,9 @@ const dotenv = require('dotenv').config();
 const routes = require('./routes/index')
 const app = express();
 const port = 3000;
-//take the database url
+// take the database url
 const dbUrl = process.env.DB_URL;
-
+mongoose.Promise = global.Promise;
 
 if(!dbUrl) {
   console.log('Please insert DB_URL in .env file');
@@ -21,7 +22,12 @@ mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
 });
 
-//router
+// you need this to parse the body Andrews, yes I am an idiot
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true}));
+
+// router
 app.use('/', routes);
 
 app.listen(port, () => {
@@ -31,6 +37,12 @@ app.listen(port, () => {
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
+});
+
+//error handler
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json(err.message);
 });
 
 module.exports = app;
