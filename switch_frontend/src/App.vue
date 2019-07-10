@@ -21,10 +21,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--primary-color);
-  /* margin-top: 60px; */
+  margin-bottom: 60px;
   width: 100%;
   padding: 0;
-  margin: 0;
 }
 
 .navigation {

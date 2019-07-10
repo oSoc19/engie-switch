@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <header />
+  <div class="hello">
+    <h1>Sweeet Home</h1>
+    <daily-challenge-card />
+    <daily-challenge-card />
 
-    <daily-challenge-card card_title="Challenge of the day" />
+    <feed-card/>
   </div>
 </template>
 
