@@ -18,19 +18,19 @@ mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
   insert();
 });
-mongoose.connect(dbUrl,{ useNewUrlParser: true });
+mongoose.connect(dbUrl, { useNewUrlParser: true });
 
 function insert() {
   let challenge = mongoose.model('Challenge');
-  let json = fs.readFileSync('challenges.json');
+  let json = fs.readFileSync('./src/challenges.json');
   let data = JSON.parse(json);
-  //console.log(challenges)
+  //console.log(challenges);
   challenge.collection.insertMany(data.challenges, (err, obj) => {
     if(err) {
-      console.log(err)
+      console.log(err);
     } else {
-      console.log('inserted')
+      console.log('inserted');
     }
-    process.exit()
-  })
+    process.exit();
+  });
 }
