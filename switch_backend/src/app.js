@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 // to read the .env file (yes I need this comment)
 const dotenv = require('dotenv').config();
 const routes = require('./routes')
+const cors = require('cors');
 const app = express();
 const port = 3000;
 // take the database url
@@ -26,6 +27,7 @@ mongoose.connection.on("open", (ref) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true}));
+app.use(cors({origin: "*"}));
 
 // router
 app.use('/', routes);
