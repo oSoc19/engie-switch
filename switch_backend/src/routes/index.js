@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const createError = require('http-errors');
-const userRoutes = require('./users');
-const challegeRoutes = require('./challenges');
+const userRoutes = require('./users/');
+const challegeRoutes = require('./challenges/');
 
 //These are the models we'll be interacting with
 let challenge = mongoose.model('Challenge');
