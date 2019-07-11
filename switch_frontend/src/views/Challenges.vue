@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     getChallenges: function() {
-      window.$.getJSON("https://bool.be/json/challenges.json", (data) => {
+      window.$.getJSON("localhost:3000/challenges", (data) => {
         this.challenges = data.challenges
         window.console.log(data)
       });

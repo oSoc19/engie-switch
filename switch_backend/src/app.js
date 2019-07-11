@@ -1,11 +1,12 @@
+// to read the .env file (yes I need this comment)
+const dotenv = require('dotenv').config();
 require('./models');
 const express = require('express');
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const mongoose = require('mongoose');
-// to read the .env file (yes I need this comment)
-const dotenv = require('dotenv').config();
-const routes = require('./routes')
+const routes = require('./routes/index');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 // take the database url
@@ -21,6 +22,8 @@ mongoose.connect(dbUrl,{ useNewUrlParser: true });
 mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
 });
+app.use('/', cors());
+
 
 // you need this to parse the body Andrews, yes I am an idiot
 app.use(bodyParser.json());
