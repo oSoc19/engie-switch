@@ -3,22 +3,33 @@
     <h1>Challenges</h1>
 
   <daily-challenge-card />
-    <daily-challenge-card />
 
-    <challengecard />
-    <challengecard />
-    <challengecard />
-    <challengecard />
+    <challengecard v-for="challenge in challenges" v-bind:key="challenge._id" v-bind:challenge="challenge"/>
 
   </div>
 </template>
 
 <script>
+
 export default {
   name: "Challenges",
   props: {
     msg: String
+  },
+  methods: {
+    getChallenges: function() {
+      window.$.getJSON("https://bool.be/json/challenges.json", (data) => {
+        this.challenges = data.challenges
+        window.console.log(data)
+      });
+    }
+  },
+  data() {
+    return {
+      'challenges': this.getChallenges()
+    }
   }
+
 };
 </script>
 

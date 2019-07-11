@@ -55,6 +55,10 @@ export default {
 <style>
 .navigation {
   position: fixed !important;
+  top: auto !important; 
+  bottom: 0px !important;
+  left: 0 !important;
+  height: 40px !important;
 }
 
 .navigation__bar {

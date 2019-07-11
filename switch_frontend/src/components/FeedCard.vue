@@ -19,6 +19,9 @@
                 </div>
                 <div>1258</div>
             </div>
+            <ion-button v-on:click.native="handleClick('help')">Tertiary</ion-button>
+
+            <a v-on:click="handleClick('help')">Click me!</a>
                             
         </ion-card-content>
     </ion-card>
@@ -26,7 +29,12 @@
 
 <script>
 export default {
-    name: "FeedCard"
+    name: "FeedCard",
+    methods: {
+        handleClick: function(text) {
+            alert(text)
+        }
+    } 
 }
 
 

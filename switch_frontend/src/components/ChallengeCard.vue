@@ -1,21 +1,22 @@
 <template>
-  <div class="challenge">
-    <div class="challenge__content">
-      <div class="challenge__content__image" />
-      <div class="challenge__content__text">
-        <p class="challenge__content__text__title">Fill your fridge</p>
-        <p
-          class="challenge__content__text__description"
-        >By filling your fridge you will have less cold air escape every time you open it.</p>
-      </div>
+    <div class="challenge">
+        <div class="challenge__content">
+            <div class="challenge__content__image" :style="{ backgroundImage: `url('${challenge.image}')` }"/>
+            <div class="challenge__content__text">
+                <p class="challenge__content__text__title">{{ challenge.title }}</p>
+                <p class="challenge__content__text__description">{{ challenge.description}}</p>
+            </div>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ChallengeCard"
-};
+    name: "ChallengeCard",
+    props: ['challenge']
+}
+
 </script>
 
 <style>
@@ -33,13 +34,12 @@ export default {
   height: 110px;
 }
 
-.challenge__content__image {
-  margin: 12px;
-  width: 36%;
-  background-image: url("../assets/img/fridge.jpg");
-  background-size: cover;
-  background-position: center;
-  border-radius: 5px;
+.challenge__content__image{
+    margin: 12px;
+    width: 36%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
 }
 
 .challenge__content__text {
