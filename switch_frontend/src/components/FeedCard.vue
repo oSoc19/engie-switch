@@ -1,11 +1,11 @@
 <template>
-    <ion-card>
+    <ion-card class="feedcard">
         <ion-card-header>
             <div class="feedcard__header">
                 <div class="feedcard__header__profilepic"></div>
                 <div class="feedcard__header__details">
                     <div class="feedcard__header__details__name">Jos Vermeiren</div>
-                    <div class="feedcard__header__details__time">20min ago</div>
+                    <div class="feedcard__header__details__time">20 min ago</div>
                 </div>    
             </div>
             <ion-card-title class="feedcard__header__challenge">Hang your laundry</ion-card-title>
@@ -13,8 +13,13 @@
 
         <ion-card-content class="feedcard__content">
             <div class="feedcard__content__image"></div>
-            <div class="feedcard__content__likes"></div>
-            
+            <div class="feedcard__content__likes">
+                <div class="feedcard__content__likes__heart">
+                    <img src="@/assets/img/heart-regular.svg" alt="heart" />
+                </div>
+                <div>1258</div>
+            </div>
+                            
         </ion-card-content>
     </ion-card>
 </template>
@@ -23,6 +28,8 @@
 export default {
     name: "FeedCard"
 }
+
+
 </script>
 
 <style>
@@ -30,6 +37,9 @@ export default {
 .feedcard__content{
     display:flex;
     justify-content: center;
+    flex-direction: column;
+    padding-bottom: 8px;
+    padding-top: 0px;
 }
 
 .feedcard__content__image{
@@ -47,6 +57,8 @@ export default {
     display:flex;
     flex-direction: row;
     margin: 0px;
+    
+    align-items: center;
 }
 
 .feedcard__header__details{
@@ -64,7 +76,8 @@ export default {
 }
 
 .feedcard__header__details__time{
-    font-size: 10px;
+    font-size: 9px;
+    color: #000;
 }
 
 .feedcard__header__challenge{
@@ -81,5 +94,22 @@ export default {
     border-radius: 50px;
     background-size: cover;
     background-position: center;
+}
+
+.feedcard__content__likes{
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #000;
+    align-items: center;
+}
+
+.feedcard__content__likes__heart{
+    justify-self: left;
+    width: 20px;
+    margin-right: 5px;
+
 }
 </style>
