@@ -1,11 +1,172 @@
 {
   "challenges": [
     {
-      "id": 0,
-      "title": "Dry your clothes outside",
-      "description": "You can consume less energy by using the sun to dry your clothes instead of the dryer, give it a try!",
-      "picture": "https://www.smallfootprintfamily.com/wp-content/uploads/benefits-of-clotheslines.jpg",
-      "reward": 300
+      "title": "Turn your computer off",
+      "description": "Using a screensaver uses unecessary energy. Turn it off or put it in sleepmode.",
+      "image": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db&w=",
+      "points": 98
+    },
+    {
+      "title": "Use specific lighting",
+      "description": "Instead of using ceiling lights, use desk lamps or track lighting instead.",
+      "image": "https://images.unsplash.com/photo-1547043848-d94c4ea5adc5&w=",
+      "points": 135
+    },
+    {
+      "title": "Manage your thermostat",
+      "description": "Lower your thermostat by 2°C. This can save you up to 5% on your heating bill",
+      "image": "https://images.unsplash.com/photo-1503847526538-824483d02f15&w=",
+      "points": 115
+    },
+    {
+      "title": "Clean your windows",
+      "description": "Clean windows allow sunlight to light and heat up your house.",
+      "image": "https://images.unsplash.com/photo-1465577512280-1c2d41a79862&w=",
+      "points": 104
+    },
+    {
+      "title": "Use a powerstrip",
+      "description": "Plug multiple gadgets into a powerstrip and turn it off when the items are not in use.",
+      "image": "https://images.unsplash.com/photo-1554021279-722f30a555be&w=",
+      "points": 95
+    },
+    {
+      "title": "Drive less",
+      "description": "Walk, bike, carpool or use public transport to travel to work or school.",
+      "image": "https://images.unsplash.com/photo-1473090826765-d54ac2fdc1eb&w=",
+      "points": 124
+    },
+    {
+      "title": "Low-flow showerhead",
+      "description": "Using a low-flow showerhead can cut your water usage in half.",
+      "image": "https://images.unsplash.com/photo-1524108878281-f9d6d7c09a3c&w=",
+      "points": 144
+    },
+    {
+      "title": "Insulate your boiler",
+      "description": "If you have an old boiler, put an insulating blanket around it to avoid standby heat.",
+      "image": "https://images.unsplash.com/photo-1514665261757-f66eaed80202&w=",
+      "points": 147
+    },
+    {
+      "title": "Wash clothes in cold water",
+      "description": "Wash your clothes in cold water. Laundry detergent works just as well in cold water nowadays.",
+      "image": "https://images.unsplash.com/photo-1469504512102-900f29606341&w=",
+      "points": 113
+    },
+    {
+      "title": "Meal prep",
+      "description": "When cooking with your oven, make multiple meals at once. Take advantage of the hot oven instead of having to reheat it every day.",
+      "image": "https://images.unsplash.com/photo-1499889808931-317a0255c0e9&w=",
+      "points": 106
+    },
+    {
+      "title": "Fill up your fridge",
+      "description": "Fill your fridge and freezer with food, clothes, boxes, anything! Less cold air will escape every time you open the fridge.",
+      "image": "https://images.unsplash.com/photo-1536181211993-cf4b2c100475&w=",
+      "points": 103
+    },
+    {
+      "title": "Wrap your food",
+      "description": "Food releases moisture, which will cause the compressor to work harder. Put your food in a container to avoid this.",
+      "image": "https://images.unsplash.com/photo-1543944168-d189dfe00eca&w=",
+      "points": 94
+    },
+    {
+      "title": "Defrost food in fridge",
+      "description": "If you want to defrost some food, put it in the fridge instead of on the counter. The food will release cold air, so the fridge will have to work less hard.",
+      "image": "https://images.unsplash.com/photo-1487560227971-981afbe1c020&w=",
+      "points": 88
+    },
+    {
+      "title": "Use microwave instead of oven",
+      "description": "Reheat your food in the microwave instead of the oven. The microwave works a lot faster so it uses less energy.",
+      "image": "https://images.unsplash.com/photo-1526868452228-6590028c2fac&w=",
+      "points": 110
+    },
+    {
+      "title": "Boil the water you need",
+      "description": "Don't fill up a whole kettle for one cup of tea. This will use unnecessary energy.",
+      "image": "https://images.unsplash.com/photo-1550346948-b4d527a4c069&w=",
+      "points": 82
+    },
+    {
+      "title": "Tap aerators",
+      "description": "Install tap aerators. They lower the amount of water you use with your taps.",
+      "image": "https://images.unsplash.com/photo-1542855368-ca6ea825bca2&w=",
+      "points": 133
+    },
+    {
+      "title": "Lay rugs",
+      "description": "If you have tile flooring, lay rugs on it to keep your house (and feet) warm.",
+      "image": "https://images.unsplash.com/photo-1561578428-5d58d0d965ec&w=",
+      "points": 119
+    },
+    {
+      "title": "Create shading",
+      "description": "Instead of blasting the AC all day, strategically place shading (such as plants, furniture, sails, ...) to keep your house cool.",
+      "image": "https://images.unsplash.com/photo-1495649264082-d018583e12a4&w=",
+      "points": 125
+    },
+    {
+      "title": "Close garage",
+      "description": "By keeping the garage door shut, you avoid losing heat in the adjacent rooms.",
+      "image": "https://images.unsplash.com/flagged/photo-1558054263-b4dd43c67e81&w=",
+      "points": 89
+    },
+    {
+      "title": "Fill your dishwasher",
+      "description": "When using your dishwasher, make sure it's completely filled to avoid wasting water and energy.",
+      "image": "https://images.unsplash.com/photo-1557344252-4d5c9909579c&w=",
+      "points": 81
+    },
+    {
+      "title": "Free your heaters",
+      "description": "Avoid putting furniture in front of your radiator or heater. The radiator will have to work less hard if the air can move around freely.",
+      "image": "https://images.unsplash.com/photo-1551097967-98a6d2c50205&w=",
+      "points": 109
+    },
+    {
+      "title": "Use LEDs",
+      "description": "LED lighting will be more expensive to purchase, but will pay itself back with the savings on your electric bill.",
+      "image": "https://images.unsplash.com/photo-1558249579-fde0d755f0b1&w=",
+      "points": 150
+    },
+    {
+      "title": "Shower together",
+      "description": "Shorter showers save a ton of water and electricity. Sharing showers will save even more!",
+      "image": "https://images.unsplash.com/photo-1542995719-da2d947d0f55&w=",
+      "points": 127
+    },
+    {
+      "title": "Hang your clothes",
+      "description": "Hang your clothes outside or on a rack instead of using the dryer.",
+      "image": "https://images.unsplash.com/photo-1558603806-c2a807b9a662?w=",
+      "points": 108
+    },
+    {
+      "title": "Reusable bag",
+      "description": "Take a reusable bag to go grocery shopping.",
+      "image": "https://images.unsplash.com/photo-1544816155-12df9643f363&w=",
+      "points": 127
+    },
+    {
+      "title": "Reusable water bottle",
+      "description": "Take a reusable water bottle with you to work/school/trips/...",
+      "image": "https://images.unsplash.com/photo-1539805015143-9f78208ec73f&w=",
+      "points": 127
+    },
+    {
+      "title": "Dishes by hand",
+      "description": "Do your dishes by hand instead of using the dishwasher.",
+      "image": "https://images.unsplash.com/photo-1478473495191-2d8dd1398896&w=",
+      "points": 132
+    },
+    {
+      "title": "Close pots and pans",
+      "description": "Put lids on pots and pans to reduce cooking times and avoid heat escaping.",
+      "image": "https://images.unsplash.com/photo-1556910148-3adb7f0c665a&w=",
+      "points": 92
     }
   ]
 }
