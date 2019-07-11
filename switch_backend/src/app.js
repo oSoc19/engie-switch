@@ -5,7 +5,7 @@ const createError = require('http-errors');
 const mongoose = require('mongoose');
 // to read the .env file (yes I need this comment)
 const dotenv = require('dotenv').config();
-const routes = require('./routes/index')
+const routes = require('./routes')
 const app = express();
 const port = 3000;
 // take the database url
@@ -30,10 +30,6 @@ app.use(bodyParser.urlencoded({
 // router
 app.use('/', routes);
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
-});
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
@@ -43,6 +39,10 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json(err.message);
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
 module.exports = app;
