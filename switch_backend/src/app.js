@@ -4,7 +4,8 @@ const createError = require('http-errors');
 const mongoose = require('mongoose');
 // to read the .env file (yes I need this comment)
 const dotenv = require('dotenv').config();
-const routes = require('./routes/index')
+const routes = require('./routes/index');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 //take the database url
@@ -20,6 +21,8 @@ mongoose.connect(dbUrl,{ useNewUrlParser: true });
 mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
 });
+app.use(cors({origin: "*"}));
+
 
 //router
 app.use('/', routes);
