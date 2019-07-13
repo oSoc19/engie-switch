@@ -1,16 +1,16 @@
 <template>
-  <div class="fullcard">
-    <h2>{{card_title}}</h2>
-    <ion-card class="card">
-      <div class="card__content">
-        <img class="card__content--img" src="../assets/img/logo.png" alt />
-
-        <ion-card-title class="challenge__title">Madison, WI</ion-card-title>
-
-        <ion-card-content>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota.</ion-card-content>
-      </div>
-    </ion-card>
-  </div>
+  <router-link to="/uploadpost/5">
+    <div class="fullcard">
+      <h2>{{card_title}}</h2>
+      <ion-card class="card">
+        <div class="card__content">
+          <img id="img" class="card__content--img" src="../assets/img/laundry.jpg" alt />
+          <ion-card-title class="challenge__title">Hang clothes</ion-card-title>
+          <ion-card-content>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota.</ion-card-content>
+        </div>
+      </ion-card>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -18,7 +18,9 @@ export default {
   name: "DailyChallengeCard",
   props: {
     msg: String,
-    card_title: String
+    card_title: String,
+    card_intro: String,
+    card_description: String
   }
 };
 </script>
@@ -26,7 +28,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../css/variables.css";
-
+a {
+  text-decoration: none;
+}
 h2 {
   color: white;
 }
@@ -59,9 +63,10 @@ h2 {
 
 .sc-ion-card-ios-s img {
   max-width: 100% !important;
-  width: 60% !important;
-  max-height: 20% !important;
-  margin-top: 3% !important;
+  width: 98% !important;
+
+  max-height: 173px !important;
+  margin-top: 10px !important;
   border-radius: 7px !important;
   display: flex;
   justify-content: center;
