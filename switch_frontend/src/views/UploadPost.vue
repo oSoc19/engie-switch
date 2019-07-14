@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <upload-image />
+    <button id="btnPost" disabled>POST</button>
   </div>
 </template>
 
@@ -27,5 +28,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 </style>
