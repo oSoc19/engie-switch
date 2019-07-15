@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 const userRoutes = require('./users/');
 const challegeRoutes = require('./challenges/');
+const postsRoutes = require('./posts/');
 
 //These are the models we'll be interacting with
 let challenge = mongoose.model('Challenge');
@@ -20,5 +21,8 @@ router.use('/users', userRoutes);
 
 // re-route users to the challenge routes
 router.use('/challenges', challegeRoutes);
+
+// re-route users to the posts routes
+router.use('/posts', postsRoutes);
 
 module.exports = router;
