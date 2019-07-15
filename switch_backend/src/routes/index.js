@@ -11,6 +11,7 @@ let user = mongoose.model('User');
 let post = mongoose.model('Post');
 
 // Check if the server is running
+
 router.get('/', (req, res, next) => {
   res.send('Server works!');
 });

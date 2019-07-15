@@ -22,8 +22,10 @@ mongoose.connect(dbUrl,{ useNewUrlParser: true });
 mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
 });
-app.use('/', cors());
-
+const allowedOrigins = [
+  `http://localhost:${port}`,
+  'http://localhost:8080'];
+app.use(cors({origin: allowedOrigins}));
 
 // you need this to parse the body Andrews, yes I am an idiot
 app.use(bodyParser.json());

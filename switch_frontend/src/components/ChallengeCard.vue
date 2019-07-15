@@ -1,17 +1,14 @@
 <template>
     <div class="challenge" v-on:click="toUpload(challenge._id)">
         <div class="challenge__content">
-            <div class="challenge__content__image" :style="{ backgroundImage: `url('${challenge.image}')` }"/>
+            <div class="challenge__content__imagecontainer">
+              <img v-bind:src="challenge.image + '200'" v-bind:alt="challenge.title" class="challenge__content__imagecontainer_image"/>
+            </div>
             <div class="challenge__content__text">
                 <p class="challenge__content__text__title">{{ challenge.title }}</p>
                 <p class="challenge__content__text__description">{{ challenge.description}}</p>
             </div>
         </div>
-      <style>
-          :root{
-            --img: {{challenge.image}}
-          }
-      </style>
     </div>
     
 </template>
@@ -44,7 +41,7 @@ export default {
   height: 110px;
 }
 
-.challenge__content__image{
+.challenge__content__imagecontainer{
     margin: 12px;
     width: 36%;
     background-size: cover;
@@ -73,5 +70,9 @@ export default {
   color: #444444;
   text-align: left;
   margin-top: 0px;
+}
+
+.challenge__content__imagecontainer_image{
+  width:100%;
 }
 </style>
