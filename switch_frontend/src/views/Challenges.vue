@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     getChallenges: function() {
-      window.$.getJSON("localhost:3000/challenges", (data) => {
-        this.challenges = data.challenges
+      window.$.getJSON("http://localhost:3000/challenges", (data) => {
+        this.challenges = data
         window.console.log(data)
       });
     }
