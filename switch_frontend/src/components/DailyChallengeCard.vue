@@ -29,7 +29,9 @@ export default {
 <style scoped>
 @import "../css/variables.css";
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 h2 {
   color: white;

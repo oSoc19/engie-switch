@@ -3,15 +3,21 @@
     <div class="preview__image" id="preview">
       <img src id="img" />
       <!-- <img src="../assets/img/laundry.jpg" id="img" /> -->
-    </div>
 
-    <div class="uploader__button">
-      <input type="file" name="file" id="file" class="inputfile" @change="onFileChange" />
-      <label class="uploadlabel" for="file">Choose a image</label>
+      <div class="uploader__button">
+        <input type="file" name="file" id="file" class="inputfile" @change="onFileChange" />
+        <label class="uploadlabel" for="file">
+          <svg viewBox="0 0 512 512">
+            <path
+              fill="#fff"
+              d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"
+            />
+          </svg>
+        </label>
+      </div>
     </div>
   </div>
 </template>
-
 <script>
 import { checkImage } from "../utils";
 
@@ -83,9 +89,10 @@ export default {
   color: white;
   background-color: var(--primary-color);
   display: inline-block;
-  width: 100%;
-  padding: 20px 0px;
+  padding: 0px;
   border-radius: 7px;
+  width: 50px;
+  height: 50px;
 }
 
 .inputfile:focus + label,
@@ -100,15 +107,27 @@ export default {
   cursor: pointer;
 }
 .uploader__button {
-  margin-top: 5px;
-  width: 95%;
+  opacity: 0.7;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  color: white;
+}
+
+.uploader__button svg {
+  margin: 7px;
+}
+.uploadlabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #preview {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 90%;
 
   border: 2px dashed var(--black);
   border-radius: 7px;
@@ -116,14 +135,14 @@ export default {
   max-height: 173px !important;
   height: 173px;
   margin-top: 10px !important;
+  position: relative;
 }
 
 #preview img {
   max-width: 100% !important;
-  width: auto !important;
-
   display: flex;
   justify-content: center;
+  max-height: 100% !important;
   height: 100%;
   border-radius: 7px;
 }

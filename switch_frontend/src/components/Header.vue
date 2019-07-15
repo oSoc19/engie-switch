@@ -22,8 +22,8 @@ export default {
 };
 </script>
 
-<style>
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+<style scoped>
+@import "../css/variables.css";
 
 .header {
   width: 100%;
@@ -66,14 +66,15 @@ export default {
 }
 
 .header__content__left__text {
-  font-weight: bold;
+  font-weight: 700;
   margin-left: 7px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .header__content__points {
   color: black;
   font-family: "Montserrat", sans-serif;
-  font-weight: bold;
+  font-weight: 600;
   display: flex;
   align-items: center;
   padding-right: 18px;
