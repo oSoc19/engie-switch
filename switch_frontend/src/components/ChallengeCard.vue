@@ -1,5 +1,5 @@
 <template>
-    <div class="challenge">
+    <div class="challenge" v-on:click="toUpload(challenge._id)">
         <div class="challenge__content">
             <div class="challenge__content__image" :style="{ backgroundImage: `url('${challenge.image}')` }"/>
             <div class="challenge__content__text">
@@ -7,13 +7,24 @@
                 <p class="challenge__content__text__description">{{ challenge.description}}</p>
             </div>
         </div>
+      <style>
+          :root{
+            --img: {{challenge.image}}
+          }
+      </style>
     </div>
+    
 </template>
 
 <script>
 export default {
     name: "ChallengeCard",
-    props: ['challenge']
+    props: ['challenge'],
+    methods: {
+        toUpload: function(id) {
+            window.console.log("id is: " + id);
+        }
+    } 
 }
 
 </script>
