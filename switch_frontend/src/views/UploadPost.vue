@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import CheckImage from "../utils/checkImage";
 export default {
   name: "UploadPost",
   props: {
