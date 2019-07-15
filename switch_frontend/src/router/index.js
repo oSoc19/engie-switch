@@ -6,6 +6,7 @@ import Leaderboard from "@/views/Leaderboard.vue";
 
 import Challenges from "@/views/Challenges.vue";
 import Profile from "@/views/Profile.vue";
+import UploadPost from "@/views/UploadPost.vue";
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,11 @@ export default new VueRouter({
             path: '/profile',
             name: 'Profile',
             component: Profile
+        },
+        {
+            path: '/upload/:id',
+            name: 'UploadPost',
+            component: UploadPost
         }
 
     ]

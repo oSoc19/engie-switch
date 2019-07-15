@@ -1,5 +1,5 @@
 <template>
-    <div class="challenge" v-on:click="toUpload(challenge._id)">
+    <router-link v-bind:to="'/upload/' + challenge._id" class="challenge" v-on:click="toUpload(challenge._id)">
         <div class="challenge__content">
             <div class="challenge__content__imagecontainer">
               <img v-bind:src="challenge.image + '200'" v-bind:alt="challenge.title" class="challenge__content__imagecontainer__image"/>
@@ -9,7 +9,7 @@
                 <p class="challenge__content__text__description">{{challenge.description | truncate(100, '...')}}</p>
             </div>
         </div>
-    </div>
+    </router-link>
     
 </template>
 
@@ -20,6 +20,7 @@ export default {
     methods: {
         toUpload: function(id) {
             window.console.log("id is: " + id);
+            
         }
     } 
 }
@@ -31,6 +32,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
+  text-decoration: none;
 }
 
 .challenge__content {
@@ -39,6 +41,7 @@ export default {
   box-shadow: 0px 4px 16px -10px rgb(102, 102, 102);
   border-radius: 8px;
   height: 110px;
+  padding-right: 10px;
 }
 
 .challenge__content__imagecontainer{
