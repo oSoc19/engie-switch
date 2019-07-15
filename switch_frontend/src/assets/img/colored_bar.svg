@@ -1,19 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="415" height="10" viewBox="0 0 415 10">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="415" height="10" viewBox="0 0 415 8" style="display: block;">
   <defs>
     <clipPath id="clip-path">
       <rect width="415" height="10" fill="none"/>
     </clipPath>
   </defs>
-  <g id="Component" clip-path="url(#clip-path)">
+  <g id="Component" clip-path="url(#clip-path)" style="background-color: 'red'; display: block;">
     <rect id="Rectangle_84" data-name="Rectangle 84" width="111" height="10" transform="translate(304)" fill="#e62b87"/>
-    <rect id="Rectangle_59" data-name="Rectangle 59" width="25" height="10" fill="#69af23"/>
-    <rect id="Rectangle_82" data-name="Rectangle 82" width="70" height="10" rx="5" transform="translate(154)" fill="#009de9"/>
-    <rect id="Rectangle_64" data-name="Rectangle 64" width="88" height="10" rx="5" transform="translate(40)" fill="#69af23"/>
-    <rect id="Rectangle_79" data-name="Rectangle 79" width="49" height="10" rx="5" transform="translate(239)" fill="#faca08"/>
+    <rect id="Rectangle_59" data-name="Rectangle 59" width="25" height="10" fill="#69af23">
+     
+     </rect>
+
+    <rect id="Rectangle_82" data-name="Rectangle 82" width="70" height="10" rx="5" transform="translate(154)" fill="#009de9">
+     <animate attributeName="opacity" attributeType="XML"
+        values="1; .2; 1" 
+        begin="0s" dur="0.6s" repeatCount="indefinite" />
+     </rect>
+    <rect id="Rectangle_64" data-name="Rectangle 64" width="88" height="10" rx="5" transform="translate(40)" fill="#69af23">
+
+     </rect>
+    <rect id="Rectangle_79" data-name="Rectangle 79" width="49" height="10" rx="5" transform="translate(239)" fill="#faca08">
+  
+     </rect>
     <rect id="Rectangle_65" data-name="Rectangle 65" width="55" height="10" rx="5" transform="translate(112)" fill="#005288"/>
     <rect id="Rectangle_72" data-name="Rectangle 72" width="27" height="10" rx="5" transform="translate(335)" fill="#910f7d"/>
-    <rect id="Rectangle_60" data-name="Rectangle 60" width="32" height="10" rx="5" transform="translate(16)" fill="#009934"/>
+    <rect id="Rectangle_60" data-name="Rectangle 60" width="32" height="10" rx="5" transform="translate(16)" fill="#009934">
+    
+     </rect>
     <rect id="Rectangle_71" data-name="Rectangle 71" width="46" height="10" rx="5" transform="translate(269)" fill="#c03"/>
-    <rect id="Rectangle_80" data-name="Rectangle 80" width="33" height="10" rx="5" transform="translate(215)" fill="#009934"/>
+    <rect id="Rectangle_80" data-name="Rectangle 80" width="33" height="10" rx="5" transform="translate(215)" fill="#009934">
+  
+     </rect>
   </g>
 </svg>

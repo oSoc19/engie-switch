@@ -24,7 +24,7 @@ export default {
 }
 
 .wrapper {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

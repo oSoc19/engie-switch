@@ -1,7 +1,5 @@
 <template>
   <div>
-    <header />
-
     <daily-challenge-card card_title="Challenge of the day" />
   </div>
 </template>
