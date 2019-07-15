@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { checkImage, getBase64Image } from "../utils";
+import { checkImage } from "../utils";
 
 export default {
   name: "UploadImage",
@@ -23,11 +23,15 @@ export default {
     };
   },
   methods: {
-    async onFileChange(e) {
+    async onFileChange() {
       let preview = document.getElementById("img");
       let file = document.querySelector("input[type=file]").files[0];
       let reader = new FileReader();
+      let btnPost = document.getElementById("btnPost");
 
+      // after loading good image, btn is clicked, so thats why it should be disabled on change
+      btnPost.disabled = true;
+      btnPost.style.color = "black";
       reader.addEventListener(
         "load",
         function() {
@@ -39,8 +43,16 @@ export default {
       if (file) {
         reader.readAsDataURL(file);
       }
-
-      checkImage("img");
+      //img => id of <img> tag
+      checkImage("img").then(result => {
+        if (result[0].className !== "Porn" && result[1].className !== "Porn") {
+          btnPost.disabled = false;
+          btnPost.style.color = "green";
+        } else {
+          btnPost.disabled = true;
+          btnPost.style.color = "red";
+        }
+      });
     }
   }
 };
