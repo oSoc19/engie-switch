@@ -26,6 +26,7 @@ module.exports = router
 // Create a new post
 .post('/', (req, res, next) => {
   let tempPost = new posts(req.body);
+  console.log(tempPost);
   return tempPost.save()
   .then((savedPost) => {
     res.json(savedPost);
