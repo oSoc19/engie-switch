@@ -5,15 +5,13 @@ const createError = require('http-errors');
 
 //These are the models we'll be interacting with
 let challenge = mongoose.model('Challenge');
-let user = mongoose.model('User');
-let post = mongoose.model('Post');
-
 
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
 
+module.exports = router
 // Get a challenge by it's id
-router.get('/:id', (req, res, next) => {
+.get('/:id', (req, res, next) => {
   user.findById(req.params.id).exec()
   .then((challengeFound) => {
     if (!challengeFound) throw new createError(404,"Couldn't find challenge " + req.params.id);
@@ -23,18 +21,16 @@ router.get('/:id', (req, res, next) => {
     console.log(err);
     next(err);
   });
-});
-
+})
 // Get all challenges (TESTING PURPOSES ONLY)
-router.get('/', (req, res, next) => {
+.get('/', (req, res, next) => {
   challenge.find({}, (err, challenges) => {
     if(err) return next(err);
     res.json(challenges);
   });
-});
-
+})
 // Delete all challenges (TESTING PURPOSES ONLY)
-router.delete('/', (req, res, next) => {
+.delete('/', (req, res, next) => {
   challenge.deleteMany({}, (err, challenges) => {
     if(err) return next(err);
     res.send('Done!');
@@ -42,7 +38,7 @@ router.delete('/', (req, res, next) => {
 });
 
 // Create a new challenge
-
+//
 // router.post('/', (req, res, next) => {
 //   let tempUser = new challenge(req.body);
 //   user.findOne({username: tempUser.username}).exec()
@@ -60,5 +56,3 @@ router.delete('/', (req, res, next) => {
 //     next(err);
 //   });
 // });
-
-module.exports = router;

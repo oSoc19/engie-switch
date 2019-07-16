@@ -7,6 +7,7 @@ import Navigation from '@/components/Navigation'
 import TopBar from '@/components/Header'
 import ChallengeCard from '@/components/ChallengeCard'
 import FeedCard from '@/components/FeedCard'
+import UploadImage from '@/components/UploadImage'
 
 
 
@@ -16,7 +17,7 @@ Vue.component('topbar', TopBar)
 Vue.component('challengecard', ChallengeCard)
 Vue.component('feed-card', FeedCard)
 
-
+Vue.component('upload-image', UploadImage)
 
 
 Vue.use(Ionic)

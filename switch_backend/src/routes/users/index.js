@@ -4,18 +4,16 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 
 //These are the models we'll be interacting with
-let challenge = mongoose.model('Challenge');
 let user = mongoose.model('User');
-let post = mongoose.model('Post');
-
 
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
 
 // TODO: ADD TOKEN AUTH FOR PUT AND POST REQUESTS
 
+module.exports = router
 // Get a user by it's id
-router.get('/:id', (req, res, next) => {
+.get('/:id', (req, res, next) => {
   user.findById(req.params.id).exec()
   .then((userFound) => {
     if (!userFound) throw new createError(404,"Couldn't find user " + req.params.id);
@@ -25,12 +23,11 @@ router.get('/:id', (req, res, next) => {
     console.log(err);
     next(err);
   });
-});
-
+})
 // Update a user's username
 // TODO: Check if the username already exists
 // If it does, send an error and retry to do it
-router.put('/:id', (req, res, next) => {
+.put('/:id', (req, res, next) => {
 
   let userToFind = {username: req.body.username}
 
@@ -51,29 +48,26 @@ router.put('/:id', (req, res, next) => {
     console.log(err);
     next(err);
   });
-});
-
+})
 // Get all users (TESTING PURPOSES ONLY)
-router.get('/', (req, res, next) => {
+.get('/', (req, res, next) => {
   user.find({}, (err, users) => {
     if(err) return next(err);
     res.json(users);
   });
-});
-
+})
 // Delete all users (TESTING PURPOSES ONLY)
-router.delete('/', (req, res, next) => {
+.delete('/', (req, res, next) => {
   user.deleteMany({}, (err, users) => {
     if(err) return next(err);
     res.send('Done!');
   });
-});
-
+})
 // Create a new user
 // users can't have the same username
 // TODO: generate token
 // TODO: generate random username
-router.post('/', (req, res, next) => {
+.post('/', (req, res, next) => {
   let tempUser = new user(req.body);
   user.findOne({username: tempUser.username}).exec()
   .then((found) => {
@@ -90,5 +84,3 @@ router.post('/', (req, res, next) => {
     next(err);
   });
 });
-
-module.exports = router;

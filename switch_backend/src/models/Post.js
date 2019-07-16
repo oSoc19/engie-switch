@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
-const objectId = mongoose.Schema.ObjectId;
+const objectId = mongoose.Types.ObjectId;
+//const challenge = mongoose.model('Challenge');
+//const user = mongoose.model('User');
 //defining a model
 
 const Post = new mongoose.Schema
 ({
   id: objectId,
-  challangeId: String,
-  userId: String,
+  challenge: {type: objectId, ref: 'Challenge'},
+  user: {type: objectId, ref: 'User'},
   image: String, //BASE64_CONTENT
   text: String,
+  time: Date,
   reviews: 0
 });
 

@@ -1,8 +1,8 @@
 import * as nsfwjs from 'nsfwjs'
 
 
-let checkImage = async () => {
-    const img = document.getElementById('img')
+let checkImage = async (imageIdName) => {
+    const img = document.getElementById(imageIdName)
 
     // Load model from my S3.
     // See the section hosting the model files on your site.
@@ -11,6 +11,7 @@ let checkImage = async () => {
     // Classify the image
     const predictions = await model.classify(img)
     console.log('Predictions: ', predictions)
+    return predictions;
 }
 
 export default checkImage;

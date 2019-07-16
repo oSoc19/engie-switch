@@ -27,6 +27,10 @@ export default {
   margin-bottom: 60px;
   width: 100%;
   padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .navigation {

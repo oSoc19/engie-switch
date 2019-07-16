@@ -2,9 +2,11 @@
   <div class="hello">
     <h1>Challenges</h1>
 
+
   <daily-challenge-card />
 
     <challengecard v-for="challenge in challenges" v-bind:key="challenge._id" v-bind:challenge="challenge"/>
+
 
   </div>
 </template>

@@ -5,7 +5,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const mongoose = require('mongoose');
-const routes = require('./routes/index');
+// to read the .env file (yes I need this comment)
+const dotenv = require('dotenv').config();
+const routes = require('./routes')
 const cors = require('cors');
 const app = express();
 const port = 3000;
@@ -31,6 +33,7 @@ app.use(cors({origin: allowedOrigins}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true}));
+app.use(cors({origin: "*"}));
 
 // router
 app.use('/', routes);
@@ -48,6 +51,7 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+  console.log(`http://localhost:${port}/`);
 });
 
 module.exports = app;

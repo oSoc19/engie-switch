@@ -1,17 +1,14 @@
 <template class="navigation">
   <ion-tabs @IonTabsWillChange="beforeTabChange" @IonTabsDidChange="afterTabChange">
     <ion-tab tab="home" :routes="'Home'"></ion-tab>
-
     <ion-tab tab="leaderboard" :routes="'Leaderboard'"></ion-tab>
-
     <ion-tab tab="challenges" :routes="'ListChallenges'"></ion-tab>
-
     <ion-tab tab="profile" :routes="'Profile'"></ion-tab>
 
     <!-- Use v-slot:bottom with Vue ^2.6.0 -->
     <template slot="bottom">
       <ion-tab-bar class="navigation__bar">
-        <ion-tab-button class="tab" tab="home" :to="{name: 'Home'}">
+        <ion-tab-button class="tab" :to="{name: 'Home'}">
           <img src="@/assets/icons/home-solid.svg" alt="home" class="navigation__bar__icon" />
           <ion-label>Home</ion-label>
         </ion-tab-button>
@@ -55,9 +52,10 @@ export default {
 <style>
 .navigation {
   position: fixed !important;
-  top: auto !important; 
+
+  top: auto !important;
   bottom: 0px !important;
-  left: 0 !important;
+  left: 0px !important;
   height: 40px !important;
 }
 

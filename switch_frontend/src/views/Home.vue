@@ -1,4 +1,5 @@
 <template>
+
   <div class="hello">
     <h1>Sweeet Home</h1>
     <daily-challenge-card />
@@ -6,6 +7,7 @@
 
 
     <feed-card v-for="post in posts" v-bind:key="post._id" v-bind:post="post"></feed-card>
+
   </div>
 </template>
 

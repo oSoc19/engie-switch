@@ -33,8 +33,8 @@ export default new VueRouter({
             component: Profile
         },
         {
-            path: '/upload/:id',
-            name: 'UploadPost',
+            path: '/uploadpost/:challengeId',
+            name: 'Upload',
             component: UploadPost
         }
 
