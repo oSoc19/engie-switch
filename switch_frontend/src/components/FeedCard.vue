@@ -2,41 +2,67 @@
     <ion-card class="feedcard">
         <ion-card-header>
             <div class="feedcard__header">
-                <div class="feedcard__header__profilepic"></div>
+                <div class="feedcard__header__profilepiccontainer">
+                    <img src="@/assets/img/person.png" alt="profilepic" class="feedcard__header__profilepiccontainer__profilepic"/>
+                </div>
                 <div class="feedcard__header__details">
-                    <div class="feedcard__header__details__name">Jos Vermeiren</div>
-                    <div class="feedcard__header__details__time">20 min ago</div>
+                    <div class="feedcard__header__details__name">{{post.userId.name}}</div>
+                    <div class="feedcard__header__details__time">{{post.time}}</div>
                 </div>    
             </div>
-            <ion-card-title class="feedcard__header__challenge">Hang your laundry</ion-card-title>
+            <ion-card-title class="feedcard__header__challenge">{{post.challengeId.title}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content class="feedcard__content">
-            <div class="feedcard__content__image"></div>
+            <div class="feedcard__content__imagecontainer">
+                <img :src="post.image" :alt="post.challenge" class="feedcard__content__imagecontainer__image"/>
+            </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <img src="@/assets/img/heart-regular.svg" alt="heart" />
+                    <img src="@/assets/img/heart-regular.svg" alt="heart" id="heart" v-on:click="likePost();"/>
                 </div>
-                <div>1258</div>
+                <div>{{post.reviews}}</div>
             </div>
-            <ion-button v-on:click.native="handleClick('help')">Tertiary</ion-button>
-
-            <a v-on:click="handleClick('help')">Click me!</a>
                             
         </ion-card-content>
     </ion-card>
 </template>
 
-<script>
+<script type="text/javascript" >
+var boolLiked = false;
 export default {
     name: "FeedCard",
+    data: function(){
+        return {
+            post: {
+                _id: 1,
+                challengeId: 3894398768756,
+                userId: 16848646498823,
+                image: "https://images.unsplash.com/photo-1558603806-c2a807b9a662",
+                reviews: 201,
+                time: '11/07/2019 12:05:54'
+            } ,
+            img_url: '@/assets/img/heart-regular.svg',
+            //counter: likes, //PUT AMOUNT OF LIKES OUT OF DATABASE
+            
+        } 
+    },
     methods: {
-        handleClick: function(text) {
-            alert(text)
+        likePost: function() { 
+            var heart = document.getElementById("heart");
+            if (boolLiked == true){
+                heart.src = '@/assets/img/heart-regular.svg';
+                this.post.reviews -= 1;
+                boolLiked = false;
+            }else{
+                heart.src = '@/assets/img/heart-solid.svg';
+                this.post.reviews+= 1;
+                boolLiked = true;
+            }
+            
         }
     } 
 }
-
 
 </script>
 
@@ -50,15 +76,15 @@ export default {
     padding-top: 0px;
 }
 
-.feedcard__content__image{
+.feedcard__content__imagecontainer{
     width: 100%;
-    background-color: #258471;
     height: 190px;
-    background-image: url("../assets/img/laundry.jpg");
-    background-size: cover;
-    background-position: center;
-    border-radius: 5px;
+}
 
+.feedcard__content__imagecontainer__image{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
 
 .feedcard__header{
@@ -95,13 +121,16 @@ export default {
     margin-top: 5px;
 }
 
-.feedcard__header__profilepic{
-    background-image: url("../assets/img/person.png");
+.feedcard__header__profilepiccontainer{
     width: 32px;
     height: 32px;
+}
+
+.feedcard__header__profilepiccontainer__profilepic{
+    width: 100%;
+    height: 100%;
     border-radius: 50px;
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
 }
 
 .feedcard__content__likes{
