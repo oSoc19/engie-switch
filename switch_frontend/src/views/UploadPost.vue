@@ -22,7 +22,7 @@ export default {
     msg: String
   },
   methods: {
-    getChallengeById: function() {  
+    getChallengeById: function() {
       let challenge = getRequest(
         "http://localhost:3000/challenges/5d2c4f320356bd1fde524947"
       );
@@ -41,9 +41,7 @@ export default {
     btnPost.addEventListener("click", e => {
       e.preventDefault();
 
-      let imageBase64 = getBase64Image(imageToPost);
-
-      localStorage.setItem("imageToPost", imageBase64);
+      let imageBase64 = localStorage.getItem("imageToPost");
 
       //new post object
       let newPost = {
@@ -86,7 +84,7 @@ export default {
   color: grey;
   box-shadow: none;
   padding: 10px 0px;
-  width: 150px;
+  width: 100%;
   margin-top: 10px;
   cursor: pointer;
 }
