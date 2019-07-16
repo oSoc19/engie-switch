@@ -8,7 +8,8 @@ let getBase64Image = (img) => {
 
     var dataURL = canvas.toDataURL("image/png");
 
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    return dataURL
+    //return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
 export default getBase64Image;
