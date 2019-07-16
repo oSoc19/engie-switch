@@ -7,7 +7,7 @@
                 </div>
                 <div class="feedcard__header__details">
                     <div class="feedcard__header__details__name">{{post.userId.name}}</div>
-                    <div class="feedcard__header__details__time">{{post.time}}</div>
+                    <div class="feedcard__header__details__time">{{post.time.getHours() + ":" + post.time.getMinutes() + " " +post.time.getDate() + "/" + post.time.getMonth() + "/" +post.time.getFullYear()}}</div>
                 </div>    
             </div>
             <ion-card-title class="feedcard__header__challenge">{{post.challengeId.title}}</ion-card-title>
@@ -19,7 +19,8 @@
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <img src="@/assets/img/heart-regular.svg" alt="heart" id="heart" v-on:click="likePost();"/>
+                    <img src="@/assets/img/heart-regular.svg" alt="heart" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                    <div hidden :id="'bool' + post._id">0</div>
                 </div>
                 <div>{{post.reviews}}</div>
             </div>
@@ -29,39 +30,26 @@
 </template>
 
 <script type="text/javascript" >
-var boolLiked = false;
+//fix boolLiked to make it postIndividual
 export default {
     name: "FeedCard",
-    data: function(){
-        return {
-            post: {
-                _id: 1,
-                challengeId: 3894398768756,
-                userId: 16848646498823,
-                image: "https://images.unsplash.com/photo-1558603806-c2a807b9a662",
-                reviews: 201,
-                time: '11/07/2019 12:05:54'
-            } ,
-            img_url: '@/assets/img/heart-regular.svg',
-            //counter: likes, //PUT AMOUNT OF LIKES OUT OF DATABASE
-            
-        } 
-    },
+    props: ['post'],
     methods: {
         likePost: function() { 
-            var heart = document.getElementById("heart");
-            if (boolLiked == true){
-                heart.src = '@/assets/img/heart-regular.svg';
+            var button = document.getElementById("likebutton" + this.post._id);
+            var hiddenBool = document.getElementById("bool" + this.post._id)
+            window.console.log(button.src);
+            if (hiddenBool.innerHTML == '1'){
+                button.src = require('@/assets/img/heart-regular.svg');
                 this.post.reviews -= 1;
-                boolLiked = false;
+                hiddenBool.innerHTML = '0'
             }else{
-                heart.src = '@/assets/img/heart-solid.svg';
+                button.src = require('@/assets/img/heart-solid.svg');
                 this.post.reviews+= 1;
-                boolLiked = true;
-            }
-            
+                hiddenBool.innerHTML = '1'
+            }            
         }
-    } 
+    }
 }
 
 </script>
@@ -85,6 +73,7 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    object-fit: cover;
 }
 
 .feedcard__header{

@@ -5,7 +5,7 @@
     <daily-challenge-card />
 
 
-    <feed-card ></feed-card>
+    <feed-card v-for="post in posts" v-bind:key="post._id" v-bind:post="post"></feed-card>
   </div>
 </template>
 
@@ -17,17 +17,19 @@ export default {
   },
   methods: {
     getPosts: function() {
-      window.$.getJSON("http://localhost:3000/", (data) => {
+      window.$.getJSON("http://localhost:3000/posts", (data) => {
         this.posts = data
         window.console.log(data)
       });
     }
   },
+  
   data() {
     return {
       'posts': this.getPosts()
     }
-  }
+  }       
+  
 };
 
 //IN FEED-CARD TAG PROPPEN: v-for="post in posts" v-bind:key="post._id" v-bind:post="post"
