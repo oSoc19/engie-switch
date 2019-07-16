@@ -10,7 +10,7 @@ let checkImage = async (imageIdName) => {
 
     // Classify the image
     const predictions = await model.classify(img)
-    console.log('Predictions: ', predictions)
+    window.console.log('Predictions: ', predictions)
     return predictions;
 }
 
