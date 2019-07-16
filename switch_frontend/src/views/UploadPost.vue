@@ -4,40 +4,57 @@
     <div class="actions">
       <div id="btnPost">POST</div>
     </div>
+
+    <div class="challenge__detail">
+      <div class="challenge__title"></div>
+      <div class="challenge__image"></div>
+      <div class="challenge__description"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import { postRequest } from "../utils";
+import { postRequest, getBase64Image, getRequest } from "../utils";
+
 export default {
   name: "UploadPost",
   props: {
     msg: String
   },
-  methods: {},
+  methods: {
+    getChallengeById: function() {  
+      let challenge = getRequest(
+        "http://localhost:3000/challenges/5d2c4f320356bd1fde524947"
+      );
+    }
+  },
+  data() {
+    return {
+      userId: "",
+      challengeId: ""
+    };
+  },
   mounted() {
     let btnPost = document.getElementById("btnPost");
+    let imageToPost = document.getElementById("img");
 
     btnPost.addEventListener("click", e => {
       e.preventDefault();
 
+      let imageBase64 = getBase64Image(imageToPost);
+
+      localStorage.setItem("imageToPost", imageBase64);
+
+      //new post object
       let newPost = {
-        challangeId: "1111111",
-        userId: "5616516sa1d651sa651",
-        image: "Base 64 Image lalal", //BASE64_CONTENT
-        text: "Text is nice",
-        reviews: 0
+        challenge: "5d2c4f320356bd1fde524944",
+        user: "5d25cb9464ac96e8c233f474",
+        image: imageBase64, //BASE64_CONTENT
+        text: "This text is very nice",
+        reviews: 99
       };
 
-      fetch("http://localhost:3000/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newPost)
-      }).then(() => {
-        console.log("New post");
-      });
+      postRequest("http://localhost:3000/posts", newPost, "post");
     });
   }
 };
