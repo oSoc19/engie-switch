@@ -20,13 +20,13 @@
             alt="list of challenges"
             class="navigation__bar__icon"
           />
-          <ion-label class="tab__lable">Leaderboard</ion-label>
+          <ion-label class="tab__lable">Challenges</ion-label>
         </ion-tab-button>
 
         <!-- Provide extra data to route -->
         <ion-tab-button tab="leaderboard" :to="{ name: 'Leaderboard', params: { id: '2' } }">
           <img src="@/assets/icons/trophy-solid.svg" alt="ranking" class="navigation__bar__icon" />
-          <ion-label>Challenges</ion-label>
+          <ion-label>Leaderboard</ion-label>
         </ion-tab-button>
 
         <!-- Provide custom click handler -->
@@ -52,6 +52,7 @@ export default {
 <style>
 .navigation {
   position: fixed !important;
+
   top: auto !important;
   bottom: 0px !important;
   left: 0px !important;

@@ -1,3 +1,5 @@
+// to read the .env file (yes I need this comment)
+const dotenv = require('dotenv').config();
 require('./models');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,6 +24,10 @@ mongoose.connect(dbUrl,{ useNewUrlParser: true });
 mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
 });
+const allowedOrigins = [
+  `http://localhost:${port}`,
+  'http://localhost:8080'];
+app.use(cors({origin: allowedOrigins}));
 
 // you need this to parse the body Andrews, yes I am an idiot
 app.use(bodyParser.json());

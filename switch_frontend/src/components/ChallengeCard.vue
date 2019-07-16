@@ -1,21 +1,30 @@
 <template>
-  <div class="challenge">
-    <div class="challenge__content">
-      <div class="challenge__content__image" />
-      <div class="challenge__content__text">
-        <p class="challenge__content__text__title">Fill your fridge</p>
-        <p
-          class="challenge__content__text__description"
-        >By filling your fridge you will have less cold air escape every time you open it.</p>
-      </div>
-    </div>
-  </div>
+    <router-link v-bind:to="'/upload/' + challenge._id" class="challenge" v-on:click="toUpload(challenge._id)">
+        <div class="challenge__content">
+            <div class="challenge__content__imagecontainer">
+              <img v-bind:src="challenge.image + '200'" v-bind:alt="challenge.title" class="challenge__content__imagecontainer__image"/>
+            </div>
+            <div class="challenge__content__text">
+                <p class="challenge__content__text__title">{{ challenge.title }}</p>
+                <p class="challenge__content__text__description">{{challenge.description | truncate(100, '...')}}</p>
+            </div>
+        </div>
+    </router-link>
+    
 </template>
 
 <script>
 export default {
-  name: "ChallengeCard"
-};
+    name: "ChallengeCard",
+    props: ['challenge'],
+    methods: {
+        toUpload: function(id) {
+            window.console.log("id is: " + id);
+            
+        }
+    } 
+}
+
 </script>
 
 <style>
@@ -23,6 +32,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
+  text-decoration: none;
 }
 
 .challenge__content {
@@ -31,15 +41,18 @@ export default {
   box-shadow: 0px 4px 16px -10px rgb(102, 102, 102);
   border-radius: 8px;
   height: 110px;
+  padding-right: 10px;
 }
 
-.challenge__content__image {
-  margin: 12px;
-  width: 36%;
-  background-image: url("../assets/img/fridge.jpg");
-  background-size: cover;
-  background-position: center;
-  border-radius: 5px;
+.challenge__content__imagecontainer{
+    margin: 12px;
+    width: 36%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    contain:content;
+    display: flex;
+    align-items: center;
 }
 
 .challenge__content__text {
@@ -64,4 +77,9 @@ export default {
   text-align: left;
   margin-top: 0px;
 }
+
+.challenge__content__imagecontainer__image{
+  width: 150%;
+}
+
 </style>
