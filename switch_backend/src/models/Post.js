@@ -11,7 +11,7 @@ const Post = new mongoose.Schema
   user: {type: objectId, ref: 'User'},
   image: String, //BASE64_CONTENT
   text: String,
-  time: Date,
+  dateTime: {type: Date, default: Date.now},
   reviews: 0
 });
 
