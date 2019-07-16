@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
-    <h1>Leaderboard</h1>
-     <daily-challenge-card />
-    <daily-challenge-card />
+    <leaderboard-card></leaderboard-card>
   </div>
 </template>
 
