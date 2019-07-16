@@ -51,14 +51,18 @@ export default {
           "load",
           function() {
             preview.src = reader.result;
+            localStorage.setItem("imagePost", reader.result);
+            console.log(reader.result);
           },
           false
         );
 
         if (file) {
-          reader.readAsDataURL(file);
+          let img = reader.readAsDataURL(file);
+          console.log(img);
         }
 
+        console.log(preview.height + " -- " + preview.width);
         btnCloseImage.classList.remove("remove");
         //able to upload
         let btnUploadImage = document.getElementById("btnUploadImage");
@@ -66,18 +70,23 @@ export default {
 
         //img => id of <img> tag
         checkImage("img").then(results => {
-          if (
-            results[0].className !== "Porn" &&
-            results[1].className !== "Porn"
-          ) {
-            //able to post layout
-            btnPost.style.color = "white";
-            btnPost.style.backgroundColor = "#0AF";
+          if (results[0].className !== "Porn") {
+            if (
+              results[1].className === "Porn" &&
+              parseFloat(results[1].probability) >= parseFloat(0.1)
+            ) {
+              //warn about nude
+              alert("Not save for wife!");
+            } else {
+              //able to post layout
+              btnPost.style.color = "white";
+              btnPost.style.backgroundColor = "#0AF";
 
-            loading.classList.add("remove");
+              loading.classList.add("remove");
+            }
           } else {
             //warn about nude
-            alert("Some Graphic!");
+            alert("Not save for work!");
           }
         });
       } else {
@@ -87,6 +96,10 @@ export default {
     closeImage() {
       //remove image
       let image = document.getElementById("img");
+      let btnCloseImage = document.getElementById("btnCloseImage");
+      let btnPost = document.getElementById("btnPost");
+      let loading = document.getElementById("loading");
+
       image.style.display = "none";
       //able to upload
       let btnUploadImage = document.getElementById("btnUploadImage");
@@ -95,6 +108,10 @@ export default {
       //un-able to post
       btnPost.style.color = "grey";
       btnPost.style.backgroundColor = "lightgrey";
+
+      btnCloseImage.classList.add("remove");
+
+      loading.classList.add("remove");
     }
   },
   mounted() {}
@@ -166,7 +183,7 @@ export default {
   align-items: center;
   width: 90%;
 
-  border: 1.7px dashed var(--black);
+  border: 1.7px dashed lightgray;
   border-radius: 7px;
 
   max-height: 173px !important;
@@ -190,11 +207,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .image__close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 3px;
+  right: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -203,6 +222,7 @@ export default {
   background-color: var(--red);
   border-radius: 20px;
   color: white;
+  z-index: 5;
 }
 .post--able {
   color: white;

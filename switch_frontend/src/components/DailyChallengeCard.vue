@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/uploadpost/5">
+  <router-link to="/uploadpost/5d2c4f320356bd1fde524947">
     <div class="fullcard">
       <h2>{{card_title}}</h2>
       <ion-card class="card">
