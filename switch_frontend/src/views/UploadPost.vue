@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper">
     <upload-image />
-    <button id="btnPost" disabled>POST</button>
+    <div class="actions">
+      <div id="btnPost">POST</div>
+    </div>
   </div>
 </template>
 
@@ -11,7 +13,16 @@ export default {
   props: {
     msg: String
   },
-  mounted() {}
+  methods: {},
+  mounted() {
+    let btnPost = document.getElementById("btnPost");
+
+    btnPost.addEventListener("click", e => {
+      e.preventDefault();
+    });
+
+   
+  }
 };
 </script>
 
@@ -28,5 +39,25 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+.actions {
+  display: flex;
+  width: 90%;
+  justify-content: flex-end;
+  align-items: center;
+}
+#btnPost {
+  border-radius: 7px;
+  background-color: lightgrey;
+  color: grey;
+  box-shadow: none;
+  padding: 10px 0px;
+  width: 150px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#btnPost:hover {
+  opacity: 0.8;
 }
 </style>
