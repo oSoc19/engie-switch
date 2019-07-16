@@ -1,5 +1,3 @@
-// to read the .env file (yes I need this comment)
-const dotenv = require('dotenv').config();
 require('./models');
 const express = require('express');
 const bodyParser = require('body-parser');
