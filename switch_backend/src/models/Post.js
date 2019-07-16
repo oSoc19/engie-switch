@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const objectId = mongoose.Schema.ObjectId;
+const challenge = require('./Challenge');
+const user = require('./User');
 //defining a model
 
 const Post = new mongoose.Schema
 ({
   id: objectId,
-  challangeId: String,
-  userId: String,
+  challenge: user,
+  user: challenge,
   image: String, //BASE64_CONTENT
   text: String,
   reviews: 0
