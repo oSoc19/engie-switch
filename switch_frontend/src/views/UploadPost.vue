@@ -6,7 +6,7 @@
     </div>
 
     <div class="challenge__detail">
-      <div class="challenge__title"></div>
+      <div class="challenge__title">{{challenge.title}}</div>
       <div class="challenge__image"></div>
       <div class="challenge__description"></div>
     </div>
@@ -24,35 +24,48 @@ export default {
   methods: {
     getChallengeById: function() {
       let challenge = getRequest(
-        "http://localhost:3000/challenges/5d2c4f320356bd1fde524947"
+        "http://localhost:3000/challenges/" + this.$route.params.challengeId
       );
+      this.challenge = challenge;
     }
   },
   data() {
     return {
-      userId: "",
-      challengeId: ""
+      userId: "5d25cb9464ac96e8c233f474",
+      challengeId: this.$route.params.challengeId,
+      challenge: "",
+      postAble: true
     };
   },
   mounted() {
+    //set data
+    this.challengeId = this.$route.params.challengeId;
+    //get token from localstorage
+
     let btnPost = document.getElementById("btnPost");
-    let imageToPost = document.getElementById("img");
 
     btnPost.addEventListener("click", e => {
       e.preventDefault();
 
-      let imageBase64 = localStorage.getItem("imageToPost");
+      let imageBase64 = localStorage.getItem("imagePost");
 
-      //new post object
-      let newPost = {
-        challenge: "5d2c4f320356bd1fde524944",
-        user: "5d25cb9464ac96e8c233f474",
-        image: imageBase64, //BASE64_CONTENT
-        text: "This text is very nice",
-        reviews: 99
-      };
+      if (this.postAble) {
+        //new post object
+        let newPost = {
+          challenge: this.challengeId,
+          user: this.userId,
+          image: imageBase64, //BASE64_CONTENT
+          text: "This text is very nice",
+          reviews: 0
+        };
 
-      postRequest("http://localhost:3000/posts", newPost, "post");
+        postRequest("http://localhost:3000/posts", newPost, "post");
+        this.postAble = false;
+        //redirect to home
+        this.$router.push("/");
+      } else {
+        alert("Use a good image!");
+      }
     });
   }
 };

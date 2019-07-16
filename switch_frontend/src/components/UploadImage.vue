@@ -52,6 +52,7 @@ export default {
           function() {
             preview.src = reader.result;
             localStorage.setItem("imagePost", reader.result);
+            console.log(reader.result);
           },
           false
         );
@@ -75,8 +76,7 @@ export default {
               parseFloat(results[1].probability) >= parseFloat(0.1)
             ) {
               //warn about nude
-              alert("Some Graphic!");
-              console.log(results[1].probability + "---" + parseFloat(0.15));
+              alert("Not save for wife!");
             } else {
               //able to post layout
               btnPost.style.color = "white";
@@ -86,8 +86,7 @@ export default {
             }
           } else {
             //warn about nude
-            alert("Some Graphic!");
-            console.log(results[1].probability + "---" + parseFloat(0.15));
+            alert("Not save for work!");
           }
         });
       } else {
