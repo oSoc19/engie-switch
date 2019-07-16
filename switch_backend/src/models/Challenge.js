@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const objectId = mongoose.Schema.ObjectId;
+const objectId = mongoose.Types.ObjectId;
 //defining a model
 
 const Challenge = new mongoose.Schema
