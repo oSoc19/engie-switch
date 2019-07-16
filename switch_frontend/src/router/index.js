@@ -36,7 +36,6 @@ export default new VueRouter({
             path: '/uploadpost/:challengeId',
             name: 'Upload',
             component: UploadPost
-
         }
 
     ]
