@@ -9,18 +9,21 @@ let posts = mongoose.model('Post');
 // when doing mongoose queries
 
 module.exports = router
+// Get all posts
 .get('/', (req, res, next) => {
   posts.find({}, (err, post) => {
     if(err) return next(err);
     res.json(post);
   });
 })
+// TESTING PURPOSES ONLY
 .delete('/', (req, res, next) => {
   posts.deleteMany({}, (err, post) => {
     if(err) return next(err);
     res.send('Done!');
   })
 })
+// Create a new post
 .post('/', (req, res, next) => {
   let tempPost = new posts(req.body);
   return tempPost.save()
