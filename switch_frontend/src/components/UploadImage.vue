@@ -1,10 +1,16 @@
 <template>
   <div class="image__uploader">
     <div class="preview__image" id="preview">
+      <!-- close/remove image -->
+      <div @mouseup="closeImage" id="btnCloseImage" class="image__close remove">X</div>
+      <div class="loading remove" id="loading">
+        <img src="../assets/img/loading.svg" alt srcset />
+      </div>
+
       <img src id="img" />
       <!-- <img src="../assets/img/laundry.jpg" id="img" /> -->
 
-      <div class="uploader__button">
+      <div id="btnUploadImage" class="uploader__button">
         <input type="file" name="file" id="file" class="inputfile" @change="onFileChange" />
         <label class="uploadlabel" for="file">
           <svg viewBox="0 0 512 512">
@@ -34,33 +40,64 @@ export default {
       let file = document.querySelector("input[type=file]").files[0];
       let reader = new FileReader();
       let btnPost = document.getElementById("btnPost");
+      let btnCloseImage = document.getElementById("btnCloseImage");
+      let loading = document.getElementById("loading");
 
-      // after loading good image, btn is clicked, so thats why it should be disabled on change
-      btnPost.disabled = true;
-      btnPost.style.color = "black";
-      reader.addEventListener(
-        "load",
-        function() {
-          preview.src = reader.result;
-        },
-        false
-      );
-
+      preview.style.display = "block";
+      loading.classList.remove("remove");
       if (file) {
-        reader.readAsDataURL(file);
-      }
-      //img => id of <img> tag
-      checkImage("img").then(result => {
-        if (result[0].className !== "Porn" && result[1].className !== "Porn") {
-          btnPost.disabled = false;
-          btnPost.style.color = "green";
-        } else {
-          btnPost.disabled = true;
-          btnPost.style.color = "red";
+        // after loading good image, btn is clicked, so thats why it should be disabled on change
+        reader.addEventListener(
+          "load",
+          function() {
+            preview.src = reader.result;
+          },
+          false
+        );
+
+        if (file) {
+          reader.readAsDataURL(file);
         }
-      });
+
+        btnCloseImage.classList.remove("remove");
+        //able to upload
+        let btnUploadImage = document.getElementById("btnUploadImage");
+        btnUploadImage.classList.add("remove");
+
+        //img => id of <img> tag
+        checkImage("img").then(results => {
+          if (
+            results[0].className !== "Porn" &&
+            results[1].className !== "Porn"
+          ) {
+            //able to post layout
+            btnPost.style.color = "white";
+            btnPost.style.backgroundColor = "#0AF";
+
+            loading.classList.add("remove");
+          } else {
+            //warn about nude
+            alert("Some Graphic!");
+          }
+        });
+      } else {
+        btnCloseImage.classList.add("remove");
+      }
+    },
+    closeImage() {
+      //remove image
+      let image = document.getElementById("img");
+      image.style.display = "none";
+      //able to upload
+      let btnUploadImage = document.getElementById("btnUploadImage");
+      btnUploadImage.classList.remove("remove");
+
+      //un-able to post
+      btnPost.style.color = "grey";
+      btnPost.style.backgroundColor = "lightgrey";
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 
@@ -129,7 +166,7 @@ export default {
   align-items: center;
   width: 90%;
 
-  border: 2px dashed var(--black);
+  border: 1.7px dashed var(--black);
   border-radius: 7px;
 
   max-height: 173px !important;
@@ -145,5 +182,37 @@ export default {
   max-height: 100% !important;
   height: 100%;
   border-radius: 7px;
+}
+.loading {
+  position: absolute;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--red);
+  border-radius: 20px;
+  color: white;
+}
+.post--able {
+  color: white;
+  background-color: var(--primary-color);
+}
+.post--unable {
+  color: grey;
+  background-color: lightgrey;
+}
+.remove {
+  display: none;
 }
 </style>
