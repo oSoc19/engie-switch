@@ -11,9 +11,15 @@ let posts = mongoose.model('Post');
 module.exports = router
 // Get all posts
 .get('/', (req, res, next) => {
-  posts.find({}, (err, post) => {
-    if(err) return next(err);
-    res.json(post);
+  posts.find({})
+  .populate('user')
+  .populate('challenge')
+  .then((post) => {
+    res.json(post)
+  })
+  .catch(err => {
+    console.log(err);
+    next(err);
   });
 })
 // TESTING PURPOSES ONLY
