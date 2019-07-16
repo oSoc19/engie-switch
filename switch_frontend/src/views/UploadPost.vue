@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { postRequest } from "../utils";
 export default {
   name: "UploadPost",
   props: {
@@ -19,9 +20,25 @@ export default {
 
     btnPost.addEventListener("click", e => {
       e.preventDefault();
-    });
 
-   
+      let newPost = {
+        challangeId: "1111111",
+        userId: "5616516sa1d651sa651",
+        image: "Base 64 Image lalal", //BASE64_CONTENT
+        text: "Text is nice",
+        reviews: 0
+      };
+
+      fetch("http://localhost:3000/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newPost)
+      }).then(() => {
+        console.log("New post");
+      });
+    });
   }
 };
 </script>
