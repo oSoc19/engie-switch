@@ -17,5 +17,8 @@ export default {
 <style scoped>
 @import "../css/variables.css";
 
+.hello{
+  width: 98%;
+}
 
 </style>
