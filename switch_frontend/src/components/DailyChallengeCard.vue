@@ -1,12 +1,12 @@
 <template>
   <router-link to="/uploadpost/5d2c4f320356bd1fde524947">
-    <div class="fullcard">
-      <h2>{{card_title}}</h2>
+    <div v-if="challenge" class="fullcard">
+      <h2>Challenge of the day</h2>
       <ion-card class="card">
         <div class="card__content">
           <img id="img" class="card__content--img" src="../assets/img/laundry.jpg" alt />
-          <ion-card-title class="challenge__title">Hang clothes</ion-card-title>
-          <ion-card-content>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota.</ion-card-content>
+          <ion-card-title class="challenge__title">{{challenge.title}}</ion-card-title>
+          <ion-card-content>{{challenge.description}}</ion-card-content>
         </div>
       </ion-card>
     </div>
@@ -16,12 +16,7 @@
 <script>
 export default {
   name: "DailyChallengeCard",
-  props: {
-    msg: String,
-    card_title: String,
-    card_intro: String,
-    card_description: String
-  }
+  props: { challenge: Object }
 };
 </script>
 

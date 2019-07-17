@@ -52,17 +52,14 @@ export default {
           function() {
             preview.src = reader.result;
             localStorage.setItem("imagePost", reader.result);
-            console.log(reader.result);
           },
           false
         );
 
         if (file) {
-          let img = reader.readAsDataURL(file);
-          console.log(img);
+          reader.readAsDataURL(file);
         }
 
-        console.log(preview.height + " -- " + preview.width);
         btnCloseImage.classList.remove("remove");
         //able to upload
         let btnUploadImage = document.getElementById("btnUploadImage");

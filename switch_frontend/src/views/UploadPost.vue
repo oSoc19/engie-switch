@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { postRequest, getBase64Image, getRequest } from "../utils";
+import { postRequest, getRequest } from "../utils";
 
 export default {
   name: "UploadPost",
