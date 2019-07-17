@@ -13,25 +13,36 @@ const port = 3000;
 const dbUrl = process.env.DB_URL;
 mongoose.Promise = global.Promise;
 
-if(!dbUrl) {
+if (!dbUrl) {
   console.log('Please insert DB_URL in .env file');
   process.exit();
 }
 // establish connection with the database
-mongoose.connect(dbUrl,{ useNewUrlParser: true });
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true
+});
 mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
 });
 const allowedOrigins = [
   `http://localhost:${port}`,
-  'http://localhost:8080'];
-app.use(cors({origin: allowedOrigins}));
+  'http://localhost:8080'
+];
+app.use(cors({
+  origin: allowedOrigins
+}));
 
 // you need this to parse the body Andrews, yes I am an idiot
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  limit: '5mb'
+}));
 app.use(bodyParser.urlencoded({
-  extended: true}));
-app.use(cors({origin: "*"}));
+  extended: true,
+  limit: '5mb'
+}));
+app.use(cors({
+  origin: "*"
+}));
 
 // router
 app.use('/', routes);
