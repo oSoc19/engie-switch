@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-
     <daily-challenge-card v-if="randomChallenge" v-bind:challenge="randomChallenge" />
 
     <feed-card v-for="post in posts" v-bind:key="post._id" v-bind:post="post"></feed-card>
@@ -31,16 +30,11 @@ export default {
   data() {
     return {
       posts: this.getPosts(),
-      randomChallenge: false,
-      userData: {}
+      randomChallenge: false
     };
   },
   created() {
     this.getRandomChallenge();
-    this.userData = getCurrentUserData(
-      "http://localhost:3000/users/login",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMmVlNTdiZDI5YmI0MDg3ODA0NWExYyIsImlhdCI6MTU2MzM1NDQ5MX0.4QpnHI_VrGUTxXenJQqxF5Op73yM3USyqfPnswOxER4"
-    );
   }
 };
 </script>

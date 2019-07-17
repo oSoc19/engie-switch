@@ -1,4 +1,3 @@
-import getRequest from './getRequest'
 /**
  * 
  * @param {string} pathToGetId the path to send to get request to
@@ -29,8 +28,6 @@ let getCurrentUserData = async (pathToGetId, token, method = "GET") => {
         userId = JSON.parse(id).id
     })
 
-    window.console.log(userId)
-
     let userData = ""
     await fetch("http://localhost:3000/users/" + userId)
         .then((data) => {
@@ -40,11 +37,10 @@ let getCurrentUserData = async (pathToGetId, token, method = "GET") => {
         }).then((data) => {
 
             userData = JSON.parse(data)
-
-
         })
 
-    console.log(userData)
+    return userData
+
 
     // setInterval(() => {
     //     console.log(data)
