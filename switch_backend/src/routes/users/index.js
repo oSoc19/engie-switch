@@ -17,11 +17,10 @@ module.exports = router
   // login user using the token
   .get('/login', checkToken, (req, res) => {
 
-
     let decoded = req.decoded;
-
-
-    res.json(decoded);
+    res.json({
+      "id": decoded.id
+    });
   })
   // Get a user by it's id
   .get('/:id', (req, res, next) => {

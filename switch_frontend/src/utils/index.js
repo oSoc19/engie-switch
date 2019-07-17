@@ -2,10 +2,10 @@ import checkImage from "./checkImage"
 import getBase64Image from "./getBase64Image"
 import getRequest from './getRequest'
 import postRequest from './postRequest'
-import getCurrentUser from './getCurrentUserData'
+import getCurrentUserData from './getCurrentUserData'
 
 export {
-    getCurrentUser,
+    getCurrentUserData,
     checkImage,
     getBase64Image,
     getRequest,
