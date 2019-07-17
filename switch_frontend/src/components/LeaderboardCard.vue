@@ -26,7 +26,7 @@ export default {
     padding-left:2px;
     padding-right: 0px;
     align-items: center;
-    color: #fff;
+    
     
 }
 
@@ -55,17 +55,22 @@ export default {
 
 .yourposition{
     background-color: var(--green);
+    color: #fff;
 }
 
 .firstplace{
     background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%);
+    color: #fff;
 }
 
 .secondplace{
     background: linear-gradient(90deg,var(--silverGradientLeft) 0%,var(--silverGradientRight) 100%);
+    color: #fff;
 }
 
 .thirdplace{
     background: linear-gradient(90deg,var(--bronseGradientLeft) 0%,var(--bronseGradientRight) 100%);
+    color: #fff;
 }
+
 </style>
