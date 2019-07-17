@@ -1,18 +1,33 @@
 <template>
     <ion-card class="leaderboardcard">
-        <ion-card-content class="leaderboardcard__content">
+        <ion-card-content class="leaderboardcard__content " id="card">
             <div class="leaderboardcard__content__position">125</div>
             <div class="leaderboardcard__content__name">Surprised Pikachu</div>
             <div class="leaderboardcard__content__points">
                 <div>1052</div>
-                <img src="@/assets/icons/star-solid-white.svg" alt="star" class="leaderboardcard__content__points__star"/>
+                <img src="@/assets/icons/star-solid.svg" alt="star" class="leaderboardcard__content__points__star" id="starImage"/>
             </div>
         </ion-card-content>
     </ion-card>
 </template>
 <script>
 export default {
-    name:"LeaderboardCard"
+    name:"LeaderboardCard",
+    methods: {
+        getPosition: function(){
+            var card = document.getElementById("card");
+            if(card.classList.contains('firstplace')){
+                window.console.log("nein man");
+                var img = document.getElementById('starImage');
+                img.src = require("@/assets/icons/star-solid-white.svg");
+            }
+        }
+    },
+    mounted() {
+      this.getPosition()
+      window.console.log("yes")
+    }
+    
 }
 </script>
 <style>
