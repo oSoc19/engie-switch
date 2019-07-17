@@ -5,19 +5,23 @@ import getRequest from './getRequest'
  * @param {string} token for auth
  * @param {string} [method=get]
  */
-let getUserData = async (path, token, method = "get") => {
+let getCurrentUserData = async (path, token, method = "get") => {
 
     let userId = await fetch(path, {
         method: method,
         headers: {
-            "Content-Type": "application/json",
-            'Authorization': token
         },
     })
+
+    setInterval(function () {
+        window.console.log(userId)
+    }, 3000);
+
+
 
     getRequest("http://localhost:3000/users/" + userId).then((userData) => {
         return userData
     });
 }
 
-export default getUserData
+export default getCurrentUserData

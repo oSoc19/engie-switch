@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { getCurrentUser } from "../utils";
+import { getCurrentUserData } from "../utils";
 export default {
   name: "Home",
   props: {
@@ -22,24 +22,23 @@ export default {
     getRandomChallenge() {
       window.$.getJSON("http://localhost:3000/challenges", data => {
         let randomNr = Math.floor(Math.random() * data.length);
-
-        console.log("data challenge", data[randomNr]);
         this.randomChallenge = data[randomNr];
       });
     }
   },
-
   data() {
     return {
       posts: this.getPosts(),
       randomChallenge: false,
-      userData: ""
+      userData: {}
     };
   },
-  beforeCreate() {},
   created() {
     this.getRandomChallenge();
-    this.userData = getCurrentUser("http://localhost:3000/users/" );
+    this.userData = getCurrentUserData(
+      "http://localhost:3000/users/login",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMmVlNTdiZDI5YmI0MDg3ODA0NWExYyIsImlhdCI6MTU2MzM1NDQ5MX0.4QpnHI_VrGUTxXenJQqxF5Op73yM3USyqfPnswOxER4"
+    );
   }
 };
 </script>
