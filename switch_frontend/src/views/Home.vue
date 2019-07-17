@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
+
     <daily-challenge-card v-if="randomChallenge" v-bind:challenge="randomChallenge" />
+
     <feed-card v-for="post in posts" v-bind:key="post._id" v-bind:post="post"></feed-card>
   </div>
 </template>

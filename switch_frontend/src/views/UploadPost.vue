@@ -59,10 +59,11 @@ export default {
           reviews: 0
         };
 
-        postRequest("http://localhost:3000/posts", newPost, "post");
-        this.postAble = false;
-        //redirect to home
-        this.$router.push("/");
+        postRequest("http://localhost:3000/posts", newPost, "post").then(() => {
+          this.postAble = false;
+          //redirect to home
+          this.$router.push("/");
+        });
       } else {
         alert("Use a good image!");
       }
