@@ -1,8 +1,10 @@
 <template>
   <div class="hello">
-    <h1>Leaderboard</h1>
-     <daily-challenge-card />
-    <daily-challenge-card />
+    <h2>Your position</h2>
+    <leaderboard-card></leaderboard-card>
+
+    <h1>Ranks</h1>
+    <leaderboard-card></leaderboard-card>
   </div>
 </template>
 
@@ -19,4 +21,24 @@ export default {
 <style scoped>
 @import "../css/variables.css";
 
+.hello{
+  width: 98%;
+}
+
+h1{
+  padding-left: 20px;
+  font-weight: bold;
+  text-align: left;
+  font-size: 16px;
+  color: var(--black);
+}
+
+h2{
+  padding-left: 20px;
+  font-weight: lighter !important;
+  text-align: left;
+  font-size: 16px;
+  color: var(--black);
+  padding-top: 20px;
+}
 </style>
