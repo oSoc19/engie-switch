@@ -37,22 +37,6 @@ module.exports = router
   });
 });
 
+// TODO MAYBE IN FUTURE VERSIONS
 // Create a new challenge
-
-router.post('/', (req, res, next) => {
-  let tempUser = new challenge(req.body);
-  user.findOne({username: tempUser.username}).exec()
-  .then((found) => {
-    console.log(found);
-    if(found) throw new createError(400, 'User already exists!');
-    else return tempUser.save();
-  })
-  .then((savedUser) => {
-    res.json(savedUser);
-    // TODO: send response with the user's token
-  })
-  .catch((err) => {
-    console.log(err);
-    next(err);
-  });
-});
+// To be able to have challenges created by the community 
