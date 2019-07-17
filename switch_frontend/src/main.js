@@ -8,6 +8,7 @@ import TopBar from '@/components/Header'
 import ChallengeCard from '@/components/ChallengeCard'
 import FeedCard from '@/components/FeedCard'
 import UploadImage from '@/components/UploadImage'
+import LeaderboardCard from '@/components/LeaderboardCard'
 
 
 
@@ -16,6 +17,7 @@ Vue.component('navigation', Navigation)
 Vue.component('topbar', TopBar)
 Vue.component('challengecard', ChallengeCard)
 Vue.component('feed-card', FeedCard)
+Vue.component('leaderboard-card', LeaderboardCard)
 
 Vue.component('upload-image', UploadImage)
 
