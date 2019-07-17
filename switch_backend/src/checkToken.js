@@ -1,41 +1,39 @@
 const jwt = require('jsonwebtoken');
 const config = require('./config');
+const createError = require('http-errors');
+
 
 module.exports = (req, res, next) => {
   // Check if the headers contain these values
   // Express headers are auto converted to lowercase
-  let token = req.headers['x-access-token'] || req.headers['authorization'];
-  if(token.startsWith('Bearer '))
+  try
   {
-    // Remove Bearer from string
-    // TODO: Explain what the Bearer is
+    console.log(req.headers);
+    let token = req.headers['x-access-token'] || req.headers['authorization'];
+    if(token.startsWith('Bearer '))
+    {
+      // Remove Bearer from string
+      // TODO: Explain what the Bearer is
+      console.log(token);
 
-    token = token.slice(7, token.length);
+      token = token.slice(7, token.length);
+    }
+    if(token)
+    {
+      // TODO: explain what the secret is
+      // TODO: explain the decoding
+      jwt.verify(token, config.secret, (err, decoded) => {
+          if (err) throw new createError(401, "Token is not valid");
+          req.decoded = decoded;
+          console.log(decoded);
+          next();
+        });
+    }
+    else throw new createError(400, 'Auth token not supplied');
   }
-  if(token)
+  catch(err)
   {
-    // TODO: explain what the secret is
-    // TODO: explain the decoding
-    jwt.verify(token, config.secret, (err, decoded) => {
-      if (err)
-      {
-        return res.json({
-            success: false,
-            message: 'Token is not valid'
-          });
-      }
-      else
-      {
-        req.decoded = decoded;
-        next();
-      }
-    });
-  }
-  else
-  {
-    return res.json({
-        success: false,
-        message: 'Auth token is not supplied'
-      });
+    console.log(err);
+    next(err);
   }
 };

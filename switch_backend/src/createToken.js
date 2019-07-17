@@ -6,30 +6,29 @@ const createError = require('http-errors');
 
 let users = mongoose.model('User');
 
-module.exports = (req, res) => {
-  let id = req.body.id;
+module.exports = (req, res, next) => {
+  let id = req.savedUser._id;
   users.findById(id).exec()
   .then((user) => {
-    if(!user) throw new createError(404,"Couldn't find user " + req.params.id);
-    else {
-      {
-        let token = jwt.sign({id: id}, config.secret);
-        return token;
-      }
+    if(!user) throw new createError(404,"Couldn't find user " + req.savedUser._id);
+    else
+    {
+      let token = jwt.sign({id: id}, config.secret);
+      return token;
     }
   })
-  .then(() => {
+  .then((token) => {
+    console.log(token);
     res.json({
       success: true,
       message: 'Authentication successful!',
-      token: token
-    })
-  })
-  .catch(err => {
-    res.json({
-      success: false,
-      message: 'Authentication failed! Please check the request'
+      token: token,
+      user: req.savedUser
     });
   })
+  .catch(err => {
+    console.log(err);
+    next(err);
+  });
 };
-//TODO: Check if this really works 
+//TODO: Check if this really works
