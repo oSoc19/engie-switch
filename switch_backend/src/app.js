@@ -11,6 +11,7 @@ const app = express();
 const port = 3000;
 // take the database url
 const dbUrl = process.env.DB_URL;
+const loadLimit = process.env.LOAD_LIMIT;
 mongoose.Promise = global.Promise;
 
 if (!dbUrl) {
@@ -34,11 +35,11 @@ app.use(cors({
 
 // you need this to parse the body Andrews, yes I am an idiot
 app.use(bodyParser.json({
-  limit: '5mb'
+  limit: loadLimit
 }));
 app.use(bodyParser.urlencoded({
   extended: true,
-  limit: '5mb'
+  limit: loadLimit
 }));
 app.use(cors({
   origin: "*"
