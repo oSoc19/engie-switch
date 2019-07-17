@@ -33,6 +33,10 @@ export default {
 <style>
 @import "../css/variables.css";
 
+.leaderboardcard{
+    margin-top: 10px;
+}
+
 .leaderboardcard__content{
     display:flex;
     width: 100%;

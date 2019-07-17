@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
-    <leaderboard-card class="leaderboardcard"></leaderboard-card>
+    <h2>Your position</h2>
+    <leaderboard-card></leaderboard-card>
+
+    <h1>Ranks</h1>
+    <leaderboard-card></leaderboard-card>
   </div>
 </template>
 
@@ -21,4 +25,20 @@ export default {
   width: 98%;
 }
 
+h1{
+  padding-left: 20px;
+  font-weight: bold;
+  text-align: left;
+  font-size: 16px;
+  color: var(--black);
+}
+
+h2{
+  padding-left: 20px;
+  font-weight: lighter !important;
+  text-align: left;
+  font-size: 16px;
+  color: var(--black);
+  padding-top: 20px;
+}
 </style>
