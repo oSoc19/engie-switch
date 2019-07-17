@@ -5,7 +5,7 @@
             <div class="leaderboardcard__content__name">Surprised Pikachu</div>
             <div class="leaderboardcard__content__points">
                 <div>1052</div>
-                <img src="@/assets/icons/star-solid.svg" alt="star" class="leaderboardcard__content__points__star"/>
+                <img src="@/assets/icons/star-solid-white.svg" alt="star" class="leaderboardcard__content__points__star"/>
             </div>
         </ion-card-content>
     </ion-card>
@@ -16,6 +16,8 @@ export default {
 }
 </script>
 <style>
+@import "../css/variables.css";
+
 .leaderboardcard__content{
     display:flex;
     width: 100%;
@@ -24,6 +26,7 @@ export default {
     padding-left:2px;
     padding-right: 0px;
     align-items: center;
+    color: #fff;
     
 }
 
@@ -37,7 +40,7 @@ export default {
 .leaderboardcard__content__name{
     justify-self: center !important;
     text-align: left;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 
@@ -48,5 +51,21 @@ export default {
 .leaderboardcard__content__points__star{
     width: 20px !important;
     margin-left: 5px;    
+}
+
+.yourposition{
+    background-color: var(--green);
+}
+
+.firstplace{
+    background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%);
+}
+
+.secondplace{
+    background: linear-gradient(90deg,var(--silverGradientLeft) 0%,var(--silverGradientRight) 100%);
+}
+
+.thirdplace{
+    background: linear-gradient(90deg,var(--bronseGradientLeft) 0%,var(--bronseGradientRight) 100%);
 }
 </style>
