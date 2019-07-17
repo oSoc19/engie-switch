@@ -76,7 +76,7 @@ export default {
               parseFloat(results[1].probability) >= parseFloat(0.1)
             ) {
               //warn about nude
-              alert("Not save for wife!");
+              alert("Not safe for work!");
             } else {
               //able to post layout
               btnPost.style.color = "white";
@@ -86,7 +86,7 @@ export default {
             }
           } else {
             //warn about nude
-            alert("Not save for work!");
+            alert("Not safe for work!");
           }
         });
       } else {
