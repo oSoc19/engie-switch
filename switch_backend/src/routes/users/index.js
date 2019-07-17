@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const createError = require('http-errors');
+const createToken = require('../../createToken');
+const checkToken = require('../../checkToken');
 
 //These are the models we'll be interacting with
 let user = mongoose.model('User');
@@ -12,6 +14,11 @@ let user = mongoose.model('User');
 // TODO: ADD TOKEN AUTH FOR PUT AND POST REQUESTS
 
 module.exports = router
+// login user using the token
+.get('/login', checkToken, (req, res) => {
+  let decoded = req.decoded;
+  res.json(decoded.id);
+})
 // Get a user by it's id
 .get('/:id', (req, res, next) => {
   user.findById(req.params.id).exec()
@@ -76,11 +83,13 @@ module.exports = router
     else return tempUser.save();
   })
   .then((savedUser) => {
-    res.json(savedUser);
+    req.savedUser = savedUser;
+    next();
+    //res.json(savedUser);
     // TODO: send response with the user's token
   })
   .catch((err) => {
     console.log(err);
     next(err);
   });
-});
+}, createToken)
