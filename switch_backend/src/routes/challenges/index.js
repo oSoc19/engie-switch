@@ -10,32 +10,32 @@ let challenge = mongoose.model('Challenge');
 // when doing mongoose queries
 
 module.exports = router
-// Get a challenge by it's id
-.get('/:id', (req, res, next) => {
-  user.findById(req.params.id).exec()
-  .then((challengeFound) => {
-    if (!challengeFound) throw new createError(404,"Couldn't find challenge " + req.params.id);
-    else res.json(challengeFound);
+  // Get a challenge by it's id
+  .get('/:id', (req, res, next) => {
+    challenge.findById(req.params.id).exec()
+      .then((challengeFound) => {
+        if (!challengeFound) throw new createError(404, "Couldn't find challenge " + req.params.id);
+        else res.json(challengeFound);
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
+      });
   })
-  .catch((err) => {
-    console.log(err);
-    next(err);
+  // Get all challenges (TESTING PURPOSES ONLY)
+  .get('/', (req, res, next) => {
+    challenge.find({}, (err, challenges) => {
+      if (err) return next(err);
+      res.json(challenges);
+    });
+  })
+  // Delete all challenges (TESTING PURPOSES ONLY)
+  .delete('/', (req, res, next) => {
+    challenge.deleteMany({}, (err, challenges) => {
+      if (err) return next(err);
+      res.send('Done!');
+    });
   });
-})
-// Get all challenges (TESTING PURPOSES ONLY)
-.get('/', (req, res, next) => {
-  challenge.find({}, (err, challenges) => {
-    if(err) return next(err);
-    res.json(challenges);
-  });
-})
-// Delete all challenges (TESTING PURPOSES ONLY)
-.delete('/', (req, res, next) => {
-  challenge.deleteMany({}, (err, challenges) => {
-    if(err) return next(err);
-    res.send('Done!');
-  });
-});
 
 // TODO MAYBE IN FUTURE VERSIONS
 // Create a new challenge

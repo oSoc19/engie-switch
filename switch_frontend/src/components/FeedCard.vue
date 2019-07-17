@@ -3,14 +3,14 @@
         <ion-card-header>
             <div class="feedcard__header">
                 <div class="feedcard__header__profilepiccontainer">
-                    <img src="@/assets/img/person.png" alt="profilepic" class="feedcard__header__profilepiccontainer__profilepic"/>
+                    <img :src="post.user.profilePic" :alt="post.user.username" class="feedcard__header__profilepiccontainer__profilepic"/>
                 </div>
                 <div class="feedcard__header__details">
-                    <div class="feedcard__header__details__name">{{post.userId.name}}</div>
-                    <div class="feedcard__header__details__time">{{post.time.getHours() + ":" + post.time.getMinutes() + " " +post.time.getDate() + "/" + post.time.getMonth() + "/" +post.time.getFullYear()}}</div>
+                    <div class="feedcard__header__details__name">{{post.user.username}}</div>
+                    <div class="feedcard__header__details__time">{{formatDate(post.dateTime)}}</div>
                 </div>    
             </div>
-            <ion-card-title class="feedcard__header__challenge">{{post.challengeId.title}}</ion-card-title>
+            <ion-card-title class="feedcard__header__challenge">{{post.challenge.title}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content class="feedcard__content">
@@ -29,8 +29,7 @@
     </ion-card>
 </template>
 
-<script type="text/javascript" >
-//fix boolLiked to make it postIndividual
+<script type="text/javascript">
 export default {
     name: "FeedCard",
     props: ['post'],
@@ -48,9 +47,22 @@ export default {
                 this.post.reviews+= 1;
                 hiddenBool.innerHTML = '1'
             }            
+        },
+        formatDate: function(date){
+            var tempdate = new Date(date);
+            var formatteddate;
+            if (parseInt(tempdate.getMinutes()) < 9){
+                formatteddate = tempdate.getHours()+":0" + tempdate.getMinutes()+ " "+ tempdate.getDate() + "/" + tempdate.getMonth() + "/" + tempdate.getFullYear();
+            }else{
+                formatteddate = tempdate.getHours()+":"+tempdate.getMinutes()+ " "+ tempdate.getDate() + "/" + tempdate.getMonth() + "/" + tempdate.getFullYear();
+            }
+            
+            return formatteddate
         }
     }
 }
+
+
 
 </script>
 
