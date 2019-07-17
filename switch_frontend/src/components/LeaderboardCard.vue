@@ -1,14 +1,11 @@
 <template>
-    <div>
-        <ion-card class="leaderboardcard">
-            <ion-card-content class="leaderboardcard__content">
-                <div class="leaderboardcard__content__position">125</div>
-                <div class="leaderboardcard__content__name">Surprised Pikachu</div>
-                <div class="leaderboardcard__content__points">10052</div>
-            </ion-card-content>
-        </ion-card>
-    </div>
-
+    <ion-card class="leaderboardcard">
+        <ion-card-content class="leaderboardcard__content">
+            <div class="leaderboardcard__content__position">125</div>
+            <div class="leaderboardcard__content__name">Surprised Pikachu</div>
+            <div class="leaderboardcard__content__points">10052</div>
+        </ion-card-content>
+    </ion-card>
 </template>
 <script>
 export default {
@@ -16,25 +13,26 @@ export default {
 }
 </script>
 <style>
-
-
 .leaderboardcard__content{
-    display: flex;
-    justify-content: space-around;
-    justify-items: center;
-    align-content: space-around;        
+    display:flex;
+    width: 100% !important;
+    flex-direction: row;
 }
 
-    .leaderboardcard__content__position{
-        justify-self: left;font-size: 12px;
-    }
+.leaderboardcard__content__points{
+    justify-self: right !important;
+    margin-left: 10px
+}
 
-    .leaderboardcard__content__name{
-        justify-self:center;font-size: 12px;
-    }
+.leaderboardcard__content__name{
+    justify-self: center !important;
+    margin-left: 10px;
+}
 
-    .leaderboardcard__content__points{
-        justify-self:right;font-size: 12px;
-    }
+.leaderboardcard__content__position{
+    justify-self: left !important;
+}
+
+
 
 </style>

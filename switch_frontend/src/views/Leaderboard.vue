@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <leaderboard-card></leaderboard-card>
+    <leaderboard-card class="leaderboardcard"></leaderboard-card>
   </div>
 </template>
 
@@ -16,5 +16,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../css/variables.css";
+
 
 </style>
