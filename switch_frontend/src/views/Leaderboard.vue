@@ -4,7 +4,7 @@
     <leaderboard-card></leaderboard-card>
 
     <h1>Ranks</h1>
-    <leaderboard-card></leaderboard-card>
+    <leaderboard-card v-for="user in topten" v-bind:position="counter" v-bind:key="user._id" v-bind:user="user"  id="card"></leaderboard-card>
   </div>
 </template>
 
@@ -12,9 +12,31 @@
 export default {
   name: "Leaderboard",
   props: {
-    msg: String
+    position: Number
+  },
+  methods: {
+    getTopTen: function() {
+      window.$.getJSON("http://localhost:3000/users/top10users", (data) => {
+        this.topten = data;
+        return data;
+      });
+    },
+    getPosition : function(){
+      var arrayTopTen = this.getTopTen()
+      arrayTopTen.forEach(function(counter) {
+        counter = 1;
+        return counter;
+      });
+    }
+  },
+  data() {
+    return {
+      'topten': this.getTopTen(),
+      'counter' : this.getPosition(0)
+    }
   }
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

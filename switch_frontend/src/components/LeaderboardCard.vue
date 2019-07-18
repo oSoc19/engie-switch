@@ -1,10 +1,10 @@
 <template>
-    <ion-card class="leaderboardcard">
-        <ion-card-content class="leaderboardcard__content " id="card">
-            <div class="leaderboardcard__content__position">125</div>
-            <div class="leaderboardcard__content__name">Surprised Pikachu</div>
+    <ion-card class="leaderboardcard" id="card">
+        <ion-card-content class="leaderboardcard__content ">
+            <div class="leaderboardcard__content__position">{{position}}</div>
+            <div class="leaderboardcard__content__name">{{user.username}}</div>
             <div class="leaderboardcard__content__points">
-                <div>1052</div>
+                <div>{{user.points}}</div>
                 <img src="@/assets/icons/star-solid.svg" alt="star" class="leaderboardcard__content__points__star" id="starImage"/>
             </div>
         </ion-card-content>
@@ -13,10 +13,11 @@
 <script>
 export default {
     name:"LeaderboardCard",
+    props: ['user', 'position'],
     methods: {
         getPosition: function(){
             var card = document.getElementById("card");
-            if(card.classList.contains('firstplace')){
+            if(card.classList.contains('first')){
                 window.console.log("nein man");
                 var img = document.getElementById('starImage');
                 img.src = require("@/assets/icons/star-solid-white.svg");
@@ -25,7 +26,7 @@ export default {
     },
     mounted() {
       this.getPosition()
-      window.console.log("yes")
+      window.console.log("getPosition")
     }
 
 }
@@ -41,35 +42,26 @@ export default {
     display:flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
-    padding-left:2px;
-    padding-right: 0px;
-    align-items: center;
-
-
+    justify-content: space-between;
+    padding-left:12px;
+    padding-right: 12px !important;
+    align-items: center; 
 }
 
 .leaderboardcard__content__points{
-    justify-self: right !important;
     display: flex;
     flex-direction: row;
-
 }
 
 .leaderboardcard__content__name{
-    justify-self: center !important;
     text-align: left;
     font-size: 14px;
 }
 
-
-.leaderboardcard__content__position{
-    justify-self: left !important;
-}
-
 .leaderboardcard__content__points__star{
     width: 20px !important;
-    margin-left: 5px;
+    margin-left: 5px;   
+    margin-right: 20px; 
 }
 
 .yourposition{
