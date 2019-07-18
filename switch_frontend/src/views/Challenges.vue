@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import api from '@/utils/api'
 
 export default {
   name: "Challenges",
@@ -16,11 +17,14 @@ export default {
     msg: String
   },
   methods: {
-    getChallenges: function() {
-      window.$.getJSON("http://localhost:3000/challenges", (data) => {
+    getChallenges() {
+      api.getChallenges().then((data) => {
         this.challenges = data
         window.console.log(data)
-      });
+      }).catch(() => {
+        // TODO display error
+        window.console.log('error loading challenges');
+      })
     }
   },
   data() {

@@ -19,7 +19,17 @@ function getChallenges() {
   return apiCall('/challenges')
 }
 
+function getUsers() {
+  return apiCall('/users')
+}
+
+function getUser(id) {
+  return apiCall('/users/'+id)
+}
+
 export default {
   getPosts,
   getChallenges,
+  getUsers,
+  getUser,
 }
