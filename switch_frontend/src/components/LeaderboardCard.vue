@@ -1,6 +1,6 @@
 <template>
-    <ion-card class="leaderboardcard" id="card">
-        <ion-card-content class="leaderboardcard__content ">
+    <ion-card class="leaderboardcard">
+        <ion-card-content :class="'leaderboardcard__content rank'+position" id="leaderboardcard__content">
             <div class="leaderboardcard__content__position">{{position}}</div>
             <div class="leaderboardcard__content__name">{{user.username}}</div>
             <div class="leaderboardcard__content__points">
@@ -15,18 +15,18 @@ export default {
     name:"LeaderboardCard",
     props: ['user', 'position'],
     methods: {
-        getPosition: function(){
-            var card = document.getElementById("card");
-            if(card.classList.contains('first')){
-                window.console.log("nein man");
-                var img = document.getElementById('starImage');
-                img.src = require("@/assets/icons/star-solid-white.svg");
+        getPosition(){
+            var img = document.getElementById('starImage');     
+            var cards = document.getElementsByClassName('rank1');
+            for(var i = 0; i <= cards.length; i++){
+                console.log('pls')
+                img.src= require("@/assets/icons/star-solid-white.svg")
             }
+            
         }
     },
-    mounted() {
-      this.getPosition()
-      window.console.log("getPosition")
+    mounted(){
+        this.getPosition();
     }
     
 }
@@ -69,17 +69,17 @@ export default {
     color: #fff;
 }
 
-.firstplace{
-    background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%);
+.rank1{
+    background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%) !important;
     color: #fff;
 }
 
-.secondplace{
+.rank2{
     background: linear-gradient(90deg,var(--silverGradientLeft) 0%,var(--silverGradientRight) 100%);
     color: #fff;
 }
 
-.thirdplace{
+.rank3{
     background: linear-gradient(90deg,var(--bronseGradientLeft) 0%,var(--bronseGradientRight) 100%);
     color: #fff;
 }
