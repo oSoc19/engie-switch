@@ -17,30 +17,19 @@ module.exports = router
 
   // Get top 10
   //TODO get this route working
-  .get('/top10users', checkToken, (req, res, next) => {
-    console.log('start of top 10')
-    let decoded = req.decoded;
-    console.log('after req.decoded')
+  .get('/top10users', (req, res, next) => {
     user.find({}).exec()
     .then((users) => {
-      console.log('before sortedUsers')
       let sortedUsers = users.sort(sortUsersByPoints);
 
       console.log(sortedUsers[0].points);
       console.log(sortedUsers[1].points);
 
-      user.findById(decoded.id).exec()
-      .then((userFound) => {
-        if (!userFound) throw new createError(404, "Couldn't find user " + decoded.id);
-        else res.json({
-          "top10" : sortedUsers.slice(0, 10),
-          "user" : userFound
-        });
-      })
+      res.json(sortedUsers.slice(0, 10));
     }).catch(err => {
       console.log(err);
       next(err);
-    })
+    });
   })
 
   // login user using the token
