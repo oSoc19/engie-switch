@@ -9,7 +9,9 @@ module.exports = (req, res, next) => {
   try
   {
     console.log(req.headers);
-    let token = req.headers['x-access-token'] || req.headers['authorization'];
+    let token = req.headers['x-access-token'] || req.headers['authorization'];;
+    //check if token is not null to see if authorization header exists
+    if(!token) throw new createError(400, 'Please provide authorization header');
     if(token.startsWith('Bearer '))
     {
       // Remove Bearer from string
@@ -18,18 +20,16 @@ module.exports = (req, res, next) => {
 
       token = token.slice(7, token.length);
     }
-    if(token)
-    {
+    if(!token) throw new createError(400, 'Auth token not supplied');
+
       // TODO: explain what the secret is
       // TODO: explain the decoding
-      jwt.verify(token, config.secret, (err, decoded) => {
-          if (err) throw new createError(401, "Token is not valid");
-          req.decoded = decoded;
-          console.log(decoded);
-          next();
-        });
-    }
-    else throw new createError(400, 'Auth token not supplied');
+    jwt.verify(token, config.secret, (err, decoded) => {
+      if (err) throw new createError(401, "Token is not valid");
+      req.decoded = decoded;
+      console.log(decoded);
+      next();
+    });
   }
   catch(err)
   {
