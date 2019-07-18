@@ -6,7 +6,7 @@
         <div class="header__content__left__text">SWITCH</div>
       </div>
       <div class="header__content__points content">
-        <div class="points">105008</div>
+        <div class="points">{{userData.points}}</div>
         <img src="@/assets/icons/star-solid.svg" alt="star" width="17px" />
       </div>
       <div class="header__line">
@@ -18,7 +18,8 @@
 
 <script>
 export default {
-  name: "TopBar"
+  name: "TopBar",
+  props: { userData: Object }
 };
 </script>
 

@@ -6,7 +6,7 @@
     </div>
 
     <div class="challenge__detail">
-      <div class="challenge__title">{{challenge.title}}</div>
+      <div class="challenge__title">{{this.challengeId}}</div>
       <div class="challenge__image"></div>
       <div class="challenge__description"></div>
     </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { postRequest, getBase64Image, getRequest } from "../utils";
+import { postRequest, getRequest } from "../utils";
 
 export default {
   name: "UploadPost",
