@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { getCurrentUserData } from "../utils";
 export default {
   name: "Home",
   props: {
