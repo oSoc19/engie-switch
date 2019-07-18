@@ -7,33 +7,41 @@
 </template>
 
 <script>
+import api from '@/utils/api'
+
 export default {
   name: "Home",
   props: {
     msg: String
   },
   methods: {
-    getPosts: function() {
-      window.$.getJSON("http://localhost:3000/posts", data => {
+    getPosts() {
+      api.getPosts().then((data) => {
         this.posts = data;
-        //window.console.log(data);
-      });
+      }).catch(() => {
+        // TODO display error
+        window.console.log('error loading posts');
+      })
     },
     getRandomChallenge() {
-      window.$.getJSON("http://localhost:3000/challenges", data => {
+      api.getChallenges().then((data) => {
         let randomNr = Math.floor(Math.random() * data.length);
         this.randomChallenge = data[randomNr];
-      });
+      }).catch(() => {
+        // TODO display error
+        window.console.log('error loading challenges');
+      })
     }
   },
   data() {
     return {
-      posts: this.getPosts(),
+      posts: [],
       randomChallenge: false
     };
   },
   created() {
     this.getRandomChallenge();
+    this.getPosts();
   }
 };
 </script>
