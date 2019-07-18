@@ -6,7 +6,7 @@
     </div>
 
     <div class="challenge__detail">
-      <div class="challenge__title">{{challenge.title}}</div>
+      <div class="challenge__title">{{this.challengeId}}</div>
       <div class="challenge__image"></div>
       <div class="challenge__description"></div>
     </div>

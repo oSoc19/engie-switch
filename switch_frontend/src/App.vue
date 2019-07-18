@@ -23,7 +23,7 @@ export default {
     if (localStorage.getItem("switch_token") === null) {
       //register new user with random Name if no token in localstorage
       let newUser = {
-        username: "John Cena",
+        username: "John Cena Juuu",
         profilePic: "BASE NNNNNNNNNNNNNNnn",
         points: 0
       };

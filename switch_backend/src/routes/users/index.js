@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 const createToken = require('../../createToken');
 const checkToken = require('../../checkToken');
-
+const sortUsersByPoints = require("../../sortUsersByPoints");
 //These are the models we'll be interacting with
 let user = mongoose.model('User');
 
@@ -14,6 +14,20 @@ let user = mongoose.model('User');
 // TODO: ADD TOKEN AUTH FOR PUT AND POST REQUESTS
 
 module.exports = router
+
+  // Get top 10
+  //TODO get this route working
+  .get('/top10users', (req, res, next) => {
+    user.find({}, (err, users) => {
+
+      if (err) return next(err);
+      let sortedUsers = users.sort(sortUsersByPoints)
+      console.log(sortedUsers[0].points)
+      console.log(sortedUsers[1].points)
+      res.json(sortedUsers.slice(0, 10))
+    });
+  })
+
   // login user using the token
   .get('/login', checkToken, (req, res) => {
 
@@ -68,6 +82,8 @@ module.exports = router
       res.json(users);
     });
   })
+
+
   // Delete all users (TESTING PURPOSES ONLY)
   .delete('/', (req, res, next) => {
     user.deleteMany({}, (err, users) => {
