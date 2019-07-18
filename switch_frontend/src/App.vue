@@ -22,7 +22,7 @@ export default {
 
     if (localStorage.getItem("switch_token") === null) {
       //register new user with random Name if no token in localstorage
-      let randomNr = Math.floor(Math.random() * 100000000);
+      let randomNr = Math.floor(Math.random() * 1000000000);
       let newUser = {
         username: "Anonymous " + randomNr,
         profilePic: "BASE NNNNNNNNNNNNNNnn",
