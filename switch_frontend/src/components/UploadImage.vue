@@ -25,8 +25,6 @@
   </div>
 </template>
 <script>
-import { checkImage } from "../utils";
-
 export default {
   name: "UploadImage",
   data() {
@@ -39,7 +37,6 @@ export default {
       let preview = document.getElementById("img");
       let file = document.querySelector("input[type=file]").files[0];
       let reader = new FileReader();
-      let btnPost = document.getElementById("btnPost");
       let btnCloseImage = document.getElementById("btnCloseImage");
       let loading = document.getElementById("loading");
 
@@ -64,28 +61,6 @@ export default {
         //able to upload
         let btnUploadImage = document.getElementById("btnUploadImage");
         btnUploadImage.classList.add("remove");
-
-        //img => id of <img> tag
-        checkImage("img").then(results => {
-          if (results[0].className !== "Porn") {
-            if (
-              results[1].className === "Porn" &&
-              parseFloat(results[1].probability) >= parseFloat(0.1)
-            ) {
-              //warn about nude
-              alert("Not safe for work!");
-            } else {
-              //able to post layout
-              btnPost.style.color = "white";
-              btnPost.style.backgroundColor = "#0AF";
-
-              loading.classList.add("remove");
-            }
-          } else {
-            //warn about nude
-            alert("Not safe for work!");
-          }
-        });
       } else {
         btnCloseImage.classList.add("remove");
       }
