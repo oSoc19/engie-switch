@@ -32,7 +32,6 @@ export default {
   props: ['challengeId'],
   data() {
     return {
-      url: null,
       loading: false,
     };
   },
