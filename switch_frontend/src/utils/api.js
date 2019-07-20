@@ -70,6 +70,10 @@ function getChallenges() {
   return apiCall('/challenges')
 }
 
+function getChallenge(id) {
+  return apiCall('/challenges/'+id)
+}
+
 function getUsers() {
   return apiCall('/users')
 }
@@ -82,9 +86,15 @@ function getUser(id=null) {
   }
 }
 
+function postPost(post) {
+  return apiCall('/posts', post, true);
+}
+
 export default {
   getPosts,
   getChallenges,
+  getChallenge,
   getUsers,
   getUser,
+  postPost,
 }
