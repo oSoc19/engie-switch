@@ -60,7 +60,7 @@ export default {
       api.getUser().then(user => {
         post.user = user._id;
         return api.postPost(post);
-      }).then(post => {
+      }).then(() => {
         this.$router.push('/');
       }).catch(error.bind(this));
     }
