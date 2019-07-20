@@ -3,12 +3,12 @@
         <ion-card-header>
             <div class="feedcard__header">
                 <div class="feedcard__header__profilepiccontainer">
-                    <img :src="post.user.profilePic" :alt="post.user.username" class="feedcard__header__profilepiccontainer__profilepic"/>
+                    <img :src="post.user.profilePic" class="feedcard__header__profilepiccontainer__profilepic"/>
                 </div>
                 <div class="feedcard__header__details">
                     <div class="feedcard__header__details__name">{{post.user.username}}</div>
                     <div class="feedcard__header__details__time">{{formatDate(post.dateTime)}}</div>
-                </div>    
+                </div>
             </div>
             <ion-card-title class="feedcard__header__challenge">{{post.challenge.title}}</ion-card-title>
         </ion-card-header>
@@ -24,7 +24,7 @@
                 </div>
                 <div>{{post.reviews}}</div>
             </div>
-                            
+
         </ion-card-content>
     </ion-card>
 </template>
@@ -34,7 +34,7 @@ export default {
     name: "FeedCard",
     props: ['post'],
     methods: {
-        likePost: function() { 
+        likePost() {
             var button = document.getElementById("likebutton" + this.post._id);
             var hiddenBool = document.getElementById("bool" + this.post._id)
             window.console.log(button.src);
@@ -46,18 +46,28 @@ export default {
                 button.src = require('@/assets/img/heart-solid.svg');
                 this.post.reviews+= 1;
                 hiddenBool.innerHTML = '1'
-            }            
-        },
-        formatDate: function(date){
-            var tempdate = new Date(date);
-            var formatteddate;
-            if (parseInt(tempdate.getMinutes()) < 9){
-                formatteddate = tempdate.getHours()+":0" + tempdate.getMinutes()+ " "+ tempdate.getDate() + "/" + tempdate.getMonth() + "/" + tempdate.getFullYear();
-            }else{
-                formatteddate = tempdate.getHours()+":"+tempdate.getMinutes()+ " "+ tempdate.getDate() + "/" + tempdate.getMonth() + "/" + tempdate.getFullYear();
             }
-            
-            return formatteddate
+        },
+        formatDate(datetime) {
+            let dt = new Date(datetime);
+            let now = new Date();
+            let diff = Math.round( (now.getTime() - dt.getTime()) / 1000);
+            if(diff < 60) {
+              return diff + 'sec ago';
+            }
+            diff = Math.floor(diff / 60);
+            if(diff < 60) {
+              return diff + 'min ago';
+            }
+            diff = Math.floor(diff / 60);
+            if(diff < 24) {
+              return diff + 'h ago';
+            }
+            diff = Math.floor(diff / 24);
+            if(diff < 7) {
+              return diff + 'days ago';
+            }
+            return dt.toLocaleString();
         }
     }
 }
@@ -92,7 +102,7 @@ export default {
     display:flex;
     flex-direction: row;
     margin: 0px;
-    
+
     align-items: center;
 }
 
@@ -107,7 +117,7 @@ export default {
 .feedcard__header__details__name{
     font-size: 13px;
     font-weight: bold;
-    
+
 }
 
 .feedcard__header__details__time{
