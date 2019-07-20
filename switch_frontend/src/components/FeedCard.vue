@@ -53,19 +53,19 @@ export default {
             let now = new Date();
             let diff = Math.round( (now.getTime() - dt.getTime()) / 1000);
             if(diff < 60) {
-              return diff + 'sec ago';
+              return diff + ' sec ago';
             }
             diff = Math.floor(diff / 60);
             if(diff < 60) {
-              return diff + 'min ago';
+              return diff + ' min ago';
             }
             diff = Math.floor(diff / 60);
             if(diff < 24) {
-              return diff + 'h ago';
+              return diff + ' hour' + (diff > 1 ? 's' : '') + ' ago';
             }
             diff = Math.floor(diff / 24);
             if(diff < 7) {
-              return diff + 'days ago';
+              return diff + ' day' + (diff > 1 ? 's' : '') + ' ago';
             }
             return dt.toLocaleString();
         }
