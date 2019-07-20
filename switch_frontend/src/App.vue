@@ -31,7 +31,6 @@ export default {
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: var(--primary-color);
   margin-bottom: 60px !important;
   width: 100%;

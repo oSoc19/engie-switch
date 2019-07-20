@@ -56,7 +56,7 @@ export default {
   top: auto !important;
   bottom: 0px !important;
   left: 0px !important;
-  height: 40px !important;
+  height: 50px !important;
 }
 
 .navigation__bar {
@@ -87,4 +87,3 @@ ion-label {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 </style>
-
