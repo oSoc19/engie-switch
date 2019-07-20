@@ -19,7 +19,7 @@
 <script>
 export default {
   name: "TopBar",
-  props: { userData: Object }
+  props: ['userData']
 };
 </script>
 

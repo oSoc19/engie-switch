@@ -1,28 +1,24 @@
 <template>
-    <router-link v-bind:to="'/uploadpost/' + challenge._id" class="challenge" v-on:click="toUpload(challenge._id)">
+    <router-link v-bind:to="'/uploadpost/' + challenge._id" class="challenge">
         <div class="challenge__content">
             <div class="challenge__content__imagecontainer">
               <img v-bind:src="challenge.image + '200'" v-bind:alt="challenge.title" class="challenge__content__imagecontainer__image"/>
             </div>
             <div class="challenge__content__text">
                 <p class="challenge__content__text__title">{{ challenge.title }}</p>
-                <p class="challenge__content__text__description">{{challenge.description | truncate(100, '...')}}</p>
+                <p class="challenge__content__text__description">
+                  {{challenge.description | truncate(100, '...')}}
+                </p>
             </div>
         </div>
     </router-link>
-    
+
 </template>
 
 <script>
 export default {
     name: "ChallengeCard",
     props: ['challenge'],
-    methods: {
-        toUpload: function(id) {
-            window.console.log("id is: " + id);
-            
-        }
-    } 
 }
 
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ion-card v-if="challenge">
-      <img :src="challenge.image" />
+      <img :src="challenge.image+'500'" />
       <ion-card-header>
         <!--ion-card-subtitle>{{ challenge.title }}</ion-card-subtitle-->
         <ion-card-title>{{ challenge.title }}</ion-card-title>
@@ -15,27 +15,21 @@
 
 <script>
 import api from '@/utils/api'
+import error from '@/utils/error'
 
 export default {
   name: "UploadPost",
-  props: {
-    msg: String
-  },
-  methods: {
-    getChallengeById: function() {
-      api.getChallenge(this.challengeId).then(challenge => this.challenge = challenge);
-    },
-  },
   data() {
     return {
       challengeId: this.$route.params.challengeId,
       challenge: {},
-      postAble: true
     };
   },
-  mounted() {
+  created() {
     // fetch challenge data
-    this.getChallengeById();
+    api.getChallenge(this.challengeId)
+      .then(challenge => this.challenge = challenge)
+      .catch(error.bind(this))
   }
 };
 </script>

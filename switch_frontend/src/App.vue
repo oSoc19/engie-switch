@@ -2,6 +2,7 @@
   <div id="app">
     <topbar v-if="user" v-bind:userData="user"></topbar>
     <router-view></router-view>
+    <ion-toast-controller ref="toastController"></ion-toast-controller>
     <navigation class="navigation" />
   </div>
 </template>

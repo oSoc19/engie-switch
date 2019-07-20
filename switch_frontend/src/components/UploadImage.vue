@@ -25,6 +25,7 @@
 <script>
 import api from '@/utils/api'
 import fileToBase64 from '@/utils/fileToBase64'
+import error from '@/utils/error'
 
 export default {
   name: "UploadImage",
@@ -62,7 +63,7 @@ export default {
       }).then(post => {
         window.console.log('posted', post);
         this.$router.push('/');
-      })
+      }).catch(error.bind(this));
     }
   }
 };
