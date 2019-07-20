@@ -14,7 +14,7 @@ import api from '@/utils/api'
 export default {
   name: "app",
   beforeCreate() {
-    api.initAuth();
+    api.getUser().then(user => this.user = user);
   },
   data() {
     return {
