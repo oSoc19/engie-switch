@@ -1,9 +1,5 @@
-/*
- * Config
- * TODO move to .env file
- */
-const BASE_URL = 'http://localhost:3000'
-const DEBUG = true
+
+import config from '@/config'
 
 /*
  * Local functions
@@ -42,7 +38,7 @@ function fetchUser() {
  */
 function apiCall(path, data=null, auth=false) {
   let promise = new Promise((resolve, reject) => {
-    window.$.ajax(BASE_URL+path, {
+    window.$.ajax(config.API_BASE_URL+path, {
       data : data ? JSON.stringify(data) : null,
       contentType : data ? 'application/json' : null,
       type : data ? 'POST' : 'GET',
@@ -51,7 +47,7 @@ function apiCall(path, data=null, auth=false) {
     .done(resolve)
     .fail(reject);
   })
-  if(DEBUG) {
+  if(config.DEBUG) {
     // always not available averywhere
     promise.then(data => window.console.log(path, data))
     promise.catch(err => window.console.log(path, err))
