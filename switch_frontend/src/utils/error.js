@@ -1,4 +1,6 @@
 
+import config from '@/config'
+
 function findToastController(component) {
   if(!component) {
     return null;
@@ -35,8 +37,8 @@ export default function(err) {
   } else {
     text += 'Do you have internet connection?\n'
   }
-  window.console.log('this', this)
-  window.console.log('toastCtrl', findToastController(this))
-  window.console.log('error', err)
+  if(config.DEBUG) {
+    window.console.log('error', err)
+  }
   display(this, text)
 }

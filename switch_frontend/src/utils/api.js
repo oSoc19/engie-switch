@@ -6,10 +6,14 @@ import config from '@/config'
  */
 function getMyUser() {
   if(localStorage.getItem("switch_token")) {
-    window.console.log('fetchUser')
+    if(config.DEBUG) {
+      window.console.log('fetchUser')
+    }
     return fetchUser()
   } else {
-    window.console.log('createUser')
+    if(config.DEBUG) {
+      window.console.log('createUser')
+    }
     return createUser()
   }
 }

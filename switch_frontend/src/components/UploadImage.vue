@@ -61,7 +61,6 @@ export default {
         post.user = user._id;
         return api.postPost(post);
       }).then(post => {
-        window.console.log('posted', post);
         this.$router.push('/');
       }).catch(error.bind(this));
     }
