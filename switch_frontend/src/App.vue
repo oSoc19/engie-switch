@@ -13,14 +13,14 @@ import api from '@/utils/api'
 
 export default {
   name: "app",
+  beforeCreate() {
+    api.initAuth();
+  },
   data() {
     return {
       user: {}
     };
   },
-  created() {
-    api.initAuth();
-  }
 };
 </script>
 
