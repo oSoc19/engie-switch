@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../css/variables.css";
+@import "/css/variables.css";
 
 .header {
   width: 100%;

@@ -27,11 +27,11 @@ export default {
       this.getPosition()
       window.console.log("yes")
     }
-    
+
 }
 </script>
 <style>
-@import "../css/variables.css";
+@import "/css/variables.css";
 
 .leaderboardcard{
     margin-top: 10px;
@@ -45,8 +45,8 @@ export default {
     padding-left:2px;
     padding-right: 0px;
     align-items: center;
-    
-    
+
+
 }
 
 .leaderboardcard__content__points{
@@ -69,7 +69,7 @@ export default {
 
 .leaderboardcard__content__points__star{
     width: 20px !important;
-    margin-left: 5px;    
+    margin-left: 5px;
 }
 
 .yourposition{

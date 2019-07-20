@@ -2,7 +2,7 @@
   <div class="image__uploader">
     <label class="preview__image" for="file">
       <div class="loading" :class="{hidden: !loading}">
-        <img src="../assets/img/loading.svg" />
+        <img src="@/assets/img/loading.svg" />
       </div>
 
       <img id="img" ref="imagePreview"/>
@@ -70,7 +70,7 @@ export default {
 </script>
 
 <style>
-@import "../css/variables.css";
+@import "/css/variables.css";
 
 .image__uploader {
   display: flex;
