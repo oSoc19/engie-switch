@@ -68,7 +68,6 @@ export default {
 </script>
 
 <style>
-@import "/css/variables.css";
 
 .image__uploader {
   display: flex;
