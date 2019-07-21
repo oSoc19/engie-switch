@@ -10,7 +10,6 @@
   "dependencies": {
     "@ionic/core": "^4.6.0",
     "@ionic/vue": "0.0.4",
-    "jquery": "^3.4.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6"
   },
