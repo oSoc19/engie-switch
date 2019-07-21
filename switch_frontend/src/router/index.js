@@ -7,6 +7,7 @@ import Leaderboard from "@/views/Leaderboard.vue";
 import Challenges from "@/views/Challenges.vue";
 import Profile from "@/views/Profile.vue";
 import UploadPost from "@/views/UploadPost.vue";
+import Page404 from "@/views/Page404.vue";
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ export default new VueRouter({
             path: '/uploadpost/:challengeId',
             name: 'Upload',
             component: UploadPost
+        },
+        {
+            path: '*',
+            name: '404 Not Found',
+            component: Page404
         }
 
     ]
