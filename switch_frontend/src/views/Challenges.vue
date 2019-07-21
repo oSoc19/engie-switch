@@ -17,8 +17,18 @@ export default {
     }
   },
   created() {
-    api.getChallenges().then(data => this.challenges = data).catch(error.bind(this))
-  }
+    //api.getChallenges().then(data => this.challenges = data).catch(error.bind(this))
+  },
+  //* test for better perceived performance
+  beforeRouteEnter(to, from, next) {
+    api.getChallenges()
+      .then(data => {
+        next(cmpt => {
+          cmpt.challenges = data
+        })
+      })
+      .catch(error)
+ }//*/
 };
 </script>
 

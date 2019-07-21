@@ -17,8 +17,18 @@ export default {
     };
   },
   created() {
-    api.getPosts().then(data => this.posts = data).catch(error.bind(this));
-  }
+    //api.getPosts().then(data => this.posts = data).catch(error.bind(this));
+  },
+  //* test for better perceived performance
+  beforeRouteEnter(to, from, next) {
+    api.getPosts()
+      .then(data => {
+        next(cmpt => {
+          cmpt.posts = data
+        })
+      })
+      .catch(error)
+ }//*/
 };
 </script>
 
