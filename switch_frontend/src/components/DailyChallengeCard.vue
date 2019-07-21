@@ -1,10 +1,10 @@
 <template>
-  <router-link to="/uploadpost/5d2c4f320356bd1fde524947">
+  <router-link :to="'/uploadpost/' + challenge._id">
     <div v-if="challenge" class="fullcard">
       <h2>Challenge of the day</h2>
       <ion-card class="card">
         <div class="card__content">
-          <img id="img" class="card__content--img" :src=challenge.image alt />
+          <img id="img" class="card__content--img" :src="challenge.image+'500'" alt />
           <ion-card-title class="challenge__title">{{challenge.title}}</ion-card-title>
           <ion-card-content>{{challenge.description}}</ion-card-content>
         </div>
@@ -14,15 +14,29 @@
 </template>
 
 <script>
+import api from '@/utils/api'
+import error from '@/utils/error'
+
 export default {
   name: "DailyChallengeCard",
-  props: { challenge: Object }
+  data() {
+    return {
+      challenge: {}
+    }
+  },
+  created() {
+    // TODO get random challenge from server?
+    api.getChallenges().then((data) => {
+      let randomNr = Math.floor(Math.random() * data.length);
+      this.challenge = data[randomNr];
+    }).catch(error.bind(this))
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "../css/variables.css";
+@import "/css/variables.css";
 a {
   text-decoration: none !important;
   margin: 0 !important;

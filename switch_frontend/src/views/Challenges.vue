@@ -1,34 +1,24 @@
 <template>
   <div class="hello">
     <daily-challenge-card />
-
     <challengecard v-for="challenge in challenges" v-bind:key="challenge._id" v-bind:challenge="challenge"/>
-
-
   </div>
 </template>
 
 <script>
+import api from '@/utils/api'
+import error from '@/utils/error'
 
 export default {
   name: "Challenges",
-  props: {
-    msg: String
-  },
-  methods: {
-    getChallenges: function() {
-      window.$.getJSON("http://localhost:3000/challenges", (data) => {
-        this.challenges = data
-        window.console.log(data)
-      });
-    }
-  },
   data() {
     return {
-      'challenges': this.getChallenges()
+      'challenges': []
     }
+  },
+  created() {
+    api.getChallenges().then(data => this.challenges = data).catch(error.bind(this))
   }
-
 };
 </script>
 

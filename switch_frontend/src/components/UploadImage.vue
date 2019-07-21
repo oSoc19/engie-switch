@@ -1,97 +1,74 @@
 <template>
   <div class="image__uploader">
-    <div class="preview__image" id="preview">
-      <!-- close/remove image -->
-      <div @mouseup="closeImage" id="btnCloseImage" class="image__close remove">X</div>
-      <div class="loading remove" id="loading">
-        <img src="../assets/img/loading.svg" alt srcset />
+    <label class="preview__image" for="file">
+      <div class="loading" :class="{hidden: !loading}">
+        <img src="@/assets/img/loading.svg" />
       </div>
 
-      <img src id="img" />
-      <!-- <img src="../assets/img/laundry.jpg" id="img" /> -->
+      <img id="img" ref="imagePreview"/>
 
-      <div id="btnUploadImage" class="uploader__button">
-        <input type="file" name="file" id="file" class="inputfile" @change="onFileChange" />
-        <label class="uploadlabel" for="file">
+      <div id="btnUploadImage" class="uploader__button" :class="{hidden: loading}">
+        <input type="file" name="file" id="file" class="inputfile"
+          ref="fileInput" @change="onFileChange" accept="image/*" />
+        <div class="uploadlabel" for="file" :class="{hidden: loading}">
           <svg viewBox="0 0 512 512">
             <path
               fill="#fff"
               d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"
             />
           </svg>
-        </label>
+        </div>
       </div>
-    </div>
+    </label>
   </div>
 </template>
 <script>
+import api from '@/utils/api'
+import fileToBase64 from '@/utils/fileToBase64'
+import error from '@/utils/error'
+
 export default {
   name: "UploadImage",
+  props: ['challengeId'],
   data() {
     return {
-      url: null
+      loading: false,
     };
   },
   methods: {
-    async onFileChange() {
-      let preview = document.getElementById("img");
-      let file = document.querySelector("input[type=file]").files[0];
-      let reader = new FileReader();
-      let btnCloseImage = document.getElementById("btnCloseImage");
-      let loading = document.getElementById("loading");
-
-      preview.style.display = "block";
-      loading.classList.remove("remove");
-      if (file) {
-        // after loading good image, btn is clicked, so thats why it should be disabled on change
-        reader.addEventListener(
-          "load",
-          function() {
-            preview.src = reader.result;
-            localStorage.setItem("imagePost", reader.result);
-          },
-          false
-        );
-
-        if (file) {
-          reader.readAsDataURL(file);
-        }
-
-        btnCloseImage.classList.remove("remove");
-        //able to upload
-        let btnUploadImage = document.getElementById("btnUploadImage");
-        btnUploadImage.classList.add("remove");
-      } else {
-        btnCloseImage.classList.add("remove");
+    onFileChange() {
+      let files = this.$refs.fileInput.files
+      if(files.length < 1) {
+        // no file selected
+        return;
       }
+      this.loading = true;
+      fileToBase64(files[0]).then(image => {
+        let imagePreview = this.$refs.imagePreview;
+        imagePreview.src = image;
+        this.uploadImage(image);
+      })
     },
-    closeImage() {
-      //remove image
-      let image = document.getElementById("img");
-      let btnCloseImage = document.getElementById("btnCloseImage");
-      let btnPost = document.getElementById("btnPost");
-      let loading = document.getElementById("loading");
-
-      image.style.display = "none";
-      //able to upload
-      let btnUploadImage = document.getElementById("btnUploadImage");
-      btnUploadImage.classList.remove("remove");
-
-      //un-able to post
-      btnPost.style.color = "grey";
-      btnPost.style.backgroundColor = "lightgrey";
-
-      btnCloseImage.classList.add("remove");
-
-      loading.classList.add("remove");
+    uploadImage(image) {
+      let post = {
+        image: image,
+        user: '',
+        challenge: this.challengeId,
+        text: ''
+      }
+      api.getUser().then(user => {
+        post.user = user._id;
+        return api.postPost(post);
+      }).then(() => {
+        this.$router.push('/');
+      }).catch(error.bind(this));
     }
-  },
-  mounted() {}
+  }
 };
 </script>
 
 <style>
-@import "../css/variables.css";
+@import "/css/variables.css";
 
 .image__uploader {
   display: flex;
@@ -110,7 +87,7 @@ export default {
   z-index: -1;
 }
 
-.inputfile + label {
+.inputfile + .uploadlabel {
   font-size: 16px;
   color: white;
   background-color: var(--primary-color);
@@ -121,15 +98,15 @@ export default {
   height: 50px;
 }
 
-.inputfile:focus + label,
-.inputfile:hover + label:hover {
+.inputfile:focus + .uploadlabel,
+.inputfile:hover + .uploadlabel:hover {
   background-color: var(--primary-color);
   cursor: pointer;
 }
 .uploadlabel:hover {
   background-color: #fff;
 }
-.inputfile + label {
+.inputfile + .uploadlabel {
   cursor: pointer;
 }
 .uploader__button {
@@ -149,7 +126,7 @@ export default {
   align-items: center;
 }
 
-#preview {
+.preview__image {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,9 +139,15 @@ export default {
   height: 173px;
   margin-top: 10px !important;
   position: relative;
+
+  cursor: pointer;
 }
 
-#preview img {
+.preview__image:hover {
+  background-color: #f0f0f0;
+}
+
+.preview__image img {
   max-width: 100% !important;
   display: flex;
   justify-content: center;
@@ -182,29 +165,8 @@ export default {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
 }
-.image__close {
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20px;
-  height: 20px;
-  background-color: var(--red);
-  border-radius: 20px;
-  color: white;
-  z-index: 5;
-}
-.post--able {
-  color: white;
-  background-color: var(--primary-color);
-}
-.post--unable {
-  color: grey;
-  background-color: lightgrey;
-}
-.remove {
+
+.hidden {
   display: none;
 }
 </style>
