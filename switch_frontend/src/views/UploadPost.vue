@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <ion-card v-if="challenge">
-      <img :src="challenge.image+'500'" />
+      <img :src="challenge.image+'500'" class="ion-card__img"
+        :style="{backgroundImage: 'url('+challenge.image+'500)'}"/>
       <ion-card-header>
         <!--ion-card-subtitle>{{ challenge.title }}</ion-card-subtitle-->
         <ion-card-title>{{ challenge.title }}</ion-card-title>
@@ -43,6 +44,17 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.ion-card__img {
+  height: 0;
+  padding-top: 75%;
+  background-color: red;
+  background-position: center;
+}
+
+ion-card-content {
+  padding-top: 0;
 }
 
 </style>
