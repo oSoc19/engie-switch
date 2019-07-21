@@ -11,6 +11,7 @@
     "@ionic/core": "^4.6.0",
     "@ionic/vue": "0.0.4",
     "jquery": "^3.4.1",
+    "nprogress": "^0.2.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6"
   },

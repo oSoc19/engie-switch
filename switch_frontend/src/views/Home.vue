@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
     <daily-challenge-card />
+    <div>
+      <button @click="start">Start</button>
+      <button @click="done">Done</button>
+    </div>
     <feed-card v-for="post in posts" v-bind:key="post._id" v-bind:post="post"></feed-card>
   </div>
 </template>
@@ -8,9 +12,18 @@
 <script>
 import api from '@/utils/api'
 import error from '@/utils/error'
+import nprogress from 'nprogress';
 
 export default {
   name: "Home",
+  methods: {
+    start() {
+      nprogress.start();
+    },
+    done() {
+      nprogress.done();
+    }
+  },
   data() {
     return {
       posts: [],
