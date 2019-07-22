@@ -19,9 +19,11 @@
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <img src="@/assets/img/heart-regular.svg" alt="heart" :id="'likebutton'+post._id" v-on:click="likePost();"/>
-                    <div hidden :id="'bool' + post._id">0</div>
+                    <img src="@/assets/icons/tree-silhouette.svg" alt="heart" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                    <img src="@/assets/icons/factory.svg" alt="heart" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                    <!--<div hidden :id="'bool' + post._id">0</div>-->
                 </div>
+                <div>{{post.reviews}}</div>
                 <div>{{post.reviews}}</div>
             </div>
 
@@ -35,18 +37,11 @@ export default {
     props: ['post'],
     methods: {
         likePost() {
-            var button = document.getElementById("likebutton" + this.post._id);
-            var hiddenBool = document.getElementById("bool" + this.post._id)
-            window.console.log(button.src);
-            if (hiddenBool.innerHTML == '1'){
-                button.src = require('@/assets/img/heart-regular.svg');
-                this.post.reviews -= 1;
-                hiddenBool.innerHTML = '0'
-            }else{
-                button.src = require('@/assets/img/heart-solid.svg');
-                this.post.reviews+= 1;
-                hiddenBool.innerHTML = '1'
-            }
+            window.console.log('like')
+            this.post.reviews.plus += 1;
+        },
+        dislikePost(){
+            this.post.reviews.minus += 1;
         },
         formatDate(datetime) {
             let dt = new Date(datetime);
@@ -155,9 +150,15 @@ export default {
 }
 
 .feedcard__content__likes__heart{
+    display:flex;
     justify-self: left;
     width: 20px;
     margin-right: 5px;
 
+}
+
+
+.dislike{
+    padding-left: 21px;
 }
 </style>
