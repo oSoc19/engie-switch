@@ -64,7 +64,7 @@ module.exports = router
 
     user.findOne(userToFind).exec()
       .then((userFound) => {
-        if (userFound) throw new createError(400, 'User already exists!');
+        if (userFound) throw new createError(400, 'Username already exists!');
         user.findById(req.params.id).exec()
           .then((userFound) => {
             if (!userFound) throw new createError(404, "Couldn't find user " + req.params.id);
