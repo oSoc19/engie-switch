@@ -1,11 +1,10 @@
 <template>
   <div class="wrapper">
-    <p>Upload your picture of the challenge</p>
+    <p class="upload__text">Upload your picture of the challenge</p>
     <upload-image :challengeId="challengeId" />
     <div class="alert">
       <div class="bad__image">X Bad Image</div>
     </div>
-    <p class="yourChallenge">Your challenge</p>
     <ion-card v-if="challenge">
       <img class="challenge__image" :src="challenge.image+'500'" />
       <ion-card-header>
@@ -46,6 +45,12 @@ p {
   width: 100%;
   text-align: center;
   margin-bottom: 5px;
+}
+
+.upload__text {
+  padding: 0;
+  margin: 0;
+  margin-top: 15px;
 }
 
 .yourChallenge {
