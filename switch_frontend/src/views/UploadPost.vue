@@ -75,7 +75,7 @@ p {
 }
 .challenge__image {
   max-width: 100%;
-  width: 98%;
+  width: 100%;
   max-height: 173px !important;
   margin-top: 10px;
   border-radius: 7px;
