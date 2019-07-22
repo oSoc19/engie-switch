@@ -17,22 +17,13 @@ export default {
   methods: {
     getTopTen: function() {
       window.$.getJSON("http://localhost:3000/users/top10users", (data) => {
-        this.topten = data;
-        return data;
-      });
-    },
-    getPosition : function(){
-      var arrayTopTen = this.getTopTen()
-      arrayTopTen.forEach(function(counter) {
-        counter = 1;
-        return counter;
+        this.topten = data.top10;
       });
     }
   },
   data() {
     return {
       'topten': this.getTopTen(),
-      'counter' : this.getPosition(0)
     }
   }
 };
