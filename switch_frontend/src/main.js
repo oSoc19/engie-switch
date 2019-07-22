@@ -9,6 +9,7 @@ import ChallengeCard from '@/components/ChallengeCard'
 import FeedCard from '@/components/FeedCard'
 import UploadImage from '@/components/UploadImage'
 import LeaderboardCard from '@/components/LeaderboardCard'
+import ProfileCard from '@/components/ProfileCard'
 
 
 
@@ -19,6 +20,7 @@ Vue.component('challengecard', ChallengeCard)
 Vue.component('feed-card', FeedCard)
 Vue.component('leaderboard-card', LeaderboardCard)
 Vue.component('upload-image', UploadImage)
+Vue.component('profile-card', ProfileCard)
 
 Vue.filter('truncate', (text, length, clamp) => {
   clamp = clamp || '...';
