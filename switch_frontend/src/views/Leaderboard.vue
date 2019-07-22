@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h2>Your position</h2>
-    <leaderboard-card v-bind:position="'12'" v-bind:key="currentUser._id" v-bind:user="currentUser"></leaderboard-card>
+    <leaderboard-card v-bind:position="''" v-bind:key="currentUser._id" v-bind:user="currentUser"></leaderboard-card>
 
     <h1>Ranks</h1>
     <leaderboard-card v-for="(user, index) in topten" v-bind:position="index + 1" v-bind:key="user._id" v-bind:user="user"  id="card"></leaderboard-card>
