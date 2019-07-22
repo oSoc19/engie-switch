@@ -1,45 +1,36 @@
  <template>
     <ion-card class="leaderboardcard">
-        <ion-card-content :class="'leaderboardcard__content rank'+position" :id="'user' + user._id">
+        <ion-card-content class="leaderboardcard__content"
+        :class="classes">
             <div class="leaderboardcard__content__position">{{position}}</div>
             <div class="leaderboardcard__content__name">{{user.username}}</div>
             <div class="leaderboardcard__content__points">
                 <div>{{user.points}}</div>
-                <img src="@/assets/icons/star-solid.svg" alt="star" :id="'rank'+position" class="leaderboardcard__content__points__star" />
+                <img src="@/assets/icons/star-solid-white.svg" alt="star" v-if="isTop3(position)" class="leaderboardcard__content__points__star" />
+                <img src="@/assets/icons/star-solid.svg" alt="star" v-if="!isTop3(position)" class="leaderboardcard__content__points__star" />
             </div>
         </ion-card-content>
     </ion-card>
 </template>
 <script>
-import api from '@/utils/api'
-import error from '@/utils/error'
 export default {
     name:"LeaderboardCard",
-    props: ['user', 'position'],
+    props: ['currentUser', 'user', 'position'],
     methods: {
-        getTop3(){
-            var img = document.getElementById('rank1');
-            img.src= require("@/assets/icons/star-solid-white.svg");
-            img = document.getElementById('rank3');
-            img.src= require("@/assets/icons/star-solid-white.svg");
-            img = document.getElementById('rank2');
-            img.src= require("@/assets/icons/star-solid-white.svg");                 
-        },
-        getCurrentUser(){
-            api.getUser().then(currentUser => {
-            if(this.user._id == currentUser._id){
-                window.console.log("match")
-                var card = document.getElementById("user" + currentUser._id);
-                card.classList.add('yourposition');
-            }
-            }).catch(error.bind(this));           
-        }
+      isTop3(position) {
+        return position == 1 || position == 2 || position == 3
+      },
     },
-    mounted(){
-        this.getTop3();
-        this.getCurrentUser();
+    data() {
+      return {
+        classes: {}
+      }
+    },
+    created() {
+      this.classes = {}
+      this.classes['rank'+this.position] = true;
+      this.classes['yourposition'] = this.currentUser._id == this.user._id;
     }
-    
 }
 </script>
 <style>
@@ -55,7 +46,7 @@ export default {
     justify-content: space-between;
     padding-left:12px;
     padding-right: 12px !important;
-    align-items: center; 
+    align-items: center;
 }
 .leaderboardcard__content__points{
     display: flex;
@@ -67,8 +58,8 @@ export default {
 }
 .leaderboardcard__content__points__star{
     width: 20px !important;
-    margin-left: 5px;   
-    margin-right: 20px; 
+    margin-left: 5px;
+    margin-right: 20px;
 }
 .yourposition{
     background-color: var(--green);
