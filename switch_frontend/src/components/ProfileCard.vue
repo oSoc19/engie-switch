@@ -22,8 +22,6 @@ export default {
 </script>
 
 <style>
-@import "../css/variables.css";
-
 .profilecard{
     width: 86%;
     display: flex;
