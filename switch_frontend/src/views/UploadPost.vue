@@ -5,7 +5,7 @@
     <div class="alert">
       <div class="bad__image">X Bad Image</div>
     </div>
-    <p>Your challenge</p>
+    <p class="yourChallenge">Your challenge</p>
     <ion-card v-if="challenge">
       <img class="challenge__image" :src="challenge.image+'500'" />
       <ion-card-header>
@@ -47,8 +47,12 @@ p {
   text-align: center;
   margin-bottom: 5px;
 }
+
+.yourChallenge {
+  color: var(--black);
+}
 .wrapper {
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
