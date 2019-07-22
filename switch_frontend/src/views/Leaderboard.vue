@@ -1,10 +1,10 @@
 <template>
-  <div class="hello">
+  <div v-if="currentUser" class="hello">
     <h2>Your position</h2>
-    <leaderboard-card v-bind:position="''" v-bind:key="currentUser._id" v-bind:user="currentUser"></leaderboard-card>
+    <leaderboard-card position="" v-bind:user="currentUser" v-bind:currentUser="currentUser"></leaderboard-card>
 
     <h1>Ranks</h1>
-    <leaderboard-card v-for="(user, index) in topten" v-bind:position="index + 1" v-bind:key="user._id" v-bind:user="user"  id="card"></leaderboard-card>
+    <leaderboard-card v-for="(user, index) in topten" v-bind:position="index + 1" v-bind:key="user._id" v-bind:user="user"  v-bind:currentUser="currentUser" id="card"></leaderboard-card>
   </div>
 </template>
 
@@ -17,23 +17,14 @@ export default {
   props: {
     position: Number
   },
-  methods: {
-    getTopTen: function() {
-      window.$.getJSON("http://localhost:3000/users/top10users", (data) => {
-        this.topten = data;
-      });
-    
-    },
-    getUser(){
-      api.getUser().then(user => {
-        this.currentUser = user;
-      }).catch(error.bind(this));
-    }
+  created() {
+    api.getUser().then(user => this.currentUser = user).catch(error.bind(this));
+    api.getTop10().then(data => this.topten = data).catch(error.bind(this));
   },
   data() {
     return {
-      'topten': this.getTopTen(),
-      'currentUser': this.getUser()
+      topten: [],
+      currentUser: null
     }
   }
 };
