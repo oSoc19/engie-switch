@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
     console.log(req.headers);
     let token = req.headers['x-access-token'] || req.headers['authorization'];;
     //check if token is not null to see if authorization header exists
-    if(!token) throw new createError(400, 'Please provide authorization header');
+    if(!token) throw new req.createError(400, 'Please provide authorization header');
     if(token.startsWith('Bearer '))
     {
       // Remove Bearer from string

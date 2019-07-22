@@ -1,16 +1,14 @@
 const jwt = require('jsonwebtoken');
 const config = require('./config');
 const checkToken = require('./checkToken');
-const mongoose = require('mongoose');
-const createError = require('http-errors');
-
-let users = mongoose.model('User');
 
 module.exports = (req, res, next) => {
   let id = req.savedUser._id;
-  users.findById(id).exec()
+
+  req.db.User.findById(id).exec()
   .then((user) => {
-    if(!user) throw new createError(404,"Couldn't find user " + req.savedUser._id);
+
+    if(!user) throw new req.createError(404,"Couldn't find user " + req.savedUser._id);
     else
     {
       let token = jwt.sign({id: id}, config.secret);
@@ -18,6 +16,7 @@ module.exports = (req, res, next) => {
     }
   })
   .then((token) => {
+    
     console.log(token);
     res.json({
       success: true,

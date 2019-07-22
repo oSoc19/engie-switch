@@ -1,29 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const createError = require('http-errors');
-const userRoutes = require('./users/');
-const challegeRoutes = require('./challenges/');
-const postsRoutes = require('./posts/');
+const glob = require('glob');
 
-//These are the models we'll be interacting with
-let challenge = mongoose.model('Challenge');
-let user = mongoose.model('User');
-let post = mongoose.model('Post');
-
-// Check if the server is running
-
-router.get('/', (req, res, next) => {
-  res.send('Server works!');
-});
-
-// re-route users to the user routes
-router.use('/users', userRoutes);
-
-// re-route users to the challenge routes
-router.use('/challenges', challegeRoutes);
-
-// re-route users to the posts routes
-router.use('/posts', postsRoutes);
-
-module.exports = router;
+// We'll be using glob to:
+module.exports = () => glob
+// search all the files with the .js extension in every subfolder
+  .sync('**/*.js', {cwd: `${__dirname/}`})
+// require each file
+  .map(filename => require(`./${filename}`))
+// keep only the router objects
+  .filter(router => Object.getPrototypeOf(router) == routerObject)
+// return one single router object with all the other routers inside
+  .reduce((rootRouter, router) => rootRouse.use(router), routerObject({mergeParams: true}));
