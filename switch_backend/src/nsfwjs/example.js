@@ -6,6 +6,7 @@
 const tf = require('@tensorflow/tfjs-node')
 const fs = require('fs');
 const jpeg = require('jpeg-js');
+const process = require('process');
 
 const load = require('./dist/index').load
 
@@ -50,10 +51,10 @@ const imageToInput = (image, numChannels) => {
 
 function predictImage(image) {
   return new Promise((resolve, reject) => {
-    const model_path = 'file://./src/nsfwjs/model/'
+    const model_path = `file://${__dirname}/model/`
     load(model_path).then((model) => {
       console.log('model loaded')
-      const logo = readImage(__dirname+'/'+image)
+      const logo = readImage(image)
       const input = imageToInput(logo, NUMBER_OF_CHANNELS)
       model.classify(input).then((predictions) => {
         console.log(predictions)
@@ -62,4 +63,4 @@ function predictImage(image) {
   })
 }
 
-predictImage('../../../../../beach.jpg')
+predictImage(process.argv[2])
