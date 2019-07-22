@@ -1,11 +1,11 @@
-<template>
-    <ion-card class="leaderboardcard" id="card">
-        <ion-card-content class="leaderboardcard__content ">
+ <template>
+    <ion-card class="leaderboardcard">
+        <ion-card-content :class="'leaderboardcard__content rank'+position" >
             <div class="leaderboardcard__content__position">{{position}}</div>
             <div class="leaderboardcard__content__name">{{user.username}}</div>
             <div class="leaderboardcard__content__points">
                 <div>{{user.points}}</div>
-                <img src="@/assets/icons/star-solid.svg" alt="star" class="leaderboardcard__content__points__star" id="starImage"/>
+                <img src="@/assets/icons/star-solid.svg" alt="star" :id="'rank'+position" class="leaderboardcard__content__points__star" />
             </div>
         </ion-card-content>
     </ion-card>
@@ -15,29 +15,27 @@ export default {
     name:"LeaderboardCard",
     props: ['user', 'position'],
     methods: {
-        getPosition: function(){
-            var card = document.getElementById("card");
-            if(card.classList.contains('first')){
-                window.console.log("nein man");
-                var img = document.getElementById('starImage');
-                img.src = require("@/assets/icons/star-solid-white.svg");
-            }
+        getPosition(){
+            console.log(this.position)
+            var img = document.getElementById('rank1');
+            img.src= require("@/assets/icons/star-solid-white.svg")
+            img = document.getElementById('rank3');
+            img.src= require("@/assets/icons/star-solid-white.svg")
+            img = document.getElementById('rank2');
+            img.src= require("@/assets/icons/star-solid-white.svg")            
         }
     },
-    mounted() {
-      this.getPosition()
-      window.console.log("getPosition")
+    mounted(){
+        this.getPosition();
     }
-
+    
 }
 </script>
 <style>
-@import "/css/variables.css";
-
+@import "../css/variables.css";
 .leaderboardcard{
     margin-top: 10px;
 }
-
 .leaderboardcard__content{
     display:flex;
     width: 100%;
@@ -47,41 +45,33 @@ export default {
     padding-right: 12px !important;
     align-items: center; 
 }
-
 .leaderboardcard__content__points{
     display: flex;
     flex-direction: row;
 }
-
 .leaderboardcard__content__name{
     text-align: left;
     font-size: 14px;
 }
-
 .leaderboardcard__content__points__star{
     width: 20px !important;
     margin-left: 5px;   
     margin-right: 20px; 
 }
-
 .yourposition{
     background-color: var(--green);
     color: #fff;
 }
-
-.firstplace{
-    background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%);
+.rank1{
+    background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%) !important;
     color: #fff;
 }
-
-.secondplace{
+.rank2{
     background: linear-gradient(90deg,var(--silverGradientLeft) 0%,var(--silverGradientRight) 100%);
     color: #fff;
 }
-
-.thirdplace{
+.rank3{
     background: linear-gradient(90deg,var(--bronseGradientLeft) 0%,var(--bronseGradientRight) 100%);
     color: #fff;
 }
-
 </style>

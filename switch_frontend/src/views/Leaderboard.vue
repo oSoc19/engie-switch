@@ -4,7 +4,7 @@
     <leaderboard-card></leaderboard-card>
 
     <h1>Ranks</h1>
-    <leaderboard-card v-for="user in topten" v-bind:position="counter" v-bind:key="user._id" v-bind:user="user"  id="card"></leaderboard-card>
+    <leaderboard-card v-for="(user, index) in topten" v-bind:position="index + 1" v-bind:key="user._id" v-bind:user="user"  id="card"></leaderboard-card>
   </div>
 </template>
 
@@ -17,8 +17,9 @@ export default {
   methods: {
     getTopTen: function() {
       window.$.getJSON("http://localhost:3000/users/top10users", (data) => {
-        this.topten = data.top10;
+        this.topten = data;
       });
+    
     }
   },
   data() {
@@ -27,17 +28,14 @@ export default {
     }
   }
 };
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "/css/variables.css";
-
+@import "../css/variables.css";
 .hello{
   width: 98%;
 }
-
 h1{
   padding-left: 20px;
   font-weight: bold;
@@ -45,7 +43,6 @@ h1{
   font-size: 16px;
   color: var(--black);
 }
-
 h2{
   padding-left: 20px;
   font-weight: lighter !important;
