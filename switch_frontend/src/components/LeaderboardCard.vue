@@ -1,11 +1,11 @@
 <template>
     <ion-card class="leaderboardcard">
-        <ion-card-content :class="'leaderboardcard__content rank'+position" id="leaderboardcard__content">
+        <ion-card-content :class="'leaderboardcard__content rank'+position" >
             <div class="leaderboardcard__content__position">{{position}}</div>
             <div class="leaderboardcard__content__name">{{user.username}}</div>
             <div class="leaderboardcard__content__points">
                 <div>{{user.points}}</div>
-                <img src="@/assets/icons/star-solid.svg" alt="star" class="leaderboardcard__content__points__star" id="starImage"/>
+                <img src="@/assets/icons/star-solid.svg" alt="star" :id="'rank'+position" class="leaderboardcard__content__points__star" />
             </div>
         </ion-card-content>
     </ion-card>
@@ -16,13 +16,12 @@ export default {
     props: ['user', 'position'],
     methods: {
         getPosition(){
-            var img = document.getElementById('starImage');     
-            var cards = document.getElementsByClassName('rank1');
-            for(var i = 0; i <= cards.length; i++){
-                console.log('pls')
-                img.src= require("@/assets/icons/star-solid-white.svg")
-            }
-            
+            var img = document.getElementById('rank1');
+            img.src= require("@/assets/icons/star-solid-white.svg")
+            var img = document.getElementById('rank3');
+            img.src= require("@/assets/icons/star-solid-white.svg")
+            var img = document.getElementById('rank2');
+            img.src= require("@/assets/icons/star-solid-white.svg")            
         }
     },
     mounted(){

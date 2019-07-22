@@ -17,7 +17,7 @@ export default {
   methods: {
     getTopTen: function() {
       window.$.getJSON("http://localhost:3000/users/top10users", (data) => {
-        this.topten = data;
+        this.topten = data.top10;
       });
     
     }
