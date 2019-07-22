@@ -16,12 +16,20 @@ export default {
     props: ['user', 'position'],
     methods: {
         getPosition(){
+<<<<<<< HEAD
             console.log(this.position)
             var img = document.getElementById('rank1');
             img.src= require("@/assets/icons/star-solid-white.svg")
             img = document.getElementById('rank3');
             img.src= require("@/assets/icons/star-solid-white.svg")
             img = document.getElementById('rank2');
+=======
+            var img = document.getElementById('rank1');
+            img.src= require("@/assets/icons/star-solid-white.svg")
+            var img = document.getElementById('rank3');
+            img.src= require("@/assets/icons/star-solid-white.svg")
+            var img = document.getElementById('rank2');
+>>>>>>> 3d9658a5abf5a9897659b8ae0e6740d67e596fd3
             img.src= require("@/assets/icons/star-solid-white.svg")            
         }
     },
@@ -53,6 +61,10 @@ export default {
     text-align: left;
     font-size: 14px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9658a5abf5a9897659b8ae0e6740d67e596fd3
 .leaderboardcard__content__points__star{
     width: 20px !important;
     margin-left: 5px;   
@@ -62,14 +74,26 @@ export default {
     background-color: var(--green);
     color: #fff;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9658a5abf5a9897659b8ae0e6740d67e596fd3
 .rank1{
     background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%) !important;
     color: #fff;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9658a5abf5a9897659b8ae0e6740d67e596fd3
 .rank2{
     background: linear-gradient(90deg,var(--silverGradientLeft) 0%,var(--silverGradientRight) 100%);
     color: #fff;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9658a5abf5a9897659b8ae0e6740d67e596fd3
 .rank3{
     background: linear-gradient(90deg,var(--bronseGradientLeft) 0%,var(--bronseGradientRight) 100%);
     color: #fff;
