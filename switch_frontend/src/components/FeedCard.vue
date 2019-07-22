@@ -20,11 +20,13 @@
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
                     <img src="@/assets/icons/tree-silhouette.svg" alt="heart" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                    <div>{{this.post.reviews.plus.length}}</div>
+
                     <img src="@/assets/icons/factory.svg" alt="heart" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                    <div>{{this.post.reviews.minus.length}}</div>
+
                     <!--<div hidden :id="'bool' + post._id">0</div>-->
                 </div>
-                <div>{{post.reviews}}</div>
-                <div>{{post.reviews}}</div>
             </div>
 
         </ion-card-content>
@@ -32,16 +34,27 @@
 </template>
 
 <script type="text/javascript">
+import api from '@/utils/api'
+import error from '@/utils/error'
 export default {
     name: "FeedCard",
     props: ['post'],
     methods: {
-        likePost() {
-            window.console.log('like')
-            this.post.reviews.plus += 1;
+        likePost() {       
+            api.postPlus(this.post._id).then(data => this.post = data).catch(error.bind(this));
         },
         dislikePost(){
-            this.post.reviews.minus += 1;
+            api.getUser().then(currentUser => {
+                if(!this.post.reviews.minus.includes(currentUser._id)){
+                    if(!this.post.reviews.plus.includes(currentUser._id)){
+                        this.post.reviews.minus.push(currentUser._id)
+                    }else{
+                        var index = this.post.reviews.plus.indexOf(currentUser._id)
+                        this.post.reviews.plus.splice(index, 1);
+                        this.post.reviews.minus.push(currentUser._id);
+                    }
+                }                
+            })
         },
         formatDate(datetime) {
             let dt = new Date(datetime);

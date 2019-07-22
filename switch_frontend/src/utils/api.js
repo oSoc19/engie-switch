@@ -89,6 +89,14 @@ function postPost(post) {
   return apiCall('/posts', post, true);
 }
 
+function postPlus(postId){
+  return apiCall('/posts/' + postId + "/plus", "", true);
+}
+
+function postMinus(postId){
+  return apiCall('/posts/' + postId + "/minus", "", true);
+}
+
 export default {
   getPosts,
   getChallenges,
@@ -96,4 +104,6 @@ export default {
   getUsers,
   getUser,
   postPost,
+  postPlus,
+  postMinus,
 }
