@@ -100,7 +100,6 @@ p {
   padding: 5px;
   border-radius: 7px;
 }
-
 #btnPost {
   border-radius: 7px;
   background-color: lightgrey;
