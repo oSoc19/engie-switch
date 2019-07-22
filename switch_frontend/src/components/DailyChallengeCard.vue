@@ -25,6 +25,7 @@ export default {
     };
   },
   created() {
+    //TODO get random challenge from server
     api
       .getChallenges()
       .then(data => {
