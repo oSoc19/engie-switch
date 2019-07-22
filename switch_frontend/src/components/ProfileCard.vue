@@ -57,6 +57,11 @@ export default {
     align-items: center;
 }
 
+.profile__content img {
+  height: 100px;
+  height: 100px;
+}
+
 .profile__content__points{
     display:flex;
     color: white
