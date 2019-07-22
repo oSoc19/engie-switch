@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h2>Your position</h2>
-    <leaderboard-card></leaderboard-card>
+    <leaderboard-card v-bind:position="'12'" v-bind:key="currentUser._id" v-bind:user="currentUser"></leaderboard-card>
 
     <h1>Ranks</h1>
     <leaderboard-card v-for="(user, index) in topten" v-bind:position="index + 1" v-bind:key="user._id" v-bind:user="user"  id="card"></leaderboard-card>
@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import api from '@/utils/api'
+import error from '@/utils/error'
+
 export default {
   name: "Leaderboard",
   props: {
@@ -20,11 +23,17 @@ export default {
         this.topten = data;
       });
     
+    },
+    getUser(){
+      api.getUser().then(user => {
+        this.currentUser = user;
+      }).catch(error.bind(this));
     }
   },
   data() {
     return {
       'topten': this.getTopTen(),
+      'currentUser': this.getUser()
     }
   }
 };
