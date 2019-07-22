@@ -7,7 +7,7 @@
     </div>
     <p>Your challenge</p>
     <ion-card v-if="challenge">
-      <img :src="challenge.image+'500'" />
+      <img class="challenge__image" :src="challenge.image+'500'" />
       <ion-card-header>
         <!--ion-card-subtitle>{{ challenge.title }}</ion-card-subtitle-->
         <ion-card-title>{{ challenge.title }}</ion-card-title>
@@ -67,8 +67,18 @@ p {
   width: 90%;
   justify-content: flex-end;
   align-items: center;
+  display: none;
 }
-
+.challenge__image {
+  max-width: 100%;
+  width: 98%;
+  max-height: 173px !important;
+  margin-top: 10px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
 .bad__image {
   width: 100%;
   border: 2px solid var(--red);
