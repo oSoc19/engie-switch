@@ -1,94 +1,89 @@
-<template>
+ <template>
     <ion-card class="leaderboardcard">
-        <ion-card-content class="leaderboardcard__content " id="card">
-            <div class="leaderboardcard__content__position">125</div>
-            <div class="leaderboardcard__content__name">Surprised Pikachu</div>
+        <ion-card-content :class="'leaderboardcard__content rank'+position" :id="'user' + user._id">
+            <div class="leaderboardcard__content__position">{{position}}</div>
+            <div class="leaderboardcard__content__name">{{user.username}}</div>
             <div class="leaderboardcard__content__points">
-                <div>1052</div>
-                <img src="@/assets/icons/star-solid.svg" alt="star" class="leaderboardcard__content__points__star" id="starImage"/>
+                <div>{{user.points}}</div>
+                <img src="@/assets/icons/star-solid.svg" alt="star" :id="'rank'+position" class="leaderboardcard__content__points__star" />
             </div>
         </ion-card-content>
     </ion-card>
 </template>
 <script>
+import api from '@/utils/api'
+import error from '@/utils/error'
 export default {
     name:"LeaderboardCard",
+    props: ['user', 'position'],
     methods: {
-        getPosition: function(){
-            var card = document.getElementById("card");
-            if(card.classList.contains('firstplace')){
-                window.console.log("nein man");
-                var img = document.getElementById('starImage');
-                img.src = require("@/assets/icons/star-solid-white.svg");
+        getTop3(){
+            var img = document.getElementById('rank1');
+            img.src= require("@/assets/icons/star-solid-white.svg");
+            img = document.getElementById('rank3');
+            img.src= require("@/assets/icons/star-solid-white.svg");
+            img = document.getElementById('rank2');
+            img.src= require("@/assets/icons/star-solid-white.svg");                 
+        },
+        getCurrentUser(){
+            api.getUser().then(currentUser => {
+            if(this.user._id == currentUser._id){
+                window.console.log("match")
+                var card = document.getElementById("user" + currentUser._id);
+                card.classList.add('yourposition');
             }
+            }).catch(error.bind(this));           
         }
     },
-    mounted() {
-      this.getPosition()
-      window.console.log("yes")
+    mounted(){
+        this.getTop3();
+        this.getCurrentUser();
     }
-
+    
 }
 </script>
 <style>
+@import "../css/variables.css";
 
 .leaderboardcard{
     margin-top: 10px;
 }
-
 .leaderboardcard__content{
     display:flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
-    padding-left:2px;
-    padding-right: 0px;
-    align-items: center;
-
-
+    justify-content: space-between;
+    padding-left:12px;
+    padding-right: 12px !important;
+    align-items: center; 
 }
-
 .leaderboardcard__content__points{
-    justify-self: right !important;
     display: flex;
     flex-direction: row;
-
 }
-
 .leaderboardcard__content__name{
-    justify-self: center !important;
     text-align: left;
     font-size: 14px;
 }
-
-
-.leaderboardcard__content__position{
-    justify-self: left !important;
-}
-
 .leaderboardcard__content__points__star{
     width: 20px !important;
-    margin-left: 5px;
+    margin-left: 5px;   
+    margin-right: 20px; 
 }
-
 .yourposition{
     background-color: var(--green);
     color: #fff;
 }
-
-.firstplace{
-    background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%);
+.rank1{
+    background: linear-gradient(90deg,var(--goldGradientLeft) 0%,var(--goldGradientRight) 100%) !important;
     color: #fff;
 }
-
-.secondplace{
+.rank2{
     background: linear-gradient(90deg,var(--silverGradientLeft) 0%,var(--silverGradientRight) 100%);
     color: #fff;
 }
-
-.thirdplace{
+.rank3{
     background: linear-gradient(90deg,var(--bronseGradientLeft) 0%,var(--bronseGradientRight) 100%);
     color: #fff;
 }
-
 </style>
