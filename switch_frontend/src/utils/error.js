@@ -32,11 +32,7 @@ function display(component, text) {
 
 export default function(err) {
   let text = 'A network error occured!\n';
-  if(err.status && err.statusText) {
-    text += err.status + ' ' + err.statusText + '\n'
-  } else {
-    text += 'Do you have internet connection?\n'
-  }
+  text += err.message ? err.message : 'Do you have internet connection?';
   if(config.DEBUG) {
     window.console.log('error', err)
   }
