@@ -36,29 +36,7 @@ export default {
       .then(challenge => (this.challenge = challenge))
       .catch(error.bind(this));
   },
-  mounted() {
-    //get token from localstorage
-    let btnPost = document.getElementById("btnPost");
-    btnPost.addEventListener("click", e => {
-      e.preventDefault();
-      let imageBase64 = localStorage.getItem("imagePost");
-      if (this.postAble) {
-        //new post object
-        let newPost = {
-          challenge: this.challengeId,
-          user: this.userId,
-          image: imageBase64, //BASE64_CONTENT
-          text: "This text is very nice",
-          reviews: 0
-        };
-        postRequest("http://localhost:3000/posts", newPost, "post").then(() => {
-          this.postAble = false;
-          //redirect to home
-          this.$router.push("/");
-        });
-      }
-    });
-  }
+  mounted() {}
 };
 </script>
 
