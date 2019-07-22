@@ -90,7 +90,7 @@ function postPost(post) {
 }
 
 function postPlus(postId){
-  return apiCall('/posts/' + postId + "/plus", "", true);
+  return apiCall('/posts/' + postId + "/plus", {}, true);
 }
 
 function postMinus(postId){
