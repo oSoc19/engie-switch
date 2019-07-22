@@ -12,7 +12,8 @@ const compare = require("../../sortFeeds");
 module.exports = router
 
 // Update review by adding a 'like'
-.put('/:id/plus', checkToken, (req, res, next) => {
+// post instead of put because we would need to change too much
+.post('/:id/plus', checkToken, (req, res, next) => {
   posts.findById(req.params.id)
     .populate('reviews')
     .then(post => {
@@ -34,7 +35,7 @@ module.exports = router
     });
 })
 
-.put('/:id/minus', checkToken, (req, res, next) => {
+.post('/:id/minus', checkToken, (req, res, next) => {
   posts.findById(req.params.id)
     .populate('reviews')
     .then(post => {
