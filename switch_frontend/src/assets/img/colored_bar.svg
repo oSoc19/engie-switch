@@ -11,9 +11,6 @@
      </rect>
 
     <rect id="Rectangle_82" data-name="Rectangle 82" width="70" height="10" rx="5" transform="translate(154)" fill="#009de9">
-     <animate attributeName="opacity" attributeType="XML"
-        values="1; .2; 1" 
-        begin="0s" dur="0.6s" repeatCount="indefinite" />
      </rect>
     <rect id="Rectangle_64" data-name="Rectangle 64" width="88" height="10" rx="5" transform="translate(40)" fill="#69af23">
 
