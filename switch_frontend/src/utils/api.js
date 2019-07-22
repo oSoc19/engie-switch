@@ -41,22 +41,21 @@ function fetchUser() {
  * this way, initAuth should not be call (and known) by user
  */
 function apiCall(path, data=null, auth=false) {
-  let promise = new Promise((resolve, reject) => {
-    window.$.ajax(config.API_BASE_URL+path, {
-      data : data ? JSON.stringify(data) : null,
-      contentType : data ? 'application/json' : null,
-      type : data ? 'POST' : 'GET',
-      headers: auth ? {'Authorization': localStorage.getItem("switch_token")} : {},
-    })
-    .done(resolve)
-    .fail(reject);
-  })
-  if(config.DEBUG) {
-    // always not available averywhere
-    promise.then(data => window.console.log(path, data))
-    promise.catch(err => window.console.log(path, err))
+  let params = {headers: {}};
+  if(data) {
+    params.method = 'POST';
+    params.headers['Content-Type'] = 'application/json';
+    params.body = JSON.stringify(data);
   }
-  return promise;
+  if(auth) {
+    params.headers['Authorization'] = localStorage.getItem("switch_token");
+  }
+  return fetch(config.API_BASE_URL+path, params).then(res => {
+    if(!res.ok) { // check 2xx status code
+      throw new Error(res.status+' '+res.statusText);
+    }
+    return res.json();
+  });
 }
 
 /*

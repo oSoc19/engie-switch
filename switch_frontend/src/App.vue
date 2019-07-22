@@ -8,8 +8,6 @@
 </template>
 
 <script>
-window.$ = require("jquery");
-window.JQuery = require("jquery");
 import api from '@/utils/api'
 
 export default {

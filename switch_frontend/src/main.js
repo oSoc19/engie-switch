@@ -18,9 +18,12 @@ Vue.component('topbar', TopBar)
 Vue.component('challengecard', ChallengeCard)
 Vue.component('feed-card', FeedCard)
 Vue.component('leaderboard-card', LeaderboardCard)
-
 Vue.component('upload-image', UploadImage)
 
+Vue.filter('truncate', (text, length, clamp) => {
+  clamp = clamp || '...';
+  return text.length > length ? text.slice(0, length) + clamp : text;
+});
 
 Vue.use(Ionic)
 Vue.config.productionTip = false
@@ -31,13 +34,3 @@ new Vue({
   render: h => h(App)
 
 }).$mount('#app')
-
-var filter = function(text, length, clamp){
-  clamp = clamp || '...';
-  var node = document.createElement('div');
-  node.innerHTML = text;
-  var content = node.textContent;
-  return content.length > length ? content.slice(0, length) + clamp : content;
-};
-
-Vue.filter('truncate', filter);

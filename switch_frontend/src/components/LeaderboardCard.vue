@@ -31,7 +31,6 @@ export default {
 }
 </script>
 <style>
-@import "/css/variables.css";
 
 .leaderboardcard{
     margin-top: 10px;
