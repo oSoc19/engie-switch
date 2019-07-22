@@ -14,22 +14,25 @@
 </template>
 
 <script>
-import api from '@/utils/api'
-import error from '@/utils/error'
+import api from "@/utils/api";
+import error from "@/utils/error";
 
 export default {
   name: "DailyChallengeCard",
   data() {
     return {
       challenge: {}
-    }
+    };
   },
   created() {
-    // TODO get random challenge from server?
-    api.getChallenges().then((data) => {
-      let randomNr = Math.floor(Math.random() * data.length);
-      this.challenge = data[randomNr];
-    }).catch(error.bind(this))
+    //TODO get random challenge from server
+    api
+      .getChallenges()
+      .then(data => {
+        let randomNr = Math.floor(Math.random() * data.length);
+        this.challenge = data[randomNr];
+      })
+      .catch(error.bind(this));
   }
 };
 </script>
@@ -43,6 +46,7 @@ a {
 }
 h2 {
   color: white;
+  text-align: center;
 }
 .fullcard {
   background-color: var(--primary-color);
@@ -71,7 +75,7 @@ h2 {
   width: 95%;
 }
 
-.sc-ion-card-ios-s img {
+img.card__content--img {
   max-width: 100% !important;
   width: 98% !important;
 
