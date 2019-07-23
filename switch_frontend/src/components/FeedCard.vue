@@ -21,7 +21,7 @@
                 <div class="feedcard__content__likes__heart">
                     <div class="badge" color="#111">
                         <div class="badge__container">
-                        <img src="@/assets/icons/tree-solid.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                        <img src="@/assets/icons/tree.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
                         <div class="badge__text">{{this.post.reviews.plus.length}}</div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@ export default {
 }
 
 .like{
-    width: 16px !important;
+    width: 18px !important;
 }
 .dislike{
     width: 16px !important;
