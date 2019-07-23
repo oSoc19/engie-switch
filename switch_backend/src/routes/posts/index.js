@@ -28,7 +28,7 @@ module.exports = router
         let found = post.reviews.plus.find(user => user._id == token)
         if (found)
         {
-          res.sendStatus(200);
+          res.json(post);
           return;
         }
       }
@@ -45,7 +45,7 @@ module.exports = router
           console.log(post.reviews.minus.length);
           post.reviews.plus.push(user);
           post.save();
-          res.sendStatus(200);
+          res.json(post);
         })
     }).catch(err => {
       console.log(err);
@@ -68,7 +68,7 @@ module.exports = router
         let found = post.reviews.minus.find(user => user._id == token)
         if (found)
         {
-          res.sendStatus(200);
+          res.json(post);
           return;
         }
       }
@@ -84,7 +84,7 @@ module.exports = router
             console.log(post.reviews.plus.length);
             post.reviews.minus.push(user);
             post.save();
-            res.sendStatus(200);
+            res.json(post);
           })
     }).catch(err => {
         console.log(err);
