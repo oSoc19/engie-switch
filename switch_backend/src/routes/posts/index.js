@@ -6,6 +6,7 @@ const checkToken = require('../../checkToken');
 let users = mongoose.model('User');
 let posts = mongoose.model('Post');
 const compare = require("../../sortFeeds");
+const removeUserFromReviews = require('../../removeUserFromReviews')
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
 
@@ -18,23 +19,33 @@ module.exports = router
   let token = req.decoded.id;
 
   posts.findById(req.params.id)
-    .populate('reviews.plus')
+    .populate('reviews.plus reviews.minus')
     .then(post => {
-
+      //check if post has plus reviews
       if(post.reviews.plus.length != 0)
       {
+        //if the user has already added a review, do nothing
         let found = post.reviews.plus.find(user => user._id == token)
-        if (found) throw new createError(400, 'user has already reviewed with a plus!')
+        if (found)
+        {
+          res.sendStatus(200);
+          return;
+        }
       }
-
+      // if it's the first time the user does this, add the user to the review
       users.findById(token)
         .then(user => {
 
           if (!user) throw new createError(404, 'User not found');
 
+          //this function checks if the user was already in the "dislike" section
+          //if true, then we return the new array without the user
+          console.log(post.reviews.minus.length);
+          post.reviews.minus = removeUserFromReviews(post.reviews.minus, token);
+          console.log(post.reviews.minus.length);
           post.reviews.plus.push(user);
           post.save();
-          res.json(post);
+          res.sendStatus(200);
         })
     }).catch(err => {
       console.log(err);
@@ -47,23 +58,33 @@ module.exports = router
   let token = req.decoded.id;
 
   posts.findById(req.params.id)
-    .populate('reviews.minus')
+    .populate('reviews.minus reviews.plus')
     .then(post => {
 
+      //check if post has minus reviews
       if(post.reviews.minus.length != 0)
       {
+        //if the user has already added a review, do nothing
         let found = post.reviews.minus.find(user => user._id == token)
-        if (found) throw new createError(400, 'user has already reviewed with a minus!')
+        if (found)
+        {
+          res.sendStatus(200);
+          return;
+        }
       }
-
+        // if it's the first time the user does this, add the user to the review
         users.findById(token)
           .then(user => {
 
             if (!user) throw new createError(404, 'User not found');
-
+            //this function checks if the user was already in the "like" section
+            //if true, then we return the new array without the user
+            console.log(post.reviews.plus.length);
+            post.reviews.plus = removeUserFromReviews(post.reviews.plus, token);
+            console.log(post.reviews.plus.length);
             post.reviews.minus.push(user);
             post.save();
-            res.json(post);
+            res.sendStatus(200);
           })
     }).catch(err => {
         console.log(err);
