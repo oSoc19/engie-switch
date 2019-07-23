@@ -47,7 +47,7 @@ module.exports = router
 
   let token = req.decoded.id;
 
-  posts.findById(req.params.id).exec()
+  posts.findById(req.params.id)
     .populate('reviews.minus')
     .then(post => {
 
@@ -57,8 +57,8 @@ module.exports = router
         if (found) throw new createError(400, 'user has already reviewed with a minus!')
       }
 
-        users.findById(token).exec()
-          then(user => {
+        users.findById(token)
+          .then(user => {
 
             if (!user) throw new createError(404, 'User not found');
 
