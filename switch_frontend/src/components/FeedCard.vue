@@ -19,11 +19,15 @@
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <img src="@/assets/icons/tree-silhouette.svg" alt="heart" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
-                    <div>{{this.post.reviews.plus.length}}</div>
-
-                    <img src="@/assets/icons/factory.svg" alt="heart" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
-                    <div>{{this.post.reviews.minus.length}}</div>
+                    <ion-badge class="badge" color="#111" slot="start">
+                        <img src="@/assets/icons/tree-silhouette.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                        <div>{{this.post.reviews.plus.length}}</div>
+                    </ion-badge>
+                    <ion-badge class="badge" color="#111" slot="end">
+                        <img src="@/assets/icons/skull-crossbones-solid.svg" alt="crossbones" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                        <div>{{this.post.reviews.minus.length}}</div>
+                    </ion-badge>
+                    
 
                     <!--<div hidden :id="'bool' + post._id">0</div>-->
                 </div>
@@ -104,7 +108,6 @@ export default {
     display:flex;
     flex-direction: row;
     margin: 0px;
-
     align-items: center;
 }
 
@@ -161,11 +164,22 @@ export default {
     justify-self: left;
     width: 20px;
     margin-right: 5px;
-
+    width: 100%;
 }
 
+.badge{
+    display: flex;
+    background-color: #eee;
+    margin: 5px;
+    width: 8% !important;
+    border: 1px solid #ddd;
+    flex-direction: row;
+    align-items: center;
+    
+}
 
 .dislike{
-    padding-left: 21px;
+    width: 100%;
+    
 }
 </style>
