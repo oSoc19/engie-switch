@@ -66,12 +66,12 @@ module.exports = router
             post.save(p => {
               res.json(p);
 
-          });
-    })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+            });
+          })
+    }).catch(err => {
+        console.log(err);
+        next(err);
+      })
 })
 .get('/:id', (req, res, next) => {
   posts.findById(req.params.id)
