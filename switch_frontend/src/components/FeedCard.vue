@@ -40,20 +40,14 @@ export default {
     name: "FeedCard",
     props: ['post'],
     methods: {
-        likePost() {       
+        likePost() {
+          api.getUser().then(() => {
             api.postPlus(this.post._id).then(data => this.post = data).catch(error.bind(this));
+          })
         },
         dislikePost(){
-            api.getUser().then(currentUser => {
-                if(!this.post.reviews.minus.includes(currentUser._id)){
-                    if(!this.post.reviews.plus.includes(currentUser._id)){
-                        this.post.reviews.minus.push(currentUser._id)
-                    }else{
-                        var index = this.post.reviews.plus.indexOf(currentUser._id)
-                        this.post.reviews.plus.splice(index, 1);
-                        this.post.reviews.minus.push(currentUser._id);
-                    }
-                }                
+            api.getUser().then(() => {
+                api.postPlus(this.post._id).then(data => this.post = data).catch(error.bind(this));
             })
         },
         formatDate(datetime) {

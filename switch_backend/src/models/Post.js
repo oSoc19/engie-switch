@@ -13,8 +13,14 @@ const Post = new mongoose.Schema
   text: String,
   dateTime: {type: Date, default: Date.now},
   reviews: {
-    plus: [{type: objectId, ref: 'User'}],
-    minus: [{type: objectId, ref: 'User'}]
+    plus: [{
+      type: objectId,
+      ref: 'User'
+    }],
+    minus: [{
+      type: objectId,
+      ref: 'User'
+    }],
   }
 });
 

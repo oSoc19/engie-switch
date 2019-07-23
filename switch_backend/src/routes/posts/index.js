@@ -14,42 +14,57 @@ module.exports = router
 // Update review by adding a 'like'
 // post instead of put because we would need to change too much
 .post('/:id/plus', checkToken, (req, res, next) => {
-  posts.findById(req.params.id)
-    .populate('reviews')
-    .then(post => {
-      post.reviews.plus.find(user => user._id == req.decoded.id)
-        .then(found => {
-          if (found) throw new createError(400, 'User has already reviewed with a plus!');
-        });
 
-      users.findById(req.decoded.id).exec()
-        then(user => {
+  let token = req.decoded.id;
+
+  posts.findById(req.params.id)
+    .populate('reviews.plus')
+    .then(post => {
+
+      if(post.reviews.plus.length != 0)
+      {
+        let found = post.reviews.plus.find(user => user._id == token)
+        if (found) throw new createError(400, 'user has already reviewed with a plus!')
+      }
+
+      users.findById(token)
+        .then(user => {
+
           if (!user) throw new createError(404, 'User not found');
 
           post.reviews.plus.push(user);
-        });
-    })
-    .catch(err => {
+          post.save(p => {
+            res.json(p);
+          });
+        })
+    }).catch(err => {
       console.log(err);
       next(err);
     });
 })
 
 .post('/:id/minus', checkToken, (req, res, next) => {
-  posts.findById(req.params.id)
-    .populate('reviews')
-    .then(post => {
-      post.reviews.plus.find(user => user._id == req.decoded.id)
-        .then(found => {
-          if (found) throw new createError(400, 'User has already reviewed with a minus!');
-        });
 
-        users.findById(req.decoded.id).exec()
+  let token = req.decoded.id;
+
+  posts.findById(req.params.id).exec()
+    .populate('reviews.minus')
+    .then(post => {
+
+      if(post.reviews.minus.length != 0)
+      {
+        let found = post.reviews.minus.find(user => user._id == token)
+        if (found) throw new createError(400, 'user has already reviewed with a minus!')
+      }
+
+        users.findById(token).exec()
           then(user => {
 
             if (!user) throw new createError(404, 'User not found');
 
             post.reviews.minus.push(user);
+            post.save(p => {
+              res.json(p);
 
           });
     })
@@ -76,7 +91,7 @@ module.exports = router
     posts.find({})
       .populate('user')
       .populate('challenge')
-      .populate('reviews')
+      //.populate('reviews')
       .then((posts) => {
         let sortedPosts = posts.sort(compare)
         res.json(sortedPosts)
