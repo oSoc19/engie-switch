@@ -6,6 +6,8 @@ const checkToken = require('../../checkToken');
 let users = mongoose.model('User');
 let posts = mongoose.model('Post');
 const compare = require("../../sortFeeds");
+const nsfwjs = require('../../nsfwjs');
+const urlString = require('../../urlString');
 const removeUserFromReviews = require('../../removeUserFromReviews')
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
@@ -129,13 +131,14 @@ module.exports = router
   // Create a new post
   .post('/', (req, res, next) => {
     let tempPost = new posts(req.body);
-    //console.log(tempPost);
-    return tempPost.save()
-      .then((savedPost) => {
-        res.json(savedPost);
-      })
-      .catch((err) => {
-        console.log(err);
-        next(err);
-      })
+    let imageBuf = urlString.toBytes(tempPost.image)
+    nsfwjs.predict(imageBuf).then(predictions => {
+      tempPost.nsfwjs = predictions
+      return tempPost.save()
+    }).then((savedPost) => {
+      res.json(savedPost);
+    }).catch((err) => {
+      console.log(err);
+      next(err);
+    })
   });

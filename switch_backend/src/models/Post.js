@@ -10,6 +10,7 @@ const Post = new mongoose.Schema
   challenge: {type: objectId, ref: 'Challenge'},
   user: {type: objectId, ref: 'User'},
   image: String, //BASE64_CONTENT
+  nsfwjs: {},
   text: String,
   dateTime: {type: Date, default: Date.now},
   reviews: {

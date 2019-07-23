@@ -95,6 +95,7 @@ function postPlus(postId){
 
 function postMinus(postId){
   return apiCall('/posts/' + postId + "/minus", {}, true);
+}
 
 function getTop10() {
   return apiCall('/users/top10users');
