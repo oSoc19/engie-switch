@@ -19,17 +19,18 @@
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <ion-badge class="badge" color="#111" slot="start">
-                        <img src="@/assets/icons/tree-silhouette.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
-                        <div>{{this.post.reviews.plus.length}}</div>
-                    </ion-badge>
-                    <ion-badge class="badge" color="#111" slot="end">
-                        <img src="@/assets/icons/skull-crossbones-solid.svg" alt="crossbones" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
-                        <div>{{this.post.reviews.minus.length}}</div>
-                    </ion-badge>
-                    
-
-                    <!--<div hidden :id="'bool' + post._id">0</div>-->
+                    <div class="badge" color="#111">
+                        <div class="badge__container">
+                        <img src="@/assets/icons/tree-solid.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                        <div class="badge__text">{{this.post.reviews.plus.length}}</div>
+                        </div>
+                    </div>
+                    <div class="badge" color="#111">
+                        <div class="badge__container">
+                            <img src="@/assets/icons/times-solid.svg" alt="crossbones" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                            <div class="badge__text">{{this.post.reviews.minus.length}}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -140,6 +141,7 @@ export default {
 .feedcard__header__profilepiccontainer{
     width: 32px;
     height: 32px;
+    background-color: rgb(235, 251, 252);
 }
 
 .feedcard__header__profilepiccontainer__profilepic{
@@ -171,15 +173,33 @@ export default {
     display: flex;
     background-color: #eee;
     margin: 5px;
-    width: 8% !important;
+    width: auto !important;
     border: 1px solid #ddd;
     flex-direction: row;
     align-items: center;
-    
+    border-radius: 5px;
+    padding: 5px;
+        
 }
 
-.dislike{
+.badge__container{
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    
+    align-items: center;
 }
+
+.like{
+    width: 16px !important;
+}
+.dislike{
+    width: 16px !important;
+}
+
+.badge__text{
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
 </style>
