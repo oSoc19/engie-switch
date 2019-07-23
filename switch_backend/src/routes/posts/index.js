@@ -33,9 +33,8 @@ module.exports = router
           if (!user) throw new createError(404, 'User not found');
 
           post.reviews.plus.push(user);
-          post.save(p => {
-            res.json(p);
-          });
+          post.save();
+          res.json(post);
         })
     }).catch(err => {
       console.log(err);
@@ -63,10 +62,8 @@ module.exports = router
             if (!user) throw new createError(404, 'User not found');
 
             post.reviews.minus.push(user);
-            post.save(p => {
-              res.json(p);
-
-            });
+            post.save();
+            res.json(post);
           })
     }).catch(err => {
         console.log(err);
