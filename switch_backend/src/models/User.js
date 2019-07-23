@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const objectId = mongoose.Types.ObjectId;
+const objectId = mongoose.Schema.Types.ObjectId;
 
 //defining a model
 const User = new mongoose.Schema
