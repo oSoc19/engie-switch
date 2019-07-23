@@ -84,7 +84,9 @@ export default {
 </script>
 
 <style>
-
+.feedcard{
+    margin-top: 0px !important;
+}
 .feedcard__content{
     display:flex;
     justify-content: center;
