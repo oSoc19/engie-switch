@@ -89,6 +89,10 @@ function postPost(post) {
   return apiCall('/posts', post, true);
 }
 
+function getTop10() {
+  return apiCall('/users/top10users');
+}
+
 export default {
   getPosts,
   getChallenges,
@@ -96,4 +100,5 @@ export default {
   getUsers,
   getUser,
   postPost,
+  getTop10,
 }

@@ -1,20 +1,34 @@
 <template>
-  <div class="hello">
+  <div v-if="currentUser" class="hello">
     <h2>Your position</h2>
-    <leaderboard-card></leaderboard-card>
+    <leaderboard-card position="" v-bind:user="currentUser" v-bind:currentUser="currentUser"></leaderboard-card>
 
     <h1>Ranks</h1>
-    <leaderboard-card></leaderboard-card>
+    <leaderboard-card v-for="(user, index) in topten" v-bind:position="index + 1" v-bind:key="user._id" v-bind:user="user"  v-bind:currentUser="currentUser" id="card"></leaderboard-card>
   </div>
 </template>
 
 <script>
+import api from '@/utils/api'
+import error from '@/utils/error'
+
 export default {
   name: "Leaderboard",
   props: {
-    msg: String
+    position: Number
+  },
+  created() {
+    api.getUser().then(user => this.currentUser = user).catch(error.bind(this));
+    api.getTop10().then(data => this.topten = data).catch(error.bind(this));
+  },
+  data() {
+    return {
+      topten: [],
+      currentUser: null
+    }
   }
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -23,7 +37,6 @@ export default {
 .hello{
   width: 98%;
 }
-
 h1{
   padding-left: 20px;
   font-weight: bold;
@@ -31,7 +44,6 @@ h1{
   font-size: 16px;
   color: var(--black);
 }
-
 h2{
   padding-left: 20px;
   font-weight: lighter !important;

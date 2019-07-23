@@ -27,7 +27,9 @@ mongoose.connection.on("open", (ref) => {
 });
 const allowedOrigins = [
   `http://localhost:${port}`,
-  'http://localhost:8080'
+  'http://localhost:8080',
+  'http://localhost:8081',
+  'http://localhost:8082',
 ];
 app.use(cors({
   origin: allowedOrigins
