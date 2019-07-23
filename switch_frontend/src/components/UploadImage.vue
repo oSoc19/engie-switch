@@ -129,14 +129,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 95%;
 
   border: 1.7px dashed lightgray;
   border-radius: 7px;
 
   max-height: 173px !important;
   height: 173px;
-  margin-top: 10px !important;
+  margin-top: 0px !important;
   position: relative;
 
   cursor: pointer;

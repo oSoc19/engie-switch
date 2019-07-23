@@ -49,6 +49,7 @@ export default {
     contain:content;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .challenge__content__text {

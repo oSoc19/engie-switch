@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const createError = require('http-errors');
+const jdenticon = require('jdenticon')
+
 const createToken = require('../../createToken');
 const checkToken = require('../../checkToken');
 const sortUsersByPoints = require("../../sortUsersByPoints");
+const urlString = require('../../urlString')
 //These are the models we'll be interacting with
 let user = mongoose.model('User');
 
@@ -107,8 +110,13 @@ module.exports = router
     user.findOne({username: tempUser.username}).exec()
       .then((found) => {
         console.log(found);
-        if (found) throw new createError(400, 'User already exists!');
-        else return tempUser.save();
+        if (found) {
+          throw new createError(400, 'User already exists!');
+        }
+        return tempUser
+      }).then(user => {
+        user.profilePic = urlString.toUrlString(jdenticon.toSvg(user.username, 100))
+        return user.save();
       })
       .then((savedUser) => {
         req.savedUser = savedUser;

@@ -4,7 +4,7 @@
       <h2>Challenge of the day</h2>
       <ion-card class="card">
         <div class="card__content">
-          <img id="img" class="card__content--img" :src="challenge.image+'500'" alt />
+          <img id="img" class="card__content__img" :src="challenge.image+'500'" alt />
           <ion-card-title class="challenge__title">{{challenge.title}}</ion-card-title>
           <ion-card-content>{{challenge.description}}</ion-card-content>
         </div>
@@ -14,22 +14,25 @@
 </template>
 
 <script>
-import api from '@/utils/api'
-import error from '@/utils/error'
+import api from "@/utils/api";
+import error from "@/utils/error";
 
 export default {
   name: "DailyChallengeCard",
   data() {
     return {
       challenge: {}
-    }
+    };
   },
   created() {
-    // TODO get random challenge from server?
-    api.getChallenges().then((data) => {
-      let randomNr = Math.floor(Math.random() * data.length);
-      this.challenge = data[randomNr];
-    }).catch(error.bind(this))
+    //TODO get random challenge from server
+    api
+      .getChallenges()
+      .then(data => {
+        let randomNr = Math.floor(Math.random() * data.length);
+        this.challenge = data[randomNr];
+      })
+      .catch(error.bind(this));
   }
 };
 </script>
@@ -43,6 +46,7 @@ a {
 }
 h2 {
   color: white;
+  text-align: center;
 }
 .fullcard {
   background-color: var(--primary-color);
@@ -71,16 +75,17 @@ h2 {
   width: 95%;
 }
 
-.sc-ion-card-ios-s img {
-  max-width: 100% !important;
-  width: 98% !important;
+.card__content__img {
+  max-width: 100%;
+  width: 98%;
 
-  max-height: 173px !important;
+  max-height: 173px;
   margin-top: 10px !important;
-  border-radius: 7px !important;
+  border-radius: 7px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  object-fit: center;
 }
 
 ion-card-title {
