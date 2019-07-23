@@ -115,7 +115,7 @@ module.exports = router
         }
         return tempUser
       }).then(user => {
-        user.profilePic = urlString.toUrlString(jdenticon.toPng(user.username, 100))
+        user.profilePic = urlString.toUrlString(jdenticon.toSvg(user.username, 100))
         return user.save();
       })
       .then((savedUser) => {
