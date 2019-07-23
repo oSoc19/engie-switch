@@ -8,7 +8,6 @@ module.exports = (req, res, next) => {
   // Express headers are auto converted to lowercase
   try
   {
-    console.log(req.headers);
     let token = req.headers['x-access-token'] || req.headers['authorization'];;
     //check if token is not null to see if authorization header exists
     if(!token) throw new createError(400, 'Please provide authorization header');
@@ -16,7 +15,6 @@ module.exports = (req, res, next) => {
     {
       // Remove Bearer from string
       // TODO: Explain what the Bearer is
-      console.log(token);
 
       token = token.slice(7, token.length);
     }
@@ -27,7 +25,6 @@ module.exports = (req, res, next) => {
     jwt.verify(token, config.secret, (err, decoded) => {
       if (err) throw new createError(401, "Token is not valid");
       req.decoded = decoded;
-      console.log(decoded);
       next();
     });
   }

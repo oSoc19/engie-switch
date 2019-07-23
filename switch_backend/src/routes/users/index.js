@@ -41,7 +41,7 @@ module.exports = router
     let decoded = req.decoded;
     user.findById(decoded.id).exec()
     .then((userFound) => {
-      if (!userFound) throw new createError(404, "Couldn't find user " + decoded.id);
+      if (!userFound) throw new createError(400, "Couldn't find user " + decoded.id);
       else res.json(userFound);
     }).catch(err => {
       next(err);
@@ -51,7 +51,7 @@ module.exports = router
   .get('/:id', (req, res, next) => {
     user.findById(req.params.id).exec()
       .then((userFound) => {
-        if (!userFound) throw new createError(404, "Couldn't find user " + req.params.id);
+        if (!userFound) throw new createError(400, "Couldn't find user " + req.params.id);
         else res.json(userFound);
       }).catch((err) => {
         console.log(err);
@@ -67,7 +67,7 @@ module.exports = router
 
     user.findOne(userToFind).exec()
       .then((userFound) => {
-        if (userFound) throw new createError(400, 'User already exists!');
+        if (userFound) throw new createError(400, 'Username already exists!');
         user.findById(req.params.id).exec()
           .then((userFound) => {
             if (!userFound) throw new createError(404, "Couldn't find user " + req.params.id);
@@ -115,7 +115,7 @@ module.exports = router
         }
         return tempUser
       }).then(user => {
-        user.profilePic = urlString.toUrlString(jdenticon.toPng(user.username, 100))
+        user.profilePic = urlString.toUrlString(jdenticon.toSvg(user.username, 100))
         return user.save();
       })
       .then((savedUser) => {

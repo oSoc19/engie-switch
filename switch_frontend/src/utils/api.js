@@ -89,6 +89,14 @@ function postPost(post) {
   return apiCall('/posts', post, true);
 }
 
+function postPlus(postId){
+  return apiCall('/posts/' + postId + "/plus", {}, true);
+}
+
+function postMinus(postId){
+  return apiCall('/posts/' + postId + "/minus", {}, true);
+}
+
 function getTop10() {
   return apiCall('/users/top10users');
 }
@@ -100,5 +108,7 @@ export default {
   getUsers,
   getUser,
   postPost,
+  postPlus,
+  postMinus,
   getTop10,
 }
