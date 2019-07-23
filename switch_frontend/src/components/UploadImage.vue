@@ -26,6 +26,7 @@
 import api from '@/utils/api'
 import fileToBase64 from '@/utils/fileToBase64'
 import error from '@/utils/error'
+import imageReduction from '@/utils/imageReduction'
 
 export default {
   name: "UploadImage",
@@ -46,7 +47,17 @@ export default {
       fileToBase64(files[0]).then(image => {
         let imagePreview = this.$refs.imagePreview;
         imagePreview.src = image;
-        this.uploadImage(image);
+        /**/ 
+        const img = new Image();
+        img.onload = function(){
+          window.console.log(img.width + " " + img.height)
+        }
+        img.src = image;
+        
+
+        //imageReduction.createCanvas(image)
+        /** */
+        //this.uploadImage(image);
       })
     },
     uploadImage(image) {
