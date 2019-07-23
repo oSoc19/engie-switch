@@ -94,7 +94,7 @@ function postPlus(postId){
 }
 
 function postMinus(postId){
-  return apiCall('/posts/' + postId + "/minus", "", true);
+  return apiCall('/posts/' + postId + "/minus", {}, true);
 }
 
 export default {
