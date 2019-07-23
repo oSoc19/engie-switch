@@ -47,7 +47,7 @@ export default {
         },
         dislikePost(){
             api.getUser().then(() => {
-                api.postPlus(this.post._id).then(data => this.post = data).catch(error.bind(this));
+                api.postMinus(this.post._id).then(data => this.post = data).catch(error.bind(this));
             })
         },
         formatDate(datetime) {
