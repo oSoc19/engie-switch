@@ -27,7 +27,7 @@
                     </div>
                     <div class="badge" color="#111">
                         <div class="badge__container">
-                            <img src="@/assets/icons/times-solid.svg" alt="crossbones" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                            <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
                             <div class="badge__text">{{this.post.reviews.minus.length}}</div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@ export default {
 }
 
 .like{
-    width: 18px !important;
+    width: 19px !important;
 }
 .dislike{
     width: 16px !important;
