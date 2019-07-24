@@ -25,17 +25,29 @@
           :class="{blur__image: isNude && !showNude}"
           v-on:click="toggleNude"
         />
-        <div class="blur__image__text"
+        <div
+          class="blur__image__text"
           :class="{blur__image__text__show: isNude && !showNude}"
           v-on:click="toggleNude"
         >
           <p>
-            Nude detected<br />
-            Tap to show anyway
+            Nude detected
+            <br />Tap to show anyway
           </p>
         </div>
 
-        <div class="hideNude__button" :class="{hideNude__button__show: isNude && showNude}">
+        <div
+          v-on:click="toggleNude"
+          class="showNude__button"
+          :class="{showNude__button__show: isNude && !showNude}"
+        >
+          <img src="@/assets/icons/eye-solid.svg" alt />
+        </div>
+        <div
+          v-on:click="toggleNude"
+          class="hideNude__button"
+          :class="{hideNude__button__show: isNude && showNude}"
+        >
           <img src="@/assets/icons/eye-slash-solid.svg" alt />
         </div>
       </div>
@@ -80,7 +92,7 @@ export default {
   data() {
     return {
       isNude: this.post.nsfwjs.porn >= 0.5,
-      showNude: false,
+      showNude: false
     };
   },
   methods: {
@@ -123,8 +135,8 @@ export default {
     },
     toggleNude() {
       this.showNude = !this.showNude;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -270,13 +282,35 @@ export default {
   display: none;
   justify-content: center;
   align-items: center;
-  top: 5px;
+  bottom:  5px;
   right: 5px;
 }
 .hideNude__button__show {
   display: flex;
 }
 .hideNude__button img {
+  max-width: 70%;
+  max-height: 70%;
+}
+
+.showNude__button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  color: var(--red);
+  text-align: center;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  bottom: 5px;
+  right: 5px;
+}
+.showNude__button__show {
+  display: flex;
+}
+.showNude__button img {
   max-width: 70%;
   max-height: 70%;
 }
