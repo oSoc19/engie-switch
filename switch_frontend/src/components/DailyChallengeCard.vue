@@ -1,7 +1,10 @@
 <template>
   <router-link :to="'/uploadpost/' + challenge._id">
     <div v-if="challenge" class="fullcard">
-      <h2>Challenge of the day</h2>
+      <div class="card__header">
+        <h2>Challenge of the day</h2>
+        <div class="bar"> </div>
+      </div>
       <ion-card class="card">
         <div class="card__content">
           <img id="img" class="card__content__img" :src="challenge.image+'500'" alt />
@@ -45,15 +48,16 @@ a {
   padding: 0 !important;
 }
 h2 {
-  color: white;
+  color: #3c4c52;
   text-align: center;
+  margin-block-end: 8px !important;
 }
 .fullcard {
-  background-color: var(--primary-color);
+  background-color: rgb(222, 231, 238);
   width: 100vw !important;
   margin: 0 !important;
   margin-bottom: 20px !important;
-  padding: 20px 0 !important;
+  padding: 10px 0 !important;
 }
 
 .card {
@@ -100,5 +104,18 @@ ion-card-content {
   padding: 0 !important;
   font-size: 14px !important;
   margin-bottom: 10px !important;
+}
+
+.card__header{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar{
+  background: var(--primary-color);
+  width: 40px;
+  height: 5px;
+  border-radius: 5px;
 }
 </style>
