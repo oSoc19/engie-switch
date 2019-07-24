@@ -73,12 +73,6 @@ export default {
               return diff + ' day' + (diff > 1 ? 's' : '') + ' ago';
             }
             return dt.toLocaleString();
-        },
-        setHeight(){
-            var width = this.$refs.container.clientWidth;
-            window.console.log(width)
-            this.$refs.container.style.height = width + "px";
-            window.console.log('height: ', this.$refs.container.style.height)        
         }
     }
   }
