@@ -5,10 +5,10 @@
         <img src="@/assets/img/switch.svg" alt="Logo switch" class="header__content__left__image" />
         <div class="header__content__left__text">SWITCH</div>
       </div>
-      <div class="header__content__points content">
+      <router-link class="header__content__points content" :to="{name:'Profile', params: {id: '2'}}">
         <div class="points">{{userData.points}}</div>
         <img src="@/assets/icons/star-solid.svg" alt="star" width="17px" />
-      </div>
+      </router-link>
       <div class="header__line" :style="{ backgroundImage: 'url(' + img_url + ')' }">
       </div>
     </div>
@@ -77,6 +77,7 @@ export default {
 .header__content__points {
   color: black;
   font-family: "Montserrat", sans-serif;
+  text-decoration: none;
   font-weight: 600;
   display: flex;
   align-items: center;
