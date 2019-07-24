@@ -25,18 +25,16 @@
           :class="{blur__image: isNude && !showNude}"
           v-on:click="toggleNude"
         />
-        <div class="blur__image__text"
-          :class="{blur__image__text__show: isNude && !showNude}"
-          v-on:click="toggleNude"
-        >
+        <div v-if="isNude && !showNude" class="blur__image__text" v-on:click="toggleNude">
           <p>
-            Nude detected<br />
-            Tap to show anyway
+            Nude detected
+            <br />Tap to show anyway
           </p>
         </div>
 
-        <div class="hideNude__button" :class="{hideNude__button__show: isNude && showNude}">
-          <img src="@/assets/icons/eye-slash-solid.svg" alt />
+        <div v-if="isNude" v-on:click="toggleNude" class="eye__button">
+          <img v-if="!showNude" src="@/assets/icons/eye-solid.svg" alt />
+          <img v-if="showNude" src="@/assets/icons/eye-slash-solid.svg" alt />
         </div>
       </div>
       <div class="feedcard__content__likes">
@@ -80,7 +78,7 @@ export default {
   data() {
     return {
       isNude: this.post.nsfwjs.porn >= 0.5,
-      showNude: false,
+      showNude: false
     };
   },
   methods: {
@@ -123,8 +121,8 @@ export default {
     },
     toggleNude() {
       this.showNude = !this.showNude;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -152,7 +150,7 @@ export default {
   width: 100%;
   height: 100%;
   top: 0;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -161,9 +159,6 @@ export default {
   background-color: rgba(235, 251, 252, 0.5);
   width: 100%;
   padding: 5px 0;
-}
-.blur__image__text__show {
-  display: flex;
 }
 .remove {
   display: none;
@@ -259,7 +254,7 @@ export default {
   font-weight: bold;
   font-size: 13px;
 }
-.hideNude__button {
+.eye__button {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -267,17 +262,15 @@ export default {
   color: var(--red);
   text-align: center;
   border-radius: 50%;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
-  top: 5px;
+  bottom:  5px;
   right: 5px;
 }
-.hideNude__button__show {
-  display: flex;
-}
-.hideNude__button img {
+.eye__button img {
   max-width: 70%;
   max-height: 70%;
 }
+
 </style>
