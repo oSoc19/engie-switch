@@ -35,21 +35,18 @@ export default {
 <style scoped>
 
 .hello{
-  width: 98%;
+  width: 100%;
 }
 h1{
-  padding-left: 20px;
-  font-weight: bold;
-  text-align: left;
+  padding-left: 24px;
   font-size: 16px;
   color: var(--black);
 }
 h2{
-  padding-left: 20px;
+  padding-left: 24px;
   font-weight: lighter !important;
-  text-align: left;
   font-size: 16px;
   color: var(--black);
-  padding-top: 20px;
+  padding-top: 16px;
 }
 </style>
