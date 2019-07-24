@@ -21,7 +21,7 @@ module.exports = router
   let token = req.decoded.id;
 
   posts.findById(req.params.id)
-    .populate('reviews.plus reviews.minus')
+    .populate('reviews.plus reviews.minus user challenge')
     .then(post => {
       //check if post has plus reviews
       if(post.reviews.plus.length != 0)
@@ -60,7 +60,7 @@ module.exports = router
   let token = req.decoded.id;
 
   posts.findById(req.params.id)
-    .populate('reviews.minus reviews.plus')
+    .populate('reviews.minus reviews.plus user challenge')
     .then(post => {
 
       //check if post has minus reviews
