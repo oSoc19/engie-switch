@@ -153,7 +153,7 @@ export default {
 .feedcard__header__profilepiccontainer{
     width: 32px;
     height: 32px;
-    background-color: rgb(235, 251, 252);
+    background-color: rgb(222, 231, 238);
 }
 
 .feedcard__header__profilepiccontainer__profilepic{
