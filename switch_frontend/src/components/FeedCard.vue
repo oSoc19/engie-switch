@@ -1,86 +1,117 @@
 <template>
-    <ion-card class="feedcard">
-        <ion-card-header>
-            <div class="feedcard__header">
-                <div class="feedcard__header__profilepiccontainer">
-                    <img :src="post.user.profilePic" class="feedcard__header__profilepiccontainer__profilepic"/>
-                </div>
-                <div class="feedcard__header__details">
-                    <div class="feedcard__header__details__name">{{post.user.username}}</div>
-                    <div class="feedcard__header__details__time">{{formatDate(post.dateTime)}}</div>
-                </div>
-            </div>
-            <ion-card-title class="feedcard__header__challenge">{{post.challenge.title}}</ion-card-title>
-        </ion-card-header>
+  <ion-card class="feedcard">
+    <ion-card-header>
+      <div class="feedcard__header">
+        <div class="feedcard__header__profilepiccontainer">
+          <img
+            :src="post.user.profilePic"
+            class="feedcard__header__profilepiccontainer__profilepic"
+          />
+        </div>
+        <div class="feedcard__header__details">
+          <div class="feedcard__header__details__name">{{post.user.username}}</div>
+          <div class="feedcard__header__details__time">{{formatDate(post.dateTime)}}</div>
+        </div>
+      </div>
+      <ion-card-title class="feedcard__header__challenge">{{post.challenge.title}}</ion-card-title>
+    </ion-card-header>
 
-        <ion-card-content class="feedcard__content">
-            <div class="feedcard__content__imagecontainer">
-                <img :src="post.image" :alt="post.challenge" class="feedcard__content__imagecontainer__image"/>
+    <ion-card-content class="feedcard__content">
+      <div class="feedcard__content__imagecontainer">
+        <div class="blur__image__text">
+          Son, bad image here
+          <br />Tap to show
+        </div>
+        <img
+          :src="post.image"
+          :alt="post.challenge"
+          class="feedcard__content__imagecontainer__image"
+        />
+      </div>
+      <div class="feedcard__content__likes">
+        <div class="feedcard__content__likes__heart">
+          <div class="badge" color="#111">
+            <div class="badge__container">
+              <img
+                src="@/assets/icons/tree.svg"
+                alt="tree"
+                class="like"
+                :id="'likebutton'+post._id"
+                v-on:click="likePost();"
+              />
+              <div class="badge__text">{{this.post.reviews.plus.length}}</div>
             </div>
-            <div class="feedcard__content__likes">
-                <div class="feedcard__content__likes__heart">
-                    <div class="badge" color="#111">
-                        <div class="badge__container">
-                        <img src="@/assets/icons/tree.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
-                        <div class="badge__text">{{this.post.reviews.plus.length}}</div>
-                        </div>
-                    </div>
-                    <div class="badge" color="#111">
-                        <div class="badge__container">
-                            <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
-                            <div class="badge__text">{{this.post.reviews.minus.length}}</div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="badge" color="#111">
+            <div class="badge__container">
+              <img
+                src="@/assets/icons/cross.svg"
+                alt="cross"
+                class="dislike"
+                :id="'dislikebutton'+post._id"
+                v-on:click="dislikePost();"
+              />
+              <div class="badge__text">{{this.post.reviews.minus.length}}</div>
             </div>
-
-        </ion-card-content>
-    </ion-card>
+          </div>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </template>
 
 <script type="text/javascript">
-import api from '@/utils/api'
-import error from '@/utils/error'
+import api from "@/utils/api";
+import error from "@/utils/error";
 export default {
-    name: "FeedCard",
-    props: ['post'],
-    methods: {
-        likePost() {
-          api.getUser().then(() => {
-            api.postPlus(this.post._id).then(data => this.post = data).catch(error.bind(this));
-          })
-        },
-        dislikePost(){
-            api.getUser().then(() => {
-                api.postMinus(this.post._id).then(data => this.post = data).catch(error.bind(this));
-            })
-        },
-        formatDate(datetime) {
-            let dt = new Date(datetime);
-            let now = new Date();
-            let diff = Math.round( (now.getTime() - dt.getTime()) / 1000);
-            if(diff < 60) {
-              return diff + ' sec ago';
-            }
-            diff = Math.floor(diff / 60);
-            if(diff < 60) {
-              return diff + ' min ago';
-            }
-            diff = Math.floor(diff / 60);
-            if(diff < 24) {
-              return diff + ' hour' + (diff > 1 ? 's' : '') + ' ago';
-            }
-            diff = Math.floor(diff / 24);
-            if(diff < 7) {
-              return diff + ' day' + (diff > 1 ? 's' : '') + ' ago';
-            }
-            return dt.toLocaleString();
-        }
+  name: "FeedCard",
+  props: ["post"],
+  methods: {
+    likePost() {
+      api.getUser().then(() => {
+        api
+          .postPlus(this.post._id)
+          .then(data => (this.post = data))
+          .catch(error.bind(this));
+      });
+    },
+    dislikePost() {
+      api.getUser().then(() => {
+        api
+          .postMinus(this.post._id)
+          .then(data => (this.post = data))
+          .catch(error.bind(this));
+      });
+    },
+    formatDate(datetime) {
+      let dt = new Date(datetime);
+      let now = new Date();
+      let diff = Math.round((now.getTime() - dt.getTime()) / 1000);
+      if (diff < 60) {
+        return diff + " sec ago";
+      }
+      diff = Math.floor(diff / 60);
+      if (diff < 60) {
+        return diff + " min ago";
+      }
+      diff = Math.floor(diff / 60);
+      if (diff < 24) {
+        return diff + " hour" + (diff > 1 ? "s" : "") + " ago";
+      }
+      diff = Math.floor(diff / 24);
+      if (diff < 7) {
+        return diff + " day" + (diff > 1 ? "s" : "") + " ago";
+      }
+      return dt.toLocaleString();
+    },
+    blurImage(imageID) {
+      let image = document.getElementById(imageID);
+      let imageBlurText = document.getElementById("imageBlurText");
+      image.classList.add("blur__image");
+      imageBlurText.style.display = "block";
     }
-}
-
-
-
+  }
+};
 </script>
 
 <style>
@@ -95,113 +126,123 @@ export default {
     padding-top: 0px;
 }
 
-.feedcard__content__imagecontainer{
-    width: 100%;
-    height: 190px;
+.feedcard__content__imagecontainer {
+  width: 100%;
+  height: 190px;
+  position: relative;
+}
+.blur__image__text {
+  color: white;
+  background-color: rgba(200, 14, 15, 0.4);
+  font-size: 16px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.blur__image {
+  filter: blur(20px);
 }
 
-.feedcard__content__imagecontainer__image{
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    object-fit: cover;
+.feedcard__content__imagecontainer__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
 }
 
-.feedcard__header{
-    display:flex;
-    flex-direction: row;
-    margin: 0px;
-    align-items: center;
+.feedcard__header {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  align-items: center;
 }
 
-.feedcard__header__details{
-    display: flex;
-    flex-direction: column;
-    color: #444444 !important;
-    margin-left: 10px;
-    text-align: left;
+.feedcard__header__details {
+  display: flex;
+  flex-direction: column;
+  color: #444444 !important;
+  margin-left: 10px;
+  text-align: left;
 }
 
-.feedcard__header__details__name{
-    font-size: 13px;
-    font-weight: bold;
-
+.feedcard__header__details__name {
+  font-size: 13px;
+  font-weight: bold;
 }
 
-.feedcard__header__details__time{
-    font-size: 9px;
-    color: #000;
+.feedcard__header__details__time {
+  font-size: 9px;
+  color: #000;
 }
 
-.feedcard__header__challenge{
-    font-size: 12px !important;
-    color: #444444;
-    text-align: left;
-    margin-top: 5px;
+.feedcard__header__challenge {
+  font-size: 12px !important;
+  color: #444444;
+  text-align: left;
+  margin-top: 5px;
 }
 
-.feedcard__header__profilepiccontainer{
-    width: 32px;
-    height: 32px;
-    background-color: rgb(235, 251, 252);
+.feedcard__header__profilepiccontainer {
+  width: 32px;
+  height: 32px;
+  background-color: rgb(235, 251, 252);
 }
 
-.feedcard__header__profilepiccontainer__profilepic{
-    width: 100%;
-    height: 100%;
-    border-radius: 50px;
-    object-fit: cover;
+.feedcard__header__profilepiccontainer__profilepic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  object-fit: cover;
 }
 
-.feedcard__content__likes{
-    display: flex;
-    width: 100%;
-    justify-content: left;
-    margin-top: 5px;
-    font-size: 12px;
-    color: #000;
-    align-items: center;
+.feedcard__content__likes {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #000;
+  align-items: center;
 }
 
-.feedcard__content__likes__heart{
-    display:flex;
-    justify-self: left;
-    width: 20px;
-    margin-right: 5px;
-    width: 100%;
+.feedcard__content__likes__heart {
+  display: flex;
+  justify-self: left;
+  width: 20px;
+  margin-right: 5px;
+  width: 100%;
 }
 
-.badge{
-    display: flex;
-    background-color: #eee;
-    margin: 5px;
-    width: auto !important;
-    border: 1px solid #ddd;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 5px;
-    padding: 5px;
-        
+.badge {
+  display: flex;
+  background-color: #eee;
+  margin: 5px;
+  width: auto !important;
+  border: 1px solid #ddd;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
 }
 
-.badge__container{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
+.badge__container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
 }
 
-.like{
-    width: 19px !important;
+.like {
+  width: 19px !important;
 }
-.dislike{
-    width: 16px !important;
-}
-
-.badge__text{
-    margin-left: 5px;
-    font-weight: bold;
-    font-size: 13px;
+.dislike {
+  width: 16px !important;
 }
 
+.badge__text {
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
 </style>
