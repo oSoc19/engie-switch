@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const createError = require('http-errors');
-const checkToken = require('../../checkToken');
+const checkToken = require('../../utils/checkToken');
 let users = mongoose.model('User');
 let posts = mongoose.model('Post');
-const compare = require("../../sortFeeds");
+const compare = require("../../utils/sortFeeds");
 const nsfwjs = require('../../nsfwjs');
-const urlString = require('../../urlString');
-const removeUserFromReviews = require('../../removeUserFromReviews')
+const urlString = require('../../utils/urlString');
+const removeUserFromReviews = require('../../utils/removeUserFromReviews')
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
 

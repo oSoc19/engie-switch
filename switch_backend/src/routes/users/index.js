@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 const jdenticon = require('jdenticon')
 
-const createToken = require('../../createToken');
-const checkToken = require('../../checkToken');
-const sortUsersByPoints = require("../../sortUsersByPoints");
-const urlString = require('../../urlString')
+const createToken = require('../../utils/createToken');
+const checkToken = require('../../utils/checkToken');
+const sortUsersByPoints = require("../../utils/sortUsersByPoints");
+const urlString = require('../../utils/urlString')
 //These are the models we'll be interacting with
 let user = mongoose.model('User');
 
