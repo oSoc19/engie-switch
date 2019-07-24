@@ -3,7 +3,8 @@ async function main(
   // computeRegion,
   // modelId,
   // filePath,
-  // scoreThreshold)
+  // scoreThreshold
+)
 {
   const automl = require('@google-cloud/automl');
   const fs = require('fs');
@@ -38,8 +39,9 @@ async function main(
   });
 
   console.log('Prediction results: ');
-  response.payload.foreach(result => {
-    console.log(`${result.displayname} has a prediction score of ${result.clasification.score}`);
+  console.log(response.payload);
+  response.payload.forEach(result => {
+    console.log(`${result.displayName} has a prediction score of ${result.classification.score}`);
   });
   // [END automl_quickstart]
 }
