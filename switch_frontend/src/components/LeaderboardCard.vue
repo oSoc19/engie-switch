@@ -45,6 +45,7 @@ export default {
     padding-left:12px;
     padding-right: 12px !important;
     align-items: center;
+    height: 30px;
 }
 .leaderboardcard__content__points{
     display: flex;
