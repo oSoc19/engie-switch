@@ -9,7 +9,7 @@
 
       <div id="btnUploadImage" class="uploader__button" :class="{hidden: loading}">
         <input type="file" name="file" id="file" class="inputfile"
-          ref="fileInput" @change="onFileChange" accept="image/*" />
+          ref="fileInput" @change="onFileChange" accept="image/jpeg" />
         <div class="uploadlabel" for="file" :class="{hidden: loading}">
           <svg viewBox="0 0 512 512">
             <path
@@ -24,8 +24,8 @@
 </template>
 <script>
 import api from '@/utils/api'
-import fileToBase64 from '@/utils/fileToBase64'
 import error from '@/utils/error'
+import image from '@/utils/image'
 
 export default {
   name: "UploadImage",
@@ -43,10 +43,8 @@ export default {
         return;
       }
       this.loading = true;
-      fileToBase64(files[0]).then(image => {
-        let imagePreview = this.$refs.imagePreview;
-        imagePreview.src = image;
-        this.uploadImage(image);
+      image.prepare(files[0], this.$refs.imagePreview, 500).then(resized => {
+        this.uploadImage(resized)
       })
     },
     uploadImage(image) {
@@ -54,7 +52,7 @@ export default {
         image: image,
         user: '',
         challenge: this.challengeId,
-        text: ''
+        text: '',
       }
       api.getUser().then(user => {
         post.user = user._id;
