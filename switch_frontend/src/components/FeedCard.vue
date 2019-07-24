@@ -19,10 +19,19 @@
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <img src="@/assets/img/heart-regular.svg" alt="heart" :id="'likebutton'+post._id" v-on:click="likePost();"/>
-                    <div hidden :id="'bool' + post._id">0</div>
+                    <div class="badge" color="#111">
+                        <div class="badge__container">
+                        <img src="@/assets/icons/tree.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                        <div class="badge__text">{{this.post.reviews.plus.length}}</div>
+                        </div>
+                    </div>
+                    <div class="badge" color="#111">
+                        <div class="badge__container">
+                            <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                            <div class="badge__text">{{this.post.reviews.minus.length}}</div>
+                        </div>
+                    </div>
                 </div>
-                <div>{{post.reviews}}</div>
             </div>
 
         </ion-card-content>
@@ -30,23 +39,21 @@
 </template>
 
 <script type="text/javascript">
+import api from '@/utils/api'
+import error from '@/utils/error'
 export default {
     name: "FeedCard",
     props: ['post'],
     methods: {
         likePost() {
-            var button = document.getElementById("likebutton" + this.post._id);
-            var hiddenBool = document.getElementById("bool" + this.post._id)
-            window.console.log(button.src);
-            if (hiddenBool.innerHTML == '1'){
-                button.src = require('@/assets/img/heart-regular.svg');
-                this.post.reviews -= 1;
-                hiddenBool.innerHTML = '0'
-            }else{
-                button.src = require('@/assets/img/heart-solid.svg');
-                this.post.reviews+= 1;
-                hiddenBool.innerHTML = '1'
-            }
+          api.getUser().then(() => {
+            api.postPlus(this.post._id).then(data => this.post = data).catch(error.bind(this));
+          })
+        },
+        dislikePost(){
+            api.getUser().then(() => {
+                api.postMinus(this.post._id).then(data => this.post = data).catch(error.bind(this));
+            })
         },
         formatDate(datetime) {
             let dt = new Date(datetime);
@@ -77,7 +84,9 @@ export default {
 </script>
 
 <style>
-
+.feedcard{
+    margin-top: 0px !important;
+}
 .feedcard__content{
     display:flex;
     justify-content: center;
@@ -102,7 +111,6 @@ export default {
     display:flex;
     flex-direction: row;
     margin: 0px;
-
     align-items: center;
 }
 
@@ -135,6 +143,7 @@ export default {
 .feedcard__header__profilepiccontainer{
     width: 32px;
     height: 32px;
+    background-color: rgb(235, 251, 252);
 }
 
 .feedcard__header__profilepiccontainer__profilepic{
@@ -155,9 +164,44 @@ export default {
 }
 
 .feedcard__content__likes__heart{
+    display:flex;
     justify-self: left;
     width: 20px;
     margin-right: 5px;
-
+    width: 100%;
 }
+
+.badge{
+    display: flex;
+    background-color: #eee;
+    margin: 5px;
+    width: auto !important;
+    border: 1px solid #ddd;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;
+        
+}
+
+.badge__container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+.like{
+    width: 19px !important;
+}
+.dislike{
+    width: 16px !important;
+}
+
+.badge__text{
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
 </style>
