@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    <daily-challenge-card />
+    <div class="welcome">
+      <div>Complete challenges to reduce your energy consumption!</div>
+      <div class="bar"> </div>
+    </div>
     <feed-card v-for="post in posts" v-bind:key="post._id" v-bind:post="post"></feed-card>
   </div>
 </template>
@@ -24,4 +27,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.welcome{
+  color: var(--black);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 150%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar{
+  background: var(--primary-color);
+  width: 40px;
+  height: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
 </style>
