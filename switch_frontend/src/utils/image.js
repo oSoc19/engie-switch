@@ -19,7 +19,7 @@ function toBase64(file) {
 }
 
 function fromSrc(src) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     let img = new Image();
     img.onload = (load) => resolve(load.target);
     img.src = src;
@@ -31,7 +31,6 @@ function fromSrc(src) {
  */
 function resize(img, max) {
     var canvas = document.createElement('canvas');
-    console.log('original size '+img.naturalWidth+'x'+img.naturalHeight)
     canvas.width = img.naturalWidth;
     canvas.height = img.naturalHeight;
     canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -39,17 +38,13 @@ function resize(img, max) {
     while (canvas.width >= 2*max && canvas.height >= 2*max) {
         canvas = resizeCanvas(canvas, canvas.width/2, canvas.height/2)
     }
-    console.log('resized to '+canvas.width+'x'+canvas.height)
-    let url = canvas.toDataURL('image/jpeg')
-    console.log(url.length)
-
-    return url;
+    return canvas.toDataURL('image/jpeg')
 }
 
 function prepare(file, imagePreview, max) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     // imagePreview is used to get size and convert to canvas
-    imagePreview.onload = () => resolve(resize(imagePreview, 500));
+    imagePreview.onload = () => resolve(resize(imagePreview, max));
     // read file as base64 and populate imagePreview
     toBase64(file).then(data => imagePreview.src = data);
   })
