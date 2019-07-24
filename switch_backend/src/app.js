@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const config = require('./config')
 const routes = require('./routes')
-const cors = require('cors');
 const app = express();
 const port = 3000;
 // take the database url
@@ -26,15 +25,6 @@ mongoose.connect(dbUrl, {
 mongoose.connection.on("open", (ref) => {
   console.log("Connected to mongodb server");
 });
-const allowedOrigins = [
-  `http://localhost:${port}`,
-  'http://localhost:8080',
-  'http://localhost:8081',
-  'http://localhost:8082',
-];
-app.use(cors({
-  origin: allowedOrigins
-}));
 
 // you need this to parse the body Andrews, yes I am an idiot
 app.use(bodyParser.json({
@@ -44,9 +34,12 @@ app.use(bodyParser.urlencoded({
   extended: true,
   limit: loadLimit
 }));
-app.use(cors({
-  origin: "*"
-}));
+if(config.CORS_ENABLED) {
+  const cors = require('cors')
+  app.use(cors({
+    origin: "*"
+  }));
+}
 
 // router
 app.use('/', routes);
