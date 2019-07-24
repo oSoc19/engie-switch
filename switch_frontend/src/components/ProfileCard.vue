@@ -52,6 +52,7 @@ export default {
     background-position: center;
     background-size: cover;
     margin-left: 27.5%;
+    background-color: rgb(222, 231, 238);
 }
 
 .profile__content__points{
