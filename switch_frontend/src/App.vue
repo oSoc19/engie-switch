@@ -25,11 +25,12 @@ export default {
 
 <style>
 @import "./css/variables.css";
+*{
+  box-sizing: border-box;
+}
 
 #app {
   font-family: "Montserrat", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: var(--primary-color);
   margin-bottom: 60px !important;
   width: 100%;
