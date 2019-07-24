@@ -9,7 +9,7 @@
         </div>
         <div class="profile__content__points">
             <span>{{user.points}}</span>
-            
+
             <img src="@/assets/icons/star-solid.svg" alt="star" class="profile__content__star"/>
       </div>
     </ion-card-content>
@@ -46,7 +46,6 @@ export default {
 }
 
 .profile__profilepic{
-    border-radius: 50%;
     width: 45%;
     padding-top: 45%;
     background-position: center;
@@ -56,7 +55,7 @@ export default {
 }
 
 .profile__content__points{
-    display:flex; 
+    display:flex;
     color: white;
     align-items: center;
     justify-content:center;

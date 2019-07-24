@@ -7,7 +7,7 @@
             <div class="challenge__content__text">
                 <p class="challenge__content__text__title">{{ challenge.title }}</p>
                 <p class="challenge__content__text__description">
-                  {{challenge.description | truncate(100, '...')}} 
+                  {{challenge.description | truncate(100, '...')}}
                 </p>
             </div>
         </div>

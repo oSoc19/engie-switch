@@ -54,7 +54,6 @@ h2 {
   background-color: white;
   height: 50% !important;
   margin: 16px !important;
-  /* border-radius: 7px !important; */
   display: flex;
   justify-content: center;
   align-items: center;

@@ -9,7 +9,7 @@
         <div class="points">{{userData.points}}</div>
         <img src="@/assets/icons/star-solid.svg" alt="star" width="17px" />
       </div>
-      <div class="header__line" :style="'background-image: url(\'' + img_url + '\')'">
+      <div class="header__line" :style="{ backgroundImage: 'url(' + img_url + ')' }">
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@ export default {
   height: 100%;
   flex-wrap: wrap;
   position: relative;
-  
+
 
 }
 .content {
