@@ -1,11 +1,13 @@
-async function main(
-  // projectId,
-  // computeRegion,
-  // modelId,
-  // filePath,
-  // scoreThreshold
-)
+// async function main(
+//   projectId,
+//   computeRegion,
+//   modelId,
+//   filePath,
+//   scoreThreshold
+// )
+async function main()
 {
+  const args = require('process').argv;
   const automl = require('@google-cloud/automl');
   const fs = require('fs');
   // Create client for prediction service.
@@ -13,7 +15,7 @@ async function main(
   const projectId = `osoc19-switch`;
   const computeRegion = `us-central1`;
   const modelId = `ICN8191421497732791570`;
-  const filePath = `../reusableBottle.jpg`;
+  const filePath = args[2];
   //const scoreThreshold = `value between 0.0 and 1.0, e.g. "0.5"`;
 
   // Get the full path of the model.
@@ -45,7 +47,7 @@ async function main(
   });
   // [END automl_quickstart]
 }
-main(...process.argv.slice(2)).catch(err => {
-  console.error(err);
-  process.exitCode = 1;
-});
+ main().catch(err => {
+   console.error(err);
+   process.exitCode = 1;
+ });
