@@ -14,8 +14,7 @@
         </ion-card-header>
 
         <ion-card-content class="feedcard__content">
-            <div class="feedcard__content__imagecontainer">
-                <img :src="post.image" :alt="post.challenge" class="feedcard__content__imagecontainer__image"/>
+            <div class="feedcard__content__imagecontainer" ref="container" :style="{ backgroundImage: 'url(' + post.image + ')' }">
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
@@ -33,7 +32,6 @@
                     </div>
                 </div>
             </div>
-
         </ion-card-content>
     </ion-card>
 </template>
@@ -75,9 +73,16 @@ export default {
               return diff + ' day' + (diff > 1 ? 's' : '') + ' ago';
             }
             return dt.toLocaleString();
+        },
+        setHeight(){
+            var width = this.$refs.container.clientWidth;
+            window.console.log(width)
+            this.$refs.container.style.height = width + "px";
+            window.console.log('height: ', this.$refs.container.style.height)        
         }
     }
-}
+  }
+
 
 
 
@@ -93,12 +98,17 @@ export default {
     flex-direction: column;
     padding-bottom: 8px;
     padding-top: 0px;
+    height: auto;
 }
 
 .feedcard__content__imagecontainer{
     width: 100%;
-    height: 190px;
+    background: #000;
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center;
 }
+
 
 .feedcard__content__imagecontainer__image{
     width: 100%;
