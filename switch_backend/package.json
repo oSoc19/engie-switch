@@ -13,7 +13,11 @@
   "author": "engie_switch",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
     "@tensorflow/tfjs-node": "^1.2.4",
+=======
+    "@google-cloud/automl": "^1.2.2",
+>>>>>>> Firebase should work now, only need permissions
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
