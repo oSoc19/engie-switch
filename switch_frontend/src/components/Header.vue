@@ -9,8 +9,7 @@
         <div class="points">{{userData.points}}</div>
         <img src="@/assets/icons/star-solid.svg" alt="star" width="17px" />
       </div>
-      <div class="header__line">
-        <img src="@/assets/img/colored_bar.svg" alt="Colored bar" class="header__coloredbar" />
+      <div class="header__line" :style="'background-image: url(\'' + img_url + '\')'">
       </div>
     </div>
   </div>
@@ -19,7 +18,13 @@
 <script>
 export default {
   name: "TopBar",
-  props: ['userData']
+  props: ['userData'],
+  data(){
+    var img_url = require('@/assets/img/colored_bar.svg')
+    return{
+      img_url
+    }
+  }
 };
 </script>
 
@@ -42,6 +47,8 @@ export default {
   height: 100%;
   flex-wrap: wrap;
   position: relative;
+  
+
 }
 .content {
   margin-top: 8px;
@@ -51,13 +58,9 @@ export default {
   align-items: center;
 }
 .header__line {
-  max-height: 8px;
-  min-height: 8px;
+  height: 10px;
   width: 100%;
-}
-.header__coloredbar {
-  max-width: 100%;
-  min-width: 100%;
+  background-repeat: repeat-x;
 }
 
 .header__content__left__image {

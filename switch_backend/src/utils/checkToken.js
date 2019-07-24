@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
-const config = require('./config');
 const createError = require('http-errors');
+const dotenv = require('dotenv').config();
+const secret = process.env.JWT_SECRET;
 
 
 module.exports = (req, res, next) => {
@@ -22,7 +23,7 @@ module.exports = (req, res, next) => {
 
       // TODO: explain what the secret is
       // TODO: explain the decoding
-    jwt.verify(token, config.secret, (err, decoded) => {
+    jwt.verify(token, secret, (err, decoded) => {
       if (err) throw new createError(401, "Token is not valid");
       req.decoded = decoded;
       next();

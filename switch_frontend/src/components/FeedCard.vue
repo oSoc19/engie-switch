@@ -72,6 +72,7 @@
 import api from "@/utils/api";
 import error from "@/utils/error";
 export default {
+
   name: "FeedCard",
   props: ["post"],
   data() {
@@ -155,6 +156,7 @@ export default {
 .feedcard {
   margin-top: 0px !important;
 }
+
 .feedcard__content {
   display: flex;
   justify-content: center;

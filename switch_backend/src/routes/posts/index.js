@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const createError = require('http-errors');
-const checkToken = require('../../checkToken');
+const checkToken = require('../../utils/checkToken');
 let users = mongoose.model('User');
 let posts = mongoose.model('Post');
-const compare = require("../../sortFeeds");
+const compare = require("../../utils/sortFeeds");
 const nsfwjs = require('../../nsfwjs');
-const urlString = require('../../urlString');
-const removeUserFromReviews = require('../../removeUserFromReviews')
+const urlString = require('../../utils/urlString');
+const removeUserFromReviews = require('../../utils/removeUserFromReviews')
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
 
@@ -21,7 +21,7 @@ module.exports = router
   let token = req.decoded.id;
 
   posts.findById(req.params.id)
-    .populate('reviews.plus reviews.minus')
+    .populate('reviews.plus reviews.minus user challenge')
     .then(post => {
       //check if post has plus reviews
       if(post.reviews.plus.length != 0)
@@ -60,7 +60,7 @@ module.exports = router
   let token = req.decoded.id;
 
   posts.findById(req.params.id)
-    .populate('reviews.minus reviews.plus')
+    .populate('reviews.minus reviews.plus user challenge')
     .then(post => {
 
       //check if post has minus reviews
