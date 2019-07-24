@@ -86,6 +86,13 @@
 
 .hero-title {
 	margin-bottom: 2rem;
+
+
+}
+
+.title__container {
+	display: flex;
+	align-items: center;
 }
 
 .hero-intro {
