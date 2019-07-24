@@ -4,10 +4,12 @@
       <ion-card-title class="profile__header__title">{{user.username}}</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content class="profile__content">
-        <img :src="user.profilePic" :alt="user.username"/>
+    <ion-card-content class="profile__content" >
+        <div class="profile__profilepic" :style="{ backgroundImage: 'url(' + user.profilePic + ')' }">
+        </div>
         <div class="profile__content__points">
-            {{user.points}}
+            <span>{{user.points}}</span>
+            
             <img src="@/assets/icons/star-solid.svg" alt="star" class="profile__content__star"/>
       </div>
     </ion-card-content>
@@ -24,15 +26,7 @@ export default {
 <style>
 .profilecard{
     width: 86%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background: var(--primary-color);
-}
-
-.profile__header{
-    display: flex;
-    flex-direction: column;
 }
 
 .profile__header__title{
@@ -40,30 +34,31 @@ export default {
     text-align: center;
     color: white;
 }
-
-.profile__header__image{
-    border-radius: 50px;
-    align-self: center;
-}
-
 .profile__content__star{
     width: 20px !important;
     padding-left: 4px;
 }
 
 .profile__content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    padding-bottom: 40px;
+    box-sizing: border-box;
 }
 
-.profile__content img {
-  height: 100px;
-  height: 100px;
+.profile__profilepic{
+    border-radius: 50%;
+    width: 45%;
+    padding-top: 45%;
+    background-position: center;
+    background-size: cover;
+    margin-left: 27.5%;
 }
 
 .profile__content__points{
-    display:flex;
-    color: white
+    display:flex; 
+    color: white;
+    align-items: center;
+    justify-content:center;
+    margin-top: 10px;
 }
 </style>

@@ -32,6 +32,7 @@
           </p>
         </div>
 
+
         <div id="btnHide" class="hideNude__button" :class="{remove:!isNude}">
           <img src="@/assets/icons/eye-slash-solid.svg" alt />
         </div>
@@ -72,6 +73,7 @@
 import api from "@/utils/api";
 import error from "@/utils/error";
 export default {
+
   name: "FeedCard",
   props: ["post"],
   data() {
@@ -155,6 +157,7 @@ export default {
 .feedcard {
   margin-top: 0px !important;
 }
+
 .feedcard__content {
   display: flex;
   justify-content: center;
@@ -239,10 +242,12 @@ export default {
   margin-top: 5px;
 }
 
-.feedcard__header__profilepiccontainer {
-  width: 32px;
-  height: 32px;
-  background-color: rgb(235, 251, 252);
+
+.feedcard__header__profilepiccontainer{
+    width: 32px;
+    height: 32px;
+    background-color: rgb(222, 231, 238);
+
 }
 
 .feedcard__header__profilepiccontainer__profilepic {

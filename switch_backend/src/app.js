@@ -5,13 +5,14 @@ const createError = require('http-errors');
 const mongoose = require('mongoose');
 // to read the .env file (yes I need this comment)
 const dotenv = require('dotenv').config();
+const config = require('./config')
 const routes = require('./routes')
 const cors = require('cors');
 const app = express();
 const port = 3000;
 // take the database url
 const dbUrl = process.env.DB_URL;
-const loadLimit = process.env.LOAD_LIMIT;
+const loadLimit = config.LOAD_LIMIT;
 mongoose.Promise = global.Promise;
 
 if (!dbUrl) {
