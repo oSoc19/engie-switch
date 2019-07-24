@@ -49,4 +49,12 @@ export default {
 .hello{
     max-width: 400px;
   }
+
+  
+.toast_error {
+    color: var(--red);
+    text-align: center;
+    font-family: "Montserrat";
+
+}
 </style>
