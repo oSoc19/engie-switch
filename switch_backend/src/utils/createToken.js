@@ -3,7 +3,7 @@ const checkToken = require('./checkToken');
 const mongoose = require('mongoose');
 const createError = require('http-errors');
 const dotenv = require('dotenv').config();
-const secret = process.env.SECRET;
+const secret = process.env.JWT_SECRET;
 
 let users = mongoose.model('User');
 
