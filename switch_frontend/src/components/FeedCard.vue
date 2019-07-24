@@ -72,12 +72,11 @@
 import api from "@/utils/api";
 import error from "@/utils/error";
 export default {
-
   name: "FeedCard",
   props: ["post"],
   data() {
     return {
-      isNude: this.post.nsfwjs.porn >= 0.75
+      isNude: this.post.nsfwjs.porn >= 0.5
     };
   },
   methods: {
