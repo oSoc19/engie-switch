@@ -18,15 +18,23 @@
 
     <ion-card-content class="feedcard__content">
       <div class="feedcard__content__imagecontainer">
-        <div class="blur__image__text">
-          Son, bad image here
-          <br />Tap to show
-        </div>
         <img
+          id="feedcard__image"
           :src="post.image"
           :alt="post.challenge"
           class="feedcard__content__imagecontainer__image"
+          :class="{blur__image:isNude}"
         />
+        <div id="imageBlurText" class="blur__image__text" :class="{blur__image__text__show:isNude}">
+          <p id="text__p">
+            Son, bad image here!
+            <br />Tap to show
+          </p>
+        </div>
+
+        <div id="btnHide" class="hideNude__button" :class="{remove:!isNude}">
+          <img src="@/assets/icons/eye-slash-solid.svg" alt />
+        </div>
       </div>
       <div class="feedcard__content__likes">
         <div class="feedcard__content__likes__heart">
@@ -66,6 +74,11 @@ import error from "@/utils/error";
 export default {
   name: "FeedCard",
   props: ["post"],
+  data() {
+    return {
+      isNude: this.post.nsfwjs.porn >= 0.75
+    };
+  },
   methods: {
     likePost() {
       api.getUser().then(() => {
@@ -104,26 +117,50 @@ export default {
       }
       return dt.toLocaleString();
     },
-    blurImage(imageID) {
-      let image = document.getElementById(imageID);
-      let imageBlurText = document.getElementById("imageBlurText");
-      image.classList.add("blur__image");
-      imageBlurText.style.display = "block";
+    showNudeImage() {
+      let nudeImageText = document.getElementById("imageBlurText");
+      let nudeImage = document.getElementById("feedcard__image");
+      let p = document.getElementById("text__p");
+      let btnHide = document.getElementById("btnHide");
+      nudeImageText.addEventListener("click", () => {
+        nudeImage.classList.add("blur__image__text__remove");
+        nudeImage.classList.add("unblur__image");
+        p.style.display = "none";
+
+        //show hide btn
+        btnHide.style.display = "flex";
+      });
+    },
+    hideNudeImage() {
+      let nudeImage = document.getElementById("feedcard__image");
+      let p = document.getElementById("text__p");
+      let btnHide = document.getElementById("btnHide");
+      btnHide.addEventListener("click", () => {
+        nudeImage.classList.remove("blur__image__text__remove");
+        nudeImage.classList.remove("unblur__image");
+        p.style.display = "block";
+
+        btnHide.style.display = "none";
+      });
     }
+  },
+  mounted() {
+    this.showNudeImage();
+    this.hideNudeImage();
   }
 };
 </script>
 
 <style>
-.feedcard{
-    margin-top: 0px !important;
+.feedcard {
+  margin-top: 0px !important;
 }
-.feedcard__content{
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-bottom: 8px;
-    padding-top: 0px;
+.feedcard__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 8px;
+  padding-top: 0px;
 }
 
 .feedcard__content__imagecontainer {
@@ -132,18 +169,37 @@ export default {
   position: relative;
 }
 .blur__image__text {
-  color: white;
-  background-color: rgba(200, 14, 15, 0.4);
+  color: var(--red);
   font-size: 16px;
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.blur__image__text p {
+  background-color: rgba(235, 251, 252, 0.5);
+  width: 100%;
+  padding: 5px 0;
+}
+
+.blur__image__text__show {
+  display: flex;
+}
+.remove {
   display: none;
 }
 .blur__image {
   filter: blur(20px);
 }
 
+.unblur__image {
+  filter: blur(0px);
+}
 .feedcard__content__imagecontainer__image {
   width: 100%;
   height: 100%;
@@ -244,5 +300,25 @@ export default {
   margin-left: 5px;
   font-weight: bold;
   font-size: 13px;
+}
+
+.hideNude__button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  color: var(--red);
+  text-align: center;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 5px;
+  right: 5px;
+}
+
+.hideNude__button img {
+  max-width: 70%;
+  max-height: 70%;
 }
 </style>
