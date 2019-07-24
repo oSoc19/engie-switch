@@ -5,7 +5,15 @@
   "main": "./src/app.js",
   "scripts": {
     "start": "nodemon",
-    "test": "engie_switch"
+    "test": "engie_switch",
+    "firebaseServe": "firebase serve --only functions",
+    "firebaseShell": "firebase functions:shell",
+    "firebaseStart": "npm run shell",
+    "firebaseDeploy": "firebase deploy --only functions",
+    "firebaseLogs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
   },
   "keywords": [
     "engie_switch"
@@ -14,6 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@tensorflow/tfjs-node": "^1.2.4",
+    "@google-cloud/automl": "^1.2.2",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
@@ -22,9 +31,12 @@
     "jpeg-js": "^0.3.5",
     "jsonwebtoken": "^8.5.1",
     "libgif": "0.0.2",
-    "mongoose": "^5.6.4"
+    "mongoose": "^5.6.4",
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "firebase-functions-test": "^0.1.6"
   }
 }
