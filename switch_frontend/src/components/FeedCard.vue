@@ -19,20 +19,23 @@
     <ion-card-content class="feedcard__content">
       <div class="feedcard__content__imagecontainer">
         <img
-          id="feedcard__image"
           :src="post.image"
           :alt="post.challenge"
           class="feedcard__content__imagecontainer__image"
-          :class="{blur__image:isNude}"
+          :class="{blur__image: isNude && !showNude}"
+          v-on:click="toggleNude"
         />
-        <div id="imageBlurText" class="blur__image__text" :class="{blur__image__text__show:isNude}">
-          <p id="text__p">
-            Son, bad image here!
-            <br />Tap to show
+        <div class="blur__image__text"
+          :class="{blur__image__text__show: isNude && !showNude}"
+          v-on:click="toggleNude"
+        >
+          <p>
+            Nude detected<br />
+            Tap to show anyway
           </p>
         </div>
 
-        <div id="btnHide" class="hideNude__button">
+        <div class="hideNude__button" :class="{hideNude__button__show: isNude && showNude}">
           <img src="@/assets/icons/eye-slash-solid.svg" alt />
         </div>
       </div>
@@ -76,7 +79,8 @@ export default {
   props: ["post"],
   data() {
     return {
-      isNude: this.post.nsfwjs.porn >= 0.5
+      isNude: this.post.nsfwjs.porn >= 0.5,
+      showNude: false,
     };
   },
   methods: {
@@ -117,37 +121,10 @@ export default {
       }
       return dt.toLocaleString();
     },
-    showNudeImage() {
-      let nudeImageText = document.getElementById("imageBlurText");
-      let nudeImage = document.getElementById("feedcard__image");
-      let p = document.getElementById("text__p");
-      let btnHide = document.getElementById("btnHide");
-      nudeImageText.addEventListener("click", () => {
-        nudeImage.classList.add("blur__image__text__remove");
-        nudeImage.classList.add("unblur__image");
-        p.style.display = "none";
-        //show hide btn
-        btnHide.style.display = "flex";
-
-        console.log("hidee some");
-      });
+    toggleNude() {
+      this.showNude = !this.showNude;
     },
-    hideNudeImage() {
-      let nudeImage = document.getElementById("feedcard__image");
-      let p = document.getElementById("text__p");
-      let btnHide = document.getElementById("btnHide");
-      btnHide.addEventListener("click", () => {
-        nudeImage.classList.remove("blur__image__text__remove");
-        nudeImage.classList.remove("unblur__image");
-        p.style.display = "block";
-        btnHide.style.display = "none";
-      });
-    }
   },
-  mounted() {
-    this.showNudeImage();
-    this.hideNudeImage();
-  }
 };
 </script>
 
@@ -169,7 +146,7 @@ export default {
   position: relative;
 }
 .blur__image__text {
-  color: var(--red);
+  color: var(--black);
   font-size: 16px;
   position: absolute;
   width: 100%;
@@ -193,9 +170,6 @@ export default {
 }
 .blur__image {
   filter: blur(20px);
-}
-.unblur__image {
-  filter: blur(0px);
 }
 .feedcard__content__imagecontainer__image {
   width: 100%;
@@ -298,6 +272,9 @@ export default {
   align-items: center;
   top: 5px;
   right: 5px;
+}
+.hideNude__button__show {
+  display: flex;
 }
 .hideNude__button img {
   max-width: 70%;
