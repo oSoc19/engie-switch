@@ -7,6 +7,7 @@ let users = mongoose.model('User');
 let posts = mongoose.model('Post');
 const compare = require("../../utils/sortFeeds");
 const nsfwjs = require('../../nsfwjs');
+const image = require('../../utils/image')
 const urlString = require('../../utils/urlString');
 const removeUserFromReviews = require('../../utils/removeUserFromReviews')
 // Here we are using promises to have only one error handler
@@ -132,13 +133,22 @@ module.exports = router
   .post('/', (req, res, next) => {
     let tempPost = new posts(req.body);
     let imageBuf = urlString.toBytes(tempPost.image)
-    nsfwjs.predict(imageBuf).then(predictions => {
-      tempPost.nsfwjs = predictions
-      return tempPost.save()
-    }).then((savedPost) => {
-      res.json(savedPost);
-    }).catch((err) => {
-      console.log(err);
-      next(err);
-    })
+    image.cropTinify(imageBuf, 500)
+      .then(croppedImage => {
+        tempPost.image = urlString.toUrlString(croppedImage)
+        return croppedImage
+      })
+      .then(nsfwjs.predict)
+      .then(predictions => {
+        tempPost.nsfwjs = predictions
+        return tempPost
+      })
+      .then(post => {
+        return post.save()
+      })
+      .then(post => res.json(post))
+      .catch((err) => {
+        console.log(err);
+        next(err);
+      })
   });
