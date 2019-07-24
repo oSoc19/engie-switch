@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="hello">
     <div class="welcome">
       <div>Complete challenges to reduce your energy consumption!</div>
       <div class="bar"> </div>
@@ -43,4 +43,5 @@ export default {
   border-radius: 5px;
   margin-left: 42%;
 }
+
 </style>

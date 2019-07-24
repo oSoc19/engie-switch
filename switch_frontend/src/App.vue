@@ -44,4 +44,9 @@ export default {
 .navigation {
   position: fixed;
 }
+
+
+.hello{
+    max-width: 400px;
+  }
 </style>
