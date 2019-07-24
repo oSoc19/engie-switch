@@ -14,26 +14,24 @@
         </ion-card-header>
 
         <ion-card-content class="feedcard__content">
-            <div class="feedcard__content__imagecontainer">
-                <img :src="post.image" :alt="post.challenge" class="feedcard__content__imagecontainer__image"/>
+            <div class="feedcard__content__imagecontainer" ref="container" :style="{ backgroundImage: 'url(' + post.image + ')' }">
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <div class="badge" color="#111">
+                    <div class="badge" color="#111" v-on:click="likePost();">
                         <div class="badge__container">
-                        <img src="@/assets/icons/tree.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                        <img src="@/assets/icons/tree.svg" alt="tree" class="like" :id="'likebutton'+post._id" />
                         <div class="badge__text">{{this.post.reviews.plus.length}}</div>
                         </div>
                     </div>
-                    <div class="badge" color="#111">
-                        <div class="badge__container">
-                            <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                    <div class="badge" color="#111" v-on:click="dislikePost();">
+                        <div class="badge__container" >
+                            <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" :id="'dislikebutton'+post._id" />
                             <div class="badge__text">{{this.post.reviews.minus.length}}</div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </ion-card-content>
     </ion-card>
 </template>
@@ -77,7 +75,8 @@ export default {
             return dt.toLocaleString();
         }
     }
-}
+  }
+
 
 
 
@@ -93,12 +92,17 @@ export default {
     flex-direction: column;
     padding-bottom: 8px;
     padding-top: 0px;
+    height: auto;
 }
 
 .feedcard__content__imagecontainer{
     width: 100%;
-    height: 190px;
+    background: #000;
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center;
 }
+
 
 .feedcard__content__imagecontainer__image{
     width: 100%;
@@ -143,7 +147,7 @@ export default {
 .feedcard__header__profilepiccontainer{
     width: 32px;
     height: 32px;
-    background-color: rgb(235, 251, 252);
+    background-color: rgb(222, 231, 238);
 }
 
 .feedcard__header__profilepiccontainer__profilepic{
