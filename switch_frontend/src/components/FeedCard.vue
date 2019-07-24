@@ -18,15 +18,15 @@
             </div>
             <div class="feedcard__content__likes">
                 <div class="feedcard__content__likes__heart">
-                    <div class="badge" color="#111">
+                    <div class="badge" color="#111" v-on:click="likePost();">
                         <div class="badge__container">
-                        <img src="@/assets/icons/tree.svg" alt="tree" class="like" :id="'likebutton'+post._id" v-on:click="likePost();"/>
+                        <img src="@/assets/icons/tree.svg" alt="tree" class="like" :id="'likebutton'+post._id" />
                         <div class="badge__text">{{this.post.reviews.plus.length}}</div>
                         </div>
                     </div>
-                    <div class="badge" color="#111">
-                        <div class="badge__container">
-                            <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" :id="'dislikebutton'+post._id" v-on:click="dislikePost();"/>
+                    <div class="badge" color="#111" v-on:click="dislikePost();">
+                        <div class="badge__container" >
+                            <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" :id="'dislikebutton'+post._id" />
                             <div class="badge__text">{{this.post.reviews.minus.length}}</div>
                         </div>
                     </div>
