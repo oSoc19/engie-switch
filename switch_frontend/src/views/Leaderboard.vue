@@ -34,9 +34,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.hello{
-  width: 100%;
-}
+
 h1{
   padding-left: 24px;
   font-size: 16px;

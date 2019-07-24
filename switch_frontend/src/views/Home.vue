@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <div class="welcome">
       <div>Complete challenges to reduce your energy consumption!</div>
       <div class="bar"> </div>

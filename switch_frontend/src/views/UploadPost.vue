@@ -5,7 +5,7 @@
     <div class="alert">
       <div class="bad__image">X Bad Image</div>
     </div>
-    <ion-card v-if="challenge">
+    <ion-card class="challenge__card" v-if="challenge">
       <img class="challenge__image" :src="challenge.image+'500'" />
       <ion-card-header>
         <!--ion-card-subtitle>{{ challenge.title }}</ion-card-subtitle-->
@@ -86,18 +86,8 @@ p {
   border-radius: 7px;
 }
 
-#btnPost {
-  border-radius: 7px;
-  background-color: lightgrey;
-  color: grey;
-  box-shadow: none;
-  padding: 10px 0px;
-  width: 100%;
-  margin-top: 10px;
-  cursor: pointer;
-  text-align: center;
-}
-#btnPost:hover {
-  opacity: 0.8;
+.challenge__card{
+  margin: 16px;
+  padding: 0;
 }
 </style>

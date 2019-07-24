@@ -48,6 +48,7 @@ export default {
 }
 .leaderboardcard__content__name{
     font-size: 14px;
+    margin: 0 16px;
 }
 .leaderboardcard__content__points__star{
     width: 20px !important;
