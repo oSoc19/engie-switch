@@ -42,15 +42,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 p {
-  width: 100%;
   text-align: center;
-  margin-bottom: 5px;
 }
 
 .upload__text {
   padding: 0;
-  margin: 0;
-  margin-top: 15px;
+  margin: 16px 0 0 0;
 }
 
 .yourChallenge {
@@ -59,16 +56,7 @@ p {
 .wrapper {
   width: 95%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-}
-
-.actions {
-  display: flex;
-  width: 90%;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .alert {
@@ -82,7 +70,7 @@ p {
   max-width: 100%;
   width: 100%;
   max-height: 173px !important;
-  margin-top: 10px;
+  margin-top: 8px;
   border-radius: 7px;
   display: flex;
   justify-content: center;
