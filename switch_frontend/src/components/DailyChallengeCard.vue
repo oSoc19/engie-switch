@@ -2,12 +2,10 @@
   <router-link :to="'/uploadpost/' + challenge._id">
     <div v-if="challenge">
       <ion-card class="card">
-        <div class="card__content">
-          <img id="img" class="card__content__img" :src="challenge.image+'500'" alt />
-          <h2 class="card__type">Challenge of the day</h2>
-          <ion-card-title class="challenge__title">{{challenge.title}}</ion-card-title>
-          <ion-card-content>{{challenge.description}}</ion-card-content>
-        </div>
+        <img id="img" class="card__content__img" :style="{ backgroundImage: 'url(' + challenge.image + '500)' }" alt />
+        <h2 class="card__type">Challenge of the day</h2>
+        <ion-card-title class="challenge__title">{{challenge.title}}</ion-card-title>
+        <ion-card-content>{{challenge.description}}</ion-card-content>
       </ion-card>
     </div>
   </router-link>
@@ -51,43 +49,33 @@ h2 {
 }
 
 .card {
-  background-color: white;
-  height: 50% !important;
   margin: 16px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .card__type{
   font-size: 14px;
   text-align: left;
-  background: #f5f5f5;
-  padding: 2px 4px;
+  background: rgb(222, 231, 238);
+  padding: 4px 6px;
   display: inline-block;
+  margin: 10px 7px !important;
+  border-radius: 5px;
 }
 
 .challenge__title {
   font-size: 20px;
   color: var(--black);
+  margin-top: 0 !important;
   margin-bottom: 8px;
 }
 
-.card__content {
-  width: 95%;
-}
-
 .card__content__img {
-  max-width: 100%;
-  width: 98%;
-
-  max-height: 173px;
-  margin-top: 8px !important;
-  border-radius: 7px;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  object-fit: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  width: 100%;
+  height: 0;
+  padding-top: 75%;
 }
 
 ion-card-title {
