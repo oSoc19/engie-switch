@@ -1,13 +1,10 @@
 <template>
   <router-link :to="'/uploadpost/' + challenge._id">
-    <div v-if="challenge" class="fullcard">
-      <div class="card__header">
-        <h2>Challenge of the day</h2>
-        <div class="bar"> </div>
-      </div>
+    <div v-if="challenge">
       <ion-card class="card">
         <div class="card__content">
           <img id="img" class="card__content__img" :src="challenge.image+'500'" alt />
+          <h2 class="card__type">Challenge of the day</h2>
           <ion-card-title class="challenge__title">{{challenge.title}}</ion-card-title>
           <ion-card-content>{{challenge.description}}</ion-card-content>
         </div>
@@ -52,27 +49,28 @@ h2 {
   text-align: center;
   margin-block-end: 8px !important;
 }
-.fullcard {
-  background-color: rgb(222, 231, 238);
-  width: 100vw !important;
-  margin: 0 !important;
-  margin-bottom: 20px !important;
-  padding: 10px 0 !important;
-}
 
 .card {
   background-color: white;
   height: 50% !important;
-  margin: 20px !important;
-  border-radius: 7px !important;
+  margin: 16px !important;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.card__type{
+  font-size: 14px;
+  text-align: left;
+  background: #f5f5f5;
+  padding: 2px 4px;
+  display: inline-block;
+}
+
 .challenge__title {
   font-size: 20px;
   color: var(--black);
+  margin-bottom: 8px;
 }
 
 .card__content {
@@ -84,7 +82,7 @@ h2 {
   width: 98%;
 
   max-height: 173px;
-  margin-top: 10px !important;
+  margin-top: 8px !important;
   border-radius: 7px;
   display: flex;
   justify-content: center;
@@ -95,27 +93,21 @@ h2 {
 ion-card-title {
   text-align: start !important;
   width: 100% !important;
-  padding: 0 !important;
-  margin-top: 10px !important;
+  margin-top: 8px !important;
+  padding: 0 8px;
+
 }
 ion-card-content {
   text-align: start !important;
   width: 100% !important;
-  padding: 0 !important;
   font-size: 14px !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 8px !important;
+  padding: 0 8px;
 }
 
 .card__header{
   display:flex;
   flex-direction: column;
   align-items: center;
-}
-
-.bar{
-  background: var(--primary-color);
-  width: 40px;
-  height: 5px;
-  border-radius: 5px;
 }
 </style>

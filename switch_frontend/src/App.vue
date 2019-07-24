@@ -25,11 +25,12 @@ export default {
 
 <style>
 @import "./css/variables.css";
+*{
+  box-sizing: border-box;
+}
 
 #app {
   font-family: "Montserrat", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: var(--primary-color);
   margin-bottom: 60px !important;
   width: 100%;
@@ -42,5 +43,18 @@ export default {
 
 .navigation {
   position: fixed;
+}
+
+
+.hello{
+    max-width: 400px;
+  }
+
+  
+.toast_error {
+    color: var(--red);
+    text-align: center;
+    font-family: "Montserrat";
+
 }
 </style>

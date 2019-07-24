@@ -1,8 +1,8 @@
 <template>
     <router-link v-bind:to="'/uploadpost/' + challenge._id" class="challenge">
         <div class="challenge__content">
-            <div class="challenge__content__imagecontainer">
-              <img v-bind:src="challenge.image + '200'" v-bind:alt="challenge.title" class="challenge__content__imagecontainer__image"/>
+          <div class="challenge__imagecontainer">
+            <div class="challenge__image" :style="{ backgroundImage: 'url(' + challenge.image + '200)' }"></div>
             </div>
             <div class="challenge__content__text">
                 <p class="challenge__content__text__title">{{ challenge.title }}</p>
@@ -25,58 +25,48 @@ export default {
 
 <style>
 .challenge {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
+  display: block;
   text-decoration: none;
+  margin: 8px 16px;
 }
 
 .challenge__content {
+  padding: 8px;
   display: flex;
-  width: 88%;
   box-shadow: 0px 4px 16px -10px rgb(102, 102, 102);
   border-radius: 8px;
-  height: 110px;
-  padding-right: 10px;
 }
 
-.challenge__content__imagecontainer{
-    margin: 12px;
-    width: 36%;
+.challenge__imagecontainer{
+  flex: 1;
+
+}
+
+.challenge__image{
     background-size: cover;
     background-position: center;
     border-radius: 5px;
-    contain:content;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+    width: 100%;
+    padding-top: 100%;
 }
 
 .challenge__content__text {
-  width: 64%;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
+  padding-left: 8px;
+  width: 72%;
 }
 
 .challenge__content__text__title {
   color: #444444;
   font-weight: bolder;
   text-align: left;
-  margin-bottom: 3px;
+  margin: 4px 0;
   font-size: 14px;
-  margin-top: 10px;
 }
 
 .challenge__content__text__description {
   font-size: 12px;
   color: #444444;
   text-align: left;
-  margin-top: 0px;
+  margin: 0;
 }
-
-.challenge__content__imagecontainer__image{
-  width: 150%;
-}
-
 </style>

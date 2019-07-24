@@ -30,19 +30,18 @@ export default {
 .welcome{
   color: var(--black);
   text-align: center;
-  padding: 20px;
+  padding: 24px;
   font-size: 14px;
   line-height: 150%;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .bar{
   background: var(--primary-color);
-  width: 40px;
+  width: 16%;
   height: 5px;
-  margin-top: 10px;
+  margin-top: 8px;
   border-radius: 5px;
+  margin-left: 42%;
 }
+
 </style>

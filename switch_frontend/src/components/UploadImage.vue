@@ -72,7 +72,7 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: 10px;
+  margin: 10px 16px;
 }
 
 .inputfile {
@@ -138,10 +138,6 @@ export default {
   position: relative;
 
   cursor: pointer;
-}
-
-.preview__image:hover {
-  background-color: #f0f0f0;
 }
 
 .preview__image img {

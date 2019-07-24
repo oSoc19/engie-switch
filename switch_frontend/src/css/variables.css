@@ -14,9 +14,3 @@
     --bronseGradientRight: #B08D57;
 }
 
-.toast_error {
-    color: var(--red);
-    text-align: center;
-    font-family: "Montserrat";
-
-}

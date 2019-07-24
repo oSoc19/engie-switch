@@ -35,30 +35,24 @@ export default {
 </script>
 <style>
 .leaderboardcard{
-    margin-top: 10px;
+    margin: 16px;
 }
 .leaderboardcard__content{
     display:flex;
-    width: 100%;
-    flex-direction: row;
     justify-content: space-between;
-    padding-left:12px;
-    padding-right: 12px !important;
     align-items: center;
-    height: 30px;
+    height: 32px;
 }
 .leaderboardcard__content__points{
     display: flex;
-    flex-direction: row;
 }
 .leaderboardcard__content__name{
-    text-align: left;
     font-size: 14px;
+    margin: 0 16px;
 }
 .leaderboardcard__content__points__star{
     width: 20px !important;
-    margin-left: 5px;
-    margin-right: 20px;
+    margin-left: 8px;
 }
 .yourposition{
     background-color: var(--green);
