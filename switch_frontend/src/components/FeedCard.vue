@@ -32,7 +32,7 @@
           </p>
         </div>
 
-        <div id="btnHide" class="hideNude__button" :class="{remove:!isNude}">
+        <div id="btnHide" class="hideNude__button">
           <img src="@/assets/icons/eye-slash-solid.svg" alt />
         </div>
       </div>
@@ -126,9 +126,10 @@ export default {
         nudeImage.classList.add("blur__image__text__remove");
         nudeImage.classList.add("unblur__image");
         p.style.display = "none";
-
         //show hide btn
         btnHide.style.display = "flex";
+
+        console.log("hidee some");
       });
     },
     hideNudeImage() {
@@ -139,7 +140,6 @@ export default {
         nudeImage.classList.remove("blur__image__text__remove");
         nudeImage.classList.remove("unblur__image");
         p.style.display = "block";
-
         btnHide.style.display = "none";
       });
     }
@@ -162,7 +162,6 @@ export default {
   padding-bottom: 8px;
   padding-top: 0px;
 }
-
 .feedcard__content__imagecontainer {
   width: 100%;
   height: 190px;
@@ -180,13 +179,11 @@ export default {
   align-items: center;
   text-align: center;
 }
-
 .blur__image__text p {
   background-color: rgba(235, 251, 252, 0.5);
   width: 100%;
   padding: 5px 0;
 }
-
 .blur__image__text__show {
   display: flex;
 }
@@ -196,7 +193,6 @@ export default {
 .blur__image {
   filter: blur(20px);
 }
-
 .unblur__image {
   filter: blur(0px);
 }
@@ -206,14 +202,12 @@ export default {
   border-radius: 5px;
   object-fit: cover;
 }
-
 .feedcard__header {
   display: flex;
   flex-direction: row;
   margin: 0px;
   align-items: center;
 }
-
 .feedcard__header__details {
   display: flex;
   flex-direction: column;
@@ -221,37 +215,31 @@ export default {
   margin-left: 10px;
   text-align: left;
 }
-
 .feedcard__header__details__name {
   font-size: 13px;
   font-weight: bold;
 }
-
 .feedcard__header__details__time {
   font-size: 9px;
   color: #000;
 }
-
 .feedcard__header__challenge {
   font-size: 12px !important;
   color: #444444;
   text-align: left;
   margin-top: 5px;
 }
-
 .feedcard__header__profilepiccontainer {
   width: 32px;
   height: 32px;
-  background-color: rgb(235, 251, 252);
+  background-color: rgb(222, 231, 238);
 }
-
 .feedcard__header__profilepiccontainer__profilepic {
   width: 100%;
   height: 100%;
   border-radius: 50px;
   object-fit: cover;
 }
-
 .feedcard__content__likes {
   display: flex;
   width: 100%;
@@ -261,7 +249,6 @@ export default {
   color: #000;
   align-items: center;
 }
-
 .feedcard__content__likes__heart {
   display: flex;
   justify-self: left;
@@ -269,7 +256,6 @@ export default {
   margin-right: 5px;
   width: 100%;
 }
-
 .badge {
   display: flex;
   background-color: #eee;
@@ -281,27 +267,23 @@ export default {
   border-radius: 5px;
   padding: 5px;
 }
-
 .badge__container {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
 }
-
 .like {
   width: 19px !important;
 }
 .dislike {
   width: 16px !important;
 }
-
 .badge__text {
   margin-left: 5px;
   font-weight: bold;
   font-size: 13px;
 }
-
 .hideNude__button {
   position: absolute;
   width: 30px;
@@ -316,7 +298,6 @@ export default {
   top: 5px;
   right: 5px;
 }
-
 .hideNude__button img {
   max-width: 70%;
   max-height: 70%;
