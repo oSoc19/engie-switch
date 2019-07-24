@@ -17,49 +17,34 @@
     </ion-card-header>
 
     <ion-card-content class="feedcard__content">
-      <div class="feedcard__content__imagecontainer">
-        <img
-          :src="post.image"
-          :alt="post.challenge"
-          class="feedcard__content__imagecontainer__image"
-          :class="{blur__image: isNude && !showNude}"
-          v-on:click="toggleNude"
-        />
-        <div v-if="isNude && !showNude" class="blur__image__text" v-on:click="toggleNude">
+      <div v-on:click="toggleNude">
+        <div
+          class="feedcard__content__imagecontainer"
+          :class="{blur: isNude && !showNude}"
+          :style="{ backgroundImage: 'url(' + post.image + ')' }"
+        ></div>
+        <div v-if="isNude && !showNude" class="blur__image__text">
           <p>
             Nude detected
             <br />Tap to show anyway
           </p>
         </div>
-
-        <div v-if="isNude" v-on:click="toggleNude" class="eye__button">
+        <div v-if="isNude" class="eye__button">
           <img v-if="!showNude" src="@/assets/icons/eye-solid.svg" alt />
           <img v-if="showNude" src="@/assets/icons/eye-slash-solid.svg" alt />
         </div>
       </div>
       <div class="feedcard__content__likes">
         <div class="feedcard__content__likes__heart">
-          <div class="badge" color="#111">
+          <div class="badge" color="#111" v-on:click="likePost();">
             <div class="badge__container">
-              <img
-                src="@/assets/icons/tree.svg"
-                alt="tree"
-                class="like"
-                :id="'likebutton'+post._id"
-                v-on:click="likePost();"
-              />
+              <img src="@/assets/icons/tree.svg" alt="tree" class="like" />
               <div class="badge__text">{{this.post.reviews.plus.length}}</div>
             </div>
           </div>
-          <div class="badge" color="#111">
+          <div class="badge" color="#111" v-on:click="dislikePost();">
             <div class="badge__container">
-              <img
-                src="@/assets/icons/cross.svg"
-                alt="cross"
-                class="dislike"
-                :id="'dislikebutton'+post._id"
-                v-on:click="dislikePost();"
-              />
+              <img src="@/assets/icons/cross.svg" alt="cross" class="dislike" />
               <div class="badge__text">{{this.post.reviews.minus.length}}</div>
             </div>
           </div>
@@ -140,15 +125,17 @@ export default {
 }
 .feedcard__content__imagecontainer {
   width: 100%;
-  height: 190px;
-  position: relative;
+  height: 0;
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
 }
 .blur__image__text {
   color: var(--black);
-  font-size: 16px;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 88%;
+  height: 88%;
   top: 0;
   display: flex;
   justify-content: center;
@@ -157,20 +144,11 @@ export default {
 }
 .blur__image__text p {
   background-color: rgba(235, 251, 252, 0.5);
-  width: 100%;
-  padding: 5px 0;
+  padding: 20px;
 }
-.remove {
-  display: none;
-}
-.blur__image {
+
+.blur {
   filter: blur(20px);
-}
-.feedcard__content__imagecontainer__image {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  object-fit: cover;
 }
 .feedcard__header {
   display: flex;
@@ -236,6 +214,7 @@ export default {
   align-items: center;
   border-radius: 5px;
   padding: 5px;
+  cursor: pointer;
 }
 .badge__container {
   display: flex;
@@ -255,18 +234,17 @@ export default {
   font-size: 13px;
 }
 .eye__button {
+  cursor: pointer;
   position: absolute;
   width: 30px;
   height: 30px;
   background-color: white;
-  color: var(--red);
-  text-align: center;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom:  5px;
-  right: 5px;
+  top:  5px;
+  right: 25px;
 }
 .eye__button img {
   max-width: 70%;
