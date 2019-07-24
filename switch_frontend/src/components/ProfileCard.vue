@@ -25,7 +25,7 @@ export default {
 
 <style>
 .profilecard{
-    width: 86%;
+    margin: 16px;
     background: var(--primary-color);
 }
 
@@ -41,7 +41,7 @@ export default {
 
 .profile__content{
     width: 100%;
-    padding-bottom: 40px;
+    padding: 0 32px 32px 32px;
     box-sizing: border-box;
 }
 
@@ -59,6 +59,6 @@ export default {
     color: white;
     align-items: center;
     justify-content:center;
-    margin-top: 10px;
+    margin-top: 16px;
 }
 </style>
