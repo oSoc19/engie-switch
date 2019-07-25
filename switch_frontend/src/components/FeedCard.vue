@@ -13,6 +13,10 @@
           <div class="feedcard__header__details__time">{{formatDate(post.dateTime)}}</div>
         </div>
       </div>
+
+      <div v-if="isAIConfirmed === true" class="ai__confirmed">AI confirmed</div>
+      <div v-if="isAIConfirmed === false" class="ai__not__confirmed">Probably fake</div>
+
       <ion-card-title class="feedcard__header__challenge">{{post.challenge.title}}</ion-card-title>
     </ion-card-header>
 
@@ -63,7 +67,8 @@ export default {
   data() {
     return {
       isNude: this.post.nsfwjs.porn >= 0.5,
-      showNude: false
+      showNude: false,
+      isAIConfirmed: null
     };
   },
   methods: {
@@ -106,6 +111,16 @@ export default {
     },
     toggleNude() {
       this.showNude = !this.showNude;
+    }
+  },
+  mounted() {
+    if (this.post.score) {
+      if (this.post.score.good > 0) {
+        this.isAIConfirmed = true;
+      }
+      if (this.post.score.bad > 0) {
+        this.isAIConfirmed = false;
+      }
     }
   }
 };
@@ -243,12 +258,28 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  top:  5px;
+  top: 5px;
   right: 25px;
 }
 .eye__button img {
   max-width: 70%;
   max-height: 70%;
 }
+.ai__confirmed {
+  background-color: #32ff6a;
+  margin-top: 5px;
+  display: inline-block;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+}
 
+.ai__not__confirmed {
+  margin-top: 5px;
+  display: inline-block;
+  color: white;
+  background-color: #ff8a5c;
+  font-size: 12px;
+  padding: 5px;
+}
 </style>
