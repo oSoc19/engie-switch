@@ -11,6 +11,7 @@ const Post = new mongoose.Schema
   user: {type: objectId, ref: 'User'},
   image: String, //BASE64_CONTENT
   nsfwjs: {},
+  score: {}, // classification score
   text: String,
   dateTime: {type: Date, default: Date.now},
   reviews: {
