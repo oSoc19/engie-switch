@@ -23,12 +23,8 @@ export default {
     };
   },
   created() {
-    //TODO get random challenge from server
-    api
-      .getChallenges()
-      .then(data => {
-        let randomNr = Math.floor(Math.random() * data.length);
-        this.challenge = data[randomNr];
+    api.getDailyChallenge().then(data => {
+        this.challenge = data;
       })
       .catch(error.bind(this));
   }
