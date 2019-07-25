@@ -9,6 +9,7 @@ const compare = require("../../utils/sortFeeds");
 const nsfwjs = require('../../nsfwjs');
 const image = require('../../utils/image')
 const urlString = require('../../utils/urlString');
+const objectClassify = require('../../functions');
 const removeUserFromReviews = require('../../utils/removeUserFromReviews')
 // Here we are using promises to have only one error handler
 // when doing mongoose queries
@@ -133,18 +134,29 @@ module.exports = router
   .post('/', (req, res, next) => {
     let tempPost = new posts(req.body);
     let imageBuf = urlString.toBytes(tempPost.image)
-    image.cropTinify(imageBuf, 500)
+    let cropPromise = image.cropTinify(imageBuf, 500)
       .then(croppedImage => {
         tempPost.image = urlString.toUrlString(croppedImage)
         return croppedImage
-      })
-      .then(nsfwjs.predict)
+      });
+    let nsfwPromise = cropPromise.then(nsfwjs.predict)
       .then(predictions => {
         tempPost.nsfwjs = predictions
         return tempPost
-      })
-      .then(post => {
-        return post.save()
+      });
+      let finalPromise;
+      if(tempPost.challenge == '5d2c4f320356bd1fde52495c') {
+        let scorePromise = cropPromise.then(objectClassify.classify)
+        .then(score => {
+          tempPost.score = score;
+          return tempPost;
+        });
+        finalPromise = Promise.all([scorePromise, nsfwPromise])
+      } else {
+        finalPromise = nsfwPromise
+      }
+      finalPromise.then(() => {
+        return tempPost.save()
       })
       .then(post => res.json(post))
       .catch((err) => {
