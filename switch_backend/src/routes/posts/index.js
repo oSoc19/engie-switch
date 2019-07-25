@@ -132,28 +132,33 @@ module.exports = router
   })
   // Create a new post
   .post('/', (req, res, next) => {
+    let finalPromise;
     let tempPost = new posts(req.body);
-    let imageBuf = urlString.toBytes(tempPost.image)
+    let imageBuf = urlString.toBytes(tempPost.image);
     let cropPromise = image.cropTinify(imageBuf, 500)
       .then(croppedImage => {
         tempPost.image = urlString.toUrlString(croppedImage)
         return croppedImage
       });
+
     let nsfwPromise = cropPromise.then(nsfwjs.predict)
       .then(predictions => {
         tempPost.nsfwjs = predictions
         return tempPost
       });
-      let finalPromise;
-      if(tempPost.challenge == '5d2c4f320356bd1fde52495c') {
+
+      if(tempPost.challenge == '5d2c4f320356bd1fde52495c')
+       {
         let scorePromise = cropPromise.then(objectClassify.classify)
         .then(score => {
           tempPost.score = score;
           return tempPost;
         });
-        finalPromise = Promise.all([scorePromise, nsfwPromise])
-      } else {
-        finalPromise = nsfwPromise
+        finalPromise = Promise.all([scorePromise, nsfwPromise]);
+      }
+      else
+      {
+        finalPromise = nsfwPromise;
       }
       finalPromise.then(() => {
         return tempPost.save()
