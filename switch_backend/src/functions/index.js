@@ -11,34 +11,24 @@ const modelId = `ICN8191421497732791570`;
 // Get the full path of the model.
 const modelFullId = client.modelPath(projectId, computeRegion, modelId);
 
-// Read the file content for prediction.
-
 const params = {};
 
 
-async function classify(filePath)
+async function classify(imageBuf)
 {
-
-  //const content = fs.readFileSync(filePath, 'base64');
-
   // if (scoreThreshold) {
   //   params.score_threshold = scoreThreshold;
   // }
 
-  // Set the payload by giving the content and type of the file.
+  // Set the payload by giving the content.
   const payload = {};
-  payload.image = {imageBytes: filePath};
+  payload.image = {imageBytes: imageBuf};
 
   const [response] = await client.predict({
     name: modelFullId,
     payload: payload,
     params: params,
   });
-  // console.log('Prediction results: ');
-  // console.log(response.payload);
-  // response.payload.forEach(result => {
-  //   console.log(`${result.displayName} has a prediction score of ${result.classification.score}`);
-  // });
   let scoreObject = {};
   let classificationName = response.payload[0].displayName;
   let classificationScore = response.payload[0].classification.score;
@@ -50,6 +40,3 @@ async function classify(filePath)
 module.exports = {
   classify: classify,
 }
-
-// const path = "C:/Users/Andrews/Pictures/non_reusable.jpg"
-// classify(path);
