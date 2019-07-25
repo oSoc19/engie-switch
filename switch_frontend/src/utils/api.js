@@ -69,6 +69,10 @@ function getChallenges() {
   return apiCall('/challenges')
 }
 
+function getDailyChallenge() {
+  return apiCall('/challenges/daily')
+}
+
 function getChallenge(id) {
   return apiCall('/challenges/'+id)
 }
@@ -104,6 +108,7 @@ function getTop10() {
 export default {
   getPosts,
   getChallenges,
+  getDailyChallenge,
   getChallenge,
   getUsers,
   getUser,

@@ -10,6 +10,18 @@ let challenge = mongoose.model('Challenge');
 // when doing mongoose queries
 
 module.exports = router
+  // Get daily challenge
+  .get('/daily', (req, res, next) => {
+    challenge.findById('5d2c4f320356bd1fde52495c').exec()
+      .then((challengeFound) => {
+        if (!challengeFound) throw new createError(404, "Couldn't find challenge " + req.params.id);
+        else res.json(challengeFound);
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
+      });
+  })
   // Get a challenge by it's id
   .get('/:id', (req, res, next) => {
     challenge.findById(req.params.id).exec()
@@ -39,4 +51,4 @@ module.exports = router
 
 // TODO MAYBE IN FUTURE VERSIONS
 // Create a new challenge
-// To be able to have challenges created by the community 
+// To be able to have challenges created by the community
