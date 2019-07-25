@@ -11,8 +11,6 @@ const modelId = `ICN8191421497732791570`;
 // Get the full path of the model.
 const modelFullId = client.modelPath(projectId, computeRegion, modelId);
 
-// Read the file content for prediction.
-
 const params = {};
 
 
