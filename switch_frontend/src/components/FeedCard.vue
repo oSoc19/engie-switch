@@ -1,6 +1,9 @@
 <template>
   <ion-card class="feedcard">
     <ion-card-header>
+      <div v-if="isAIConfirmed === true" class="ai__result ai__confirmed">AI confirmed</div>
+      <div v-if="isAIConfirmed === false" class="ai__result ai__not__confirmed">Probably fake</div>
+
       <div class="feedcard__header">
         <div class="feedcard__header__profilepiccontainer">
           <img
@@ -14,10 +17,7 @@
         </div>
       </div>
 
-      <div v-if="isAIConfirmed === true" class="ai__confirmed">AI confirmed</div>
-      <div v-if="isAIConfirmed === false" class="ai__not__confirmed">Probably fake</div>
-
-      <ion-card-title class="feedcard__header__challenge">{{post.challenge.title}}</ion-card-title>
+      <ion-card-title class="feedcard__header__challenge">Challenge: {{post.challenge.title}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content class="feedcard__content">
@@ -158,7 +158,7 @@ export default {
   text-align: center;
 }
 .blur__image__text p {
-  background-color: rgba(235, 251, 252, 0.5);
+  background-color: rgba(255, 255, 255, 0.4);
   padding: 20px;
 }
 
@@ -200,7 +200,6 @@ export default {
 .feedcard__header__profilepiccontainer__profilepic {
   width: 100%;
   height: 100%;
-  border-radius: 50px;
   object-fit: cover;
 }
 .feedcard__content__likes {
@@ -265,8 +264,8 @@ export default {
   max-width: 70%;
   max-height: 70%;
 }
-.ai__confirmed {
-  background-color: #32ff6a;
+.ai__result {
+  float: right;
   margin-top: 5px;
   display: inline-block;
   color: white;
@@ -274,12 +273,12 @@ export default {
   padding: 5px;
 }
 
-.ai__not__confirmed {
-  margin-top: 5px;
-  display: inline-block;
-  color: white;
-  background-color: #ff8a5c;
-  font-size: 12px;
-  padding: 5px;
+.ai__confirmed {
+  background-color: #8BC34A;
 }
+
+.ai__not__confirmed {
+  background-color: #FF9800;
+}
+
 </style>
