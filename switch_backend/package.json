@@ -33,7 +33,7 @@
     "jpeg-js": "^0.3.5",
     "jsonwebtoken": "^8.5.1",
     "libgif": "0.0.2",
-    "mongoose": "^5.6.4",
+    "mongoose": "^5.7.5",
     "tinify": "^1.6.0-beta.2"
   },
   "devDependencies": {
